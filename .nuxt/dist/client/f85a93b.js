@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{208:function(n,t,o){"use strict";o.r(t),t.default={buttons:{history:"История",chat:"Чат",records:"Записи"},modals:{tracks_history:"История треков"},announcement:{live:"В эфире",at:"в",in:"через"}}}}]);

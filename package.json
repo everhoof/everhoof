@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "description": "Website fo internet radio",
+  "description": "Website for internet radio",
   "repository": "git@github.com:everhoof/everhoof.git",
   "author": {
     "name": "Svyatoslav Fyodorov",
@@ -40,6 +40,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
     "apollo-link-error": "^1.1.13",
+    "axios": "^0.21.0",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^2.6.11",
     "graphql": "^15.3.0",

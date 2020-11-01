@@ -16,6 +16,7 @@ let store = {};
   store.modules = store.modules || {}
 
   resolveStoreModules(require('..\\store\\auth.ts'), 'auth.ts')
+  resolveStoreModules(require('..\\store\\notifications.ts'), 'notifications.ts')
   resolveStoreModules(require('..\\store\\player.ts'), 'player.ts')
 
   // If the environment supports hot reloading...
