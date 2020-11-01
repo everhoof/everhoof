@@ -1,6 +1,6 @@
 # @everhoof/everhoof
 
-> Website fo internet radio
+> Website for internet radio
 
 ## Build Setup
 
