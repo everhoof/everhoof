@@ -2,8 +2,8 @@
   <!-- begin .history-modal-->
   <div class="history-modal">
     <ul class="history-modal__list">
-      <li v-for="(track, i) in tracks" :key="i" class="history-modal__item" :title="`${track.text}`">
-        {{ i + 1 }}. {{ track.text }}
+      <li v-for="(track, i) in tracks" :key="i" class="history-modal__item" :title="`${track.track.text}`">
+        {{ i + 1 }}. {{ track.track.text }}
       </li>
     </ul>
   </div>
