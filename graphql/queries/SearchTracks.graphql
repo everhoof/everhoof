@@ -1,0 +1,15 @@
+query SearchTracks($count: Int = 10, $page: Int = 1, $q: String) {
+  searchTracks(page: $page, count: $count, q: $q) {
+    page
+    count
+    total
+    items {
+      requestId
+      track {
+        id
+        title
+        artist
+      }
+    }
+  }
+}

@@ -6,6 +6,14 @@
         <nuxt />
       </div>
     </div>
+    <div class="page__notifications">
+      <b-notification
+        v-for="notification in notifications"
+        :key="notification.id"
+        class="page__notification"
+        :notification="notification"
+      />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -15,6 +23,8 @@ import '~/assets/stylus/global.styl';
 import '~/assets/stylus/colors.styl';
 import { Component, Vue } from 'nuxt-property-decorator';
 import BPlayer from '~/components/player/player.vue';
+import BNotification from '~/components/notification/notification.vue';
+import { Notification } from '~/types/Notification';
 
 @Component({
   head() {
@@ -29,8 +39,12 @@ import BPlayer from '~/components/player/player.vue';
       ],
     };
   },
-  components: { BPlayer },
+  components: { BNotification, BPlayer },
 })
-export default class Default extends Vue {}
+export default class Default extends Vue {
+  get notifications(): Notification[] {
+    return this.$accessor.notifications.notifications;
+  }
+}
 </script>
 <style lang="stylus" src="./default.styl" />

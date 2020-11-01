@@ -1,7 +1,7 @@
 <template>
   <!-- begin .modal-->
   <div v-show="value" ref="modal" class="modal">
-    <b-tile class="tile_padding_medium tile_borders_all">
+    <b-tile class="tile_padding_medium tile_borders_all modal__tile">
       <div class="modal__header">
         <h3 class="modal__title">{{ title }}</h3>
         <svg-icon class="modal__close" name="close" @click="$emit('input', false)" />

@@ -16,10 +16,22 @@ export type Query = {
   getCurrentUser: User;
   getCurrentPlaying?: Maybe<CurrentPlaying>;
   getTracksHistory: Array<HistoryItem>;
+  searchTracks: TrackSearchResponse;
+  requestTrack: TrackRequestResponse;
   getCalendarEvents: Array<CalendarEvent>;
   getStation: Station;
   getRecordings: Array<Recording>;
   getHello: Scalars['String'];
+};
+
+export type QuerySearchTracksArgs = {
+  page?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars['Int']>;
+  q?: Maybe<Scalars['String']>;
+};
+
+export type QueryRequestTrackArgs = {
+  songId: Scalars['String'];
 };
 
 export type User = {
@@ -81,6 +93,26 @@ export type Track = {
   album: Scalars['String'];
   lyrics: Scalars['String'];
   art: Scalars['String'];
+};
+
+export type TrackSearchResponse = {
+  __typename?: 'TrackSearchResponse';
+  page: Scalars['Int'];
+  count: Scalars['Int'];
+  total: Scalars['Int'];
+  items: Array<TrackSearchItem>;
+};
+
+export type TrackSearchItem = {
+  __typename?: 'TrackSearchItem';
+  requestId: Scalars['String'];
+  track: Track;
+};
+
+export type TrackRequestResponse = {
+  __typename?: 'TrackRequestResponse';
+  success: Scalars['Boolean'];
+  message: Scalars['String'];
 };
 
 export type CalendarEvent = {
@@ -228,6 +260,30 @@ export type GetGeneralDataQuery = { __typename?: 'Query' } & {
       playlists: { __typename?: 'Playlists' } & Pick<Playlists, 'm3u'>;
       mounts: Array<
         { __typename?: 'Mount' } & Pick<Mount, 'id' | 'default' | 'path' | 'name' | 'url' | 'bitrate' | 'format'>
+      >;
+    };
+};
+
+export type RequestTrackQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+export type RequestTrackQuery = { __typename?: 'Query' } & {
+  requestTrack: { __typename?: 'TrackRequestResponse' } & Pick<TrackRequestResponse, 'success' | 'message'>;
+};
+
+export type SearchTracksQueryVariables = Exact<{
+  count?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
+  q?: Maybe<Scalars['String']>;
+}>;
+
+export type SearchTracksQuery = { __typename?: 'Query' } & {
+  searchTracks: { __typename?: 'TrackSearchResponse' } & Pick<TrackSearchResponse, 'page' | 'count' | 'total'> & {
+      items: Array<
+        { __typename?: 'TrackSearchItem' } & Pick<TrackSearchItem, 'requestId'> & {
+            track: { __typename?: 'Track' } & Pick<Track, 'id' | 'title' | 'artist'>;
+          }
       >;
     };
 };

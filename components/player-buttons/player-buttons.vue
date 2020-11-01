@@ -13,7 +13,7 @@
       </a>
     </div>
     <b-modal v-model="request" :title="$t('modals.tracks_request')">
-      <b-request-modal />
+      <b-request-modal :modal.sync="request" />
     </b-modal>
     <b-modal v-model="history" :title="$t('modals.tracks_history')">
       <b-history-modal />

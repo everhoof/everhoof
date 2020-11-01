@@ -1,0 +1,6 @@
+query RequestTrack($id: String!) {
+  requestTrack(songId: $id) {
+    success
+    message
+  }
+}

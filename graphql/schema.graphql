@@ -6,6 +6,8 @@ type Query {
   getCurrentUser: User!
   getCurrentPlaying: CurrentPlaying
   getTracksHistory: [HistoryItem!]!
+  searchTracks(page: Int = 1, count: Int = 10, q: String = ""): TrackSearchResponse!
+  requestTrack(songId: String!): TrackRequestResponse!
   getCalendarEvents: [CalendarEvent!]!
   getStation: Station!
   getRecordings: [Recording!]!
@@ -61,6 +63,20 @@ type Track {
   album: String!
   lyrics: String!
   art: String!
+}
+type TrackSearchResponse {
+  page: Int!
+  count: Int!
+  total: Int!
+  items: [TrackSearchItem!]!
+}
+type TrackSearchItem {
+  requestId: String!
+  track: Track!
+}
+type TrackRequestResponse {
+  success: Boolean!
+  message: String!
 }
 type CalendarEvent {
   summary: String!
