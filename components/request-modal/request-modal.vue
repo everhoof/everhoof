@@ -18,16 +18,16 @@
           </div>
         </div>
       </div>
-      <div v-if="!items.length && q.length === 0" class="request-modal__message">
+      <div v-if="!items.length && searchTextLength === 0" class="request-modal__message">
         {{ $t('modal_requests.start_typing') }}
       </div>
-      <div v-else-if="!items.length && q.length < 3" class="request-modal__message">
+      <div v-else-if="!items.length && searchTextLength < 3" class="request-modal__message">
         {{ $t('modal_requests.enter_more_than_3_symbols') }}
       </div>
-      <div v-else-if="!items.length && q.length >= 3 && debouncing" class="request-modal__message">
+      <div v-else-if="!items.length && searchTextLength >= 3 && debouncing" class="request-modal__message">
         {{ $t('modal_requests.searching') }}
       </div>
-      <div v-else-if="!items.length && q.length >= 3 && !debouncing" class="request-modal__message">
+      <div v-else-if="!items.length && searchTextLength >= 3 && !debouncing" class="request-modal__message">
         {{ $t('modal_requests.nothing_found') }}
       </div>
     </div>
@@ -67,12 +67,14 @@ export default class RequestModal extends Vue {
   total: number = 0;
   items: SearchTracksQuery['searchTracks']['items'] = [];
 
+  searchTextLength: number = 0;
+
   get pages(): number {
     return Math.ceil(this.total / this.count);
   }
 
   async search(reset: boolean = false) {
-    if (this.q.length < 3) {
+    if (this.searchTextLength < 3) {
       this.page = 0;
       this.total = 0;
       this.items = [];
@@ -104,6 +106,7 @@ export default class RequestModal extends Vue {
   }
 
   input() {
+    this.searchTextLength = this.q.trim().length;
     this.debouncing = true;
     window.clearTimeout(this.debounceId);
     this.debounceId = window.setTimeout(() => this.search(true), 1000);
