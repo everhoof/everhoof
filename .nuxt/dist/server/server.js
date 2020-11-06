@@ -5264,12 +5264,12 @@ var history_modal_component = normalizeComponent(
 )
 
 /* harmony default export */ var history_modal = (history_modal_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/request-modal/request-modal.vue?vue&type=template&id=4a902cd6&
-var request_modalvue_type_template_id_4a902cd6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"request-modal"},[_vm._ssrNode("<input placeholder=\"SmD House\" type=\"text\""+(_vm._ssrAttr("value",(_vm.q)))+" class=\"request-modal__input\"> "),_vm._ssrNode("<div class=\"request-modal__scrollable\">","</div>",[(_vm.items.length > 0)?_vm._ssrNode("<div class=\"request-modal__tracks\">","</div>",_vm._l((_vm.items),function(entry,i){return _vm._ssrNode("<div class=\"request-modal__track\">","</div>",[_vm._ssrNode("<div class=\"request-modal__track-part\">"+_vm._ssrEscape(_vm._s(entry.track.artist))+"</div> <div class=\"request-modal__track-part\">"+_vm._ssrEscape(_vm._s(entry.track.title))+"</div> "+((entry.track.artist)?("<div class=\"request-modal__track-part request-modal__track-part_type_full\"><b>"+_vm._ssrEscape(_vm._s(entry.track.artist))+"</b>"+_vm._ssrEscape(" – "+_vm._s(entry.track.title)+"\n        ")+"</div>"):("<div class=\"request-modal__track-part request-modal__track-part_type_full\">"+_vm._ssrEscape("\n          "+_vm._s(entry.track.title)+"\n        ")+"</div>"))+" "),_vm._ssrNode("<div class=\"request-modal__track-control\">","</div>",[_c('svg-icon',{attrs:{"name":"req"}})],1)],2)}),0):_vm._e(),_vm._ssrNode(" "+((!_vm.items.length && _vm.q.length === 0)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.start_typing'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.q.length < 3)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.enter_more_than_3_symbols'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.q.length >= 3 && _vm.debouncing)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.searching'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.q.length >= 3 && !_vm.debouncing)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.nothing_found'))+"\n    ")+"</div>"):"<!---->"))],2),_vm._ssrNode(" "),(_vm.pages > 0)?_vm._ssrNode("<div class=\"request-modal__pagination\">","</div>",[_c('b-pagination',{attrs:{"pages":_vm.pages,"page":_vm.page},on:{"change":_vm.changePage}})],1):_vm._e()],2)}
-var request_modalvue_type_template_id_4a902cd6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/request-modal/request-modal.vue?vue&type=template&id=17c209e3&
+var request_modalvue_type_template_id_17c209e3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"request-modal"},[_vm._ssrNode("<input"+(_vm._ssrAttr("placeholder",_vm.randomArtist))+" type=\"text\""+(_vm._ssrAttr("value",(_vm.q)))+" class=\"request-modal__input\"> "),_vm._ssrNode("<div class=\"request-modal__scrollable\">","</div>",[(_vm.items.length > 0)?_vm._ssrNode("<div class=\"request-modal__tracks\">","</div>",_vm._l((_vm.items),function(entry,i){return _vm._ssrNode("<div class=\"request-modal__track\">","</div>",[_vm._ssrNode("<div class=\"request-modal__track-part\">"+_vm._ssrEscape(_vm._s(entry.track.artist))+"</div> <div class=\"request-modal__track-part\">"+_vm._ssrEscape(_vm._s(entry.track.title))+"</div> "+((entry.track.artist)?("<div class=\"request-modal__track-part request-modal__track-part_type_full\"><b>"+_vm._ssrEscape(_vm._s(entry.track.artist))+"</b>"+_vm._ssrEscape(" – "+_vm._s(entry.track.title)+"\n        ")+"</div>"):("<div class=\"request-modal__track-part request-modal__track-part_type_full\">"+_vm._ssrEscape("\n          "+_vm._s(entry.track.title)+"\n        ")+"</div>"))+" "),_vm._ssrNode("<div class=\"request-modal__track-control\">","</div>",[_c('svg-icon',{attrs:{"name":"req"}})],1)],2)}),0):_vm._e(),_vm._ssrNode(" "+((!_vm.items.length && _vm.searchTextLength === 0)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.start_typing'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.searchTextLength < 3)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.enter_more_than_3_symbols'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.searchTextLength >= 3 && _vm.debouncing)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.searching'))+"\n    ")+"</div>"):(!_vm.items.length && _vm.searchTextLength >= 3 && !_vm.debouncing)?("<div class=\"request-modal__message\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('modal_requests.nothing_found'))+"\n    ")+"</div>"):"<!---->"))],2),_vm._ssrNode(" "),(_vm.pages > 0)?_vm._ssrNode("<div class=\"request-modal__pagination\">","</div>",[_c('b-pagination',{attrs:{"pages":_vm.pages,"page":_vm.page},on:{"change":_vm.changePage}})],1):_vm._e()],2)}
+var request_modalvue_type_template_id_17c209e3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/request-modal/request-modal.vue?vue&type=template&id=4a902cd6&
+// CONCATENATED MODULE: ./components/request-modal/request-modal.vue?vue&type=template&id=17c209e3&
 
 // EXTERNAL MODULE: ./graphql/queries/SearchTracks.graphql
 var SearchTracks_graphql = __webpack_require__(48);
@@ -5350,6 +5350,10 @@ var pagination_component = normalizeComponent(
 )
 
 /* harmony default export */ var pagination = (pagination_component.exports);
+// CONCATENATED MODULE: ./utils/math.ts
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--12-0!./node_modules/ts-loader??ref--12-1!./node_modules/vue-loader/lib??vue-loader-options!./components/request-modal/request-modal.vue?vue&type=script&lang=ts&
 var request_modalvue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
@@ -5359,6 +5363,7 @@ var request_modalvue_type_script_lang_ts_decorate = undefined && undefined.__dec
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 /* eslint-disable camelcase */
+
 
 
 
@@ -5375,6 +5380,13 @@ let request_modalvue_type_script_lang_ts_RequestModal = class RequestModal exten
     this.count = 7;
     this.total = 0;
     this.items = [];
+    this.searchTextLength = 0;
+    this.randomArtist = '';
+  }
+
+  created() {
+    const artists = ['Aviators', '4everfreebrony', 'BroniKoni', 'Elias Frost', 'Princewhateverer', 'SlyphStorm', 'The Wasteland Wailers', 'The L-Train', 'SmD House', 'Duo Cartoonist', 'BlackGryph0n'];
+    this.randomArtist = artists[getRandomInt(artists.length)];
   }
 
   get pages() {
@@ -5384,7 +5396,7 @@ let request_modalvue_type_script_lang_ts_RequestModal = class RequestModal exten
   async search(reset = false) {
     var _a;
 
-    if (this.q.length < 3) {
+    if (this.searchTextLength < 3) {
       this.page = 0;
       this.total = 0;
       this.items = [];
@@ -5415,6 +5427,7 @@ let request_modalvue_type_script_lang_ts_RequestModal = class RequestModal exten
   }
 
   input() {
+    this.searchTextLength = this.q.trim().length;
     this.debouncing = true;
     window.clearTimeout(this.debounceId);
     this.debounceId = window.setTimeout(() => this.search(true), 1000);
@@ -5466,8 +5479,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var request_modal_component = normalizeComponent(
   request_modal_request_modalvue_type_script_lang_ts_,
-  request_modalvue_type_template_id_4a902cd6_render,
-  request_modalvue_type_template_id_4a902cd6_staticRenderFns,
+  request_modalvue_type_template_id_17c209e3_render,
+  request_modalvue_type_template_id_17c209e3_staticRenderFns,
   false,
   request_modal_injectStyles,
   null,
