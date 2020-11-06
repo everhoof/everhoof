@@ -1,7 +1,7 @@
 <template>
   <!-- begin .request-modal-->
   <div class="request-modal">
-    <input v-model="q" class="request-modal__input" placeholder="SmD House" type="text" @input="input" />
+    <input v-model="q" class="request-modal__input" :placeholder="randomArtist" type="text" @input="input" />
     <div class="request-modal__scrollable">
       <div v-if="items.length > 0" class="request-modal__tracks">
         <div v-for="(entry, i) in items" :key="i" class="request-modal__track">
@@ -51,7 +51,7 @@ import {
 } from '~/graphql/schema';
 import { ExecutionResult } from '~/types/apollo';
 import BPagination from '~/components/pagination/pagination.vue';
-
+import { getRandomInt } from '~/utils/math.ts';
 @Component({
   name: 'b-request-modal',
   components: { BPagination },
@@ -66,8 +66,25 @@ export default class RequestModal extends Vue {
   count: number = 7;
   total: number = 0;
   items: SearchTracksQuery['searchTracks']['items'] = [];
-
   searchTextLength: number = 0;
+  randomArtist: string = '';
+
+  created() {
+    const artists: string[] = [
+      'Aviators',
+      '4everfreebrony',
+      'BroniKoni',
+      'Elias Frost',
+      'Princewhateverer',
+      'SlyphStorm',
+      'The Wasteland Wailers',
+      'The L-Train',
+      'SmD House',
+      'Duo Cartoonist',
+      'BlackGryph0n',
+    ];
+    this.randomArtist = artists[getRandomInt(artists.length)];
+  }
 
   get pages(): number {
     return Math.ceil(this.total / this.count);
