@@ -37,7 +37,7 @@ export default class PlayerButtons extends Vue {
     { title: 'Discord', icon: 'discord', href: '#' },
     { title: 'VK', icon: 'vk', href: '#' },
     {
-      title: 'YouTube',
+      title: 'YouTube Channel',
       icon: 'youtube',
       href: '#',
     },
