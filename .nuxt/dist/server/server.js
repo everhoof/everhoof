@@ -4473,12 +4473,12 @@ var button_component = normalizeComponent(
 )
 
 /* harmony default export */ var button_button = (button_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/slider/slider.vue?vue&type=template&id=0690b388&
-var slidervue_type_template_id_0690b388_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"slider",staticClass:"slider",class:{ slider_with_time: _vm.withTime, slider_type_interactive: _vm.interactive },on:{"mousedown":_vm.onMouseDown,"touchstart":_vm.onMouseDown}},[_vm._ssrNode(((_vm.emptyTime)?("<span class=\"slider__time\">––:––</span>"):("<span class=\"slider__time\">"+_vm._ssrEscape(_vm._s(_vm._f("toHHMMSS")(_vm.time)))+"</span>"))+" <div class=\"slider__box\"><div class=\"slider__bg\""+(_vm._ssrStyle(null,{ width: _vm.valueSynced * 100 + '%' }, null))+">"+((_vm.interactive)?("<div class=\"slider__seeker\"></div>"):"<!---->")+"</div></div> "+((_vm.emptyTime)?("<span class=\"slider__time\">––:––</span>"):("<span class=\"slider__time\">"+_vm._ssrEscape(_vm._s(_vm._f("toHHMMSS")(_vm.duration)))+"</span>")))])}
-var slidervue_type_template_id_0690b388_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/slider/slider.vue?vue&type=template&id=29aac3c7&
+var slidervue_type_template_id_29aac3c7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"slider",staticClass:"slider",class:{ slider_with_time: _vm.withTime, slider_type_interactive: _vm.interactive },on:{"mousedown":_vm.onMouseDown,"touchstart":_vm.onMouseDown}},[_vm._ssrNode(((_vm.emptyTime)?("<span class=\"slider__time\">––:––</span>"):("<span class=\"slider__time\">"+_vm._ssrEscape(_vm._s(_vm._f("toHHMMSS")(_vm.time)))+"</span>"))+" <div class=\"slider__box\"><div class=\"slider__bg\""+(_vm._ssrStyle(null,{ width: (_vm.emptyTime ? 100 : _vm.valueSynced * 100) + '%' }, null))+">"+((_vm.interactive)?("<div class=\"slider__seeker\"></div>"):"<!---->")+"</div></div> "+((_vm.emptyTime)?("<span class=\"slider__time\">––:––</span>"):("<span class=\"slider__time\">"+_vm._ssrEscape(_vm._s(_vm._f("toHHMMSS")(_vm.duration)))+"</span>")))])}
+var slidervue_type_template_id_29aac3c7_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/slider/slider.vue?vue&type=template&id=0690b388&
+// CONCATENATED MODULE: ./components/slider/slider.vue?vue&type=template&id=29aac3c7&
 
 // EXTERNAL MODULE: external "vue-property-decorator"
 var external_vue_property_decorator_ = __webpack_require__(6);
@@ -4678,8 +4678,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var slider_component = normalizeComponent(
   slider_slidervue_type_script_lang_ts_,
-  slidervue_type_template_id_0690b388_render,
-  slidervue_type_template_id_0690b388_staticRenderFns,
+  slidervue_type_template_id_29aac3c7_render,
+  slidervue_type_template_id_29aac3c7_staticRenderFns,
   false,
   slider_injectStyles,
   null,
