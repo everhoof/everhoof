@@ -10,7 +10,7 @@
     <span v-if="emptyTime" class="slider__time">––:––</span>
     <span v-else class="slider__time">{{ time | toHHMMSS }}</span>
     <div class="slider__box">
-      <div ref="bg" class="slider__bg" :style="{ width: valueSynced * 100 + '%' }">
+      <div ref="bg" class="slider__bg" :style="{ width: (emptyTime ? 100 : valueSynced * 100) + '%' }">
         <div v-if="interactive" ref="seeker" class="slider__seeker"></div>
       </div>
     </div>
