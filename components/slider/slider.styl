@@ -3,7 +3,6 @@
 	align-items center
 	width 100%
 	height 16px
-	cursor pointer
 
 	&:hover
 		& ^[0]__seeker
@@ -45,6 +44,10 @@
 		background-color var(--primary-light)
 		border-radius 50%
 		defaultTransition()
+
+	&_type
+		&_interactive
+			cursor pointer
 
 	&_with
 		&_time

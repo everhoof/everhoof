@@ -3,7 +3,7 @@
   <div
     ref="slider"
     class="slider"
-    :class="{ slider_with_time: withTime }"
+    :class="{ slider_with_time: withTime, slider_type_interactive: interactive }"
     @mousedown="onMouseDown"
     @touchstart="onMouseDown"
   >
