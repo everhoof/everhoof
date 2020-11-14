@@ -5130,12 +5130,12 @@ var tile_component = normalizeComponent(
 )
 
 /* harmony default export */ var tile = (tile_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/player-buttons/player-buttons.vue?vue&type=template&id=14540e8e&
-var player_buttonsvue_type_template_id_14540e8e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"player-buttons"},[_vm._ssrNode("<div class=\"player-buttons__buttons-container\"><button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.history')))+"</button> <button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.request')))+"</button> <button disabled=\"disabled\" class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.chat')))+"</button> <button disabled=\"disabled\" class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.records')))+"</button></div> "),_vm._ssrNode("<div class=\"player-buttons__links-container\">","</div>",_vm._l((_vm.links),function(link,i){return _vm._ssrNode("<a"+(_vm._ssrAttr("href",link.href))+(_vm._ssrAttr("title",link.title))+" class=\"player-buttons__link\">","</a>",[_c('svg-icon',{attrs:{"name":link.icon}})],1)}),0),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_request')},model:{value:(_vm.request),callback:function ($$v) {_vm.request=$$v},expression:"request"}},[_c('b-request-modal',{attrs:{"modal":_vm.request},on:{"update:modal":function($event){_vm.request=$event}}})],1),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_history')},model:{value:(_vm.history),callback:function ($$v) {_vm.history=$$v},expression:"history"}},[_c('b-history-modal')],1)],2)}
-var player_buttonsvue_type_template_id_14540e8e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/player-buttons/player-buttons.vue?vue&type=template&id=5043bbfe&
+var player_buttonsvue_type_template_id_5043bbfe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"player-buttons"},[_vm._ssrNode("<div class=\"player-buttons__buttons-container\"><button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.history')))+"</button> <button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.request')))+"</button> <a href=\"https://bar-radio-everypony.chatovod.ru/\" target=\"_blank\" class=\"player-buttons__button\">"+_vm._ssrEscape("\n      "+_vm._s(_vm.$t('buttons.chat'))+"\n    ")+"</a> <button disabled=\"disabled\" class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.records')))+"</button></div> "),_vm._ssrNode("<div class=\"player-buttons__links-container\">","</div>",_vm._l((_vm.links),function(link,i){return _vm._ssrNode("<a"+(_vm._ssrAttr("href",link.href))+(_vm._ssrAttr("title",link.title))+" class=\"player-buttons__link\">","</a>",[_c('svg-icon',{attrs:{"name":link.icon}})],1)}),0),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_request')},model:{value:(_vm.request),callback:function ($$v) {_vm.request=$$v},expression:"request"}},[_c('b-request-modal',{attrs:{"modal":_vm.request},on:{"update:modal":function($event){_vm.request=$event}}})],1),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_history')},model:{value:(_vm.history),callback:function ($$v) {_vm.history=$$v},expression:"history"}},[_c('b-history-modal')],1)],2)}
+var player_buttonsvue_type_template_id_5043bbfe_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/player-buttons/player-buttons.vue?vue&type=template&id=14540e8e&
+// CONCATENATED MODULE: ./components/player-buttons/player-buttons.vue?vue&type=template&id=5043bbfe&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/modal/modal.vue?vue&type=template&id=219795ca&
 var modalvue_type_template_id_219795ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],ref:"modal",staticClass:"modal"},[_c('b-tile',{staticClass:"tile_padding_medium tile_borders_all modal__tile"},[_c('div',{staticClass:"modal__header"},[_c('h3',{staticClass:"modal__title"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),_c('svg-icon',{staticClass:"modal__close",attrs:{"name":"close"},on:{"click":function($event){return _vm.$emit('input', false)}}})],1),_vm._v(" "),_vm._t("default")],2)],1)}
@@ -5549,8 +5549,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var player_buttons_component = normalizeComponent(
   player_buttons_player_buttonsvue_type_script_lang_ts_,
-  player_buttonsvue_type_template_id_14540e8e_render,
-  player_buttonsvue_type_template_id_14540e8e_staticRenderFns,
+  player_buttonsvue_type_template_id_5043bbfe_render,
+  player_buttonsvue_type_template_id_5043bbfe_staticRenderFns,
   false,
   player_buttons_injectStyles,
   null,
