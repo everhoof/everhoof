@@ -20,8 +20,8 @@
             {{ artist }}
           </div>
         </div>
-        <div v-if="!isLiveStream" class="player__progress">
-          <b-slider :value="progress" :duration="track.duration" with-time />
+        <div class="player__progress">
+          <b-slider :value="progress" :duration="track.duration" :empty-time="isLiveStream" with-time />
         </div>
       </div>
     </div>

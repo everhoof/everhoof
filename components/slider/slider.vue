@@ -7,13 +7,15 @@
     @mousedown="onMouseDown"
     @touchstart="onMouseDown"
   >
-    <span class="slider__time">{{ time | toHHMMSS }}</span>
+    <span v-if="emptyTime" class="slider__time">––:––</span>
+    <span v-else class="slider__time">{{ time | toHHMMSS }}</span>
     <div class="slider__box">
       <div ref="bg" class="slider__bg" :style="{ width: valueSynced * 100 + '%' }">
         <div v-if="interactive" ref="seeker" class="slider__seeker"></div>
       </div>
     </div>
-    <span class="slider__time">{{ duration | toHHMMSS }}</span>
+    <span v-if="emptyTime" class="slider__time">––:––</span>
+    <span v-else class="slider__time">{{ duration | toHHMMSS }}</span>
   </div>
   <!-- end .seek-bar -->
 </template>
@@ -31,6 +33,7 @@ export default class Slider extends Vue {
   @Prop({ default: 0 }) duration!: number;
   @Prop({ default: false, type: Boolean }) interactive!: boolean;
   @Prop({ default: false, type: Boolean }) withTime!: boolean;
+  @Prop({ default: false, type: Boolean }) emptyTime!: boolean;
   @Ref() private slider!: HTMLElement;
   @Ref() private bg!: HTMLElement;
   @Ref() private timestamp!: HTMLElement;
