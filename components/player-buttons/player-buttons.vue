@@ -4,7 +4,9 @@
     <div class="player-buttons__buttons-container">
       <button class="player-buttons__button" @click="history = true">{{ $t('buttons.history') }}</button>
       <button class="player-buttons__button" @click="request = true">{{ $t('buttons.request') }}</button>
-      <button class="player-buttons__button" disabled>{{ $t('buttons.chat') }}</button>
+      <a class="player-buttons__button" href="https://bar-radio-everypony.chatovod.ru/" target="_blank">{{
+        $t('buttons.chat')
+      }}</a>
       <button class="player-buttons__button" disabled>{{ $t('buttons.records') }}</button>
     </div>
     <div class="player-buttons__links-container">
@@ -34,12 +36,12 @@ import BRequestModal from '~/components/request-modal/request-modal.vue';
 })
 export default class PlayerButtons extends Vue {
   links = [
-    { title: 'Discord', icon: 'discord', href: '#' },
-    { title: 'VK', icon: 'vk', href: '#' },
+    { title: 'Discord', icon: 'discord', href: 'https://discord.gg/YV9HhHRd4M' },
+    { title: 'VK', icon: 'vk', href: 'https://vk.com/everhoof' },
     {
-      title: 'YouTube Channel',
+      title: 'YouTube',
       icon: 'youtube',
-      href: '#',
+      href: 'https://www.youtube.com/channel/UCiWnOZze2b_KEP-rtsWE90w',
     },
   ];
   history = false;
