@@ -10,7 +10,14 @@
       <button class="player-buttons__button" disabled>{{ $t('buttons.records') }}</button>
     </div>
     <div class="player-buttons__links-container">
-      <a v-for="(link, i) in links" :key="i" :href="link.href" class="player-buttons__link" :title="link.title">
+      <a
+        v-for="(link, i) in links"
+        :key="i"
+        :href="link.href"
+        class="player-buttons__link"
+        :title="link.title"
+        target="_blank"
+      >
         <svg-icon :name="link.icon" />
       </a>
     </div>
