@@ -3,7 +3,7 @@
   "all": [
     "../server/index.spa.html",
     "../server/index.ssr.html",
-    "3fd5e55.js",
+    "0836e6d.js",
     "5ea12d2.js",
     "8ab074044d4b0d840ec324bb1f677596.svg",
     "8ea889b.js",
@@ -16,7 +16,7 @@
     "faeb117.js",
     "5ea12d2.js",
     "fb0405c.js",
-    "3fd5e55.js"
+    "0836e6d.js"
   ],
   "async": [
     "8ea889b.js",
@@ -482,7 +482,7 @@
       2,
       4
     ],
-    "9dfab596": [
+    "9423982c": [
       2,
       4
     ],
@@ -550,7 +550,7 @@
       2,
       4
     ],
-    "bcd6025e": [
+    "b2fee4f4": [
       2,
       4
     ],
@@ -1875,7 +1875,7 @@
   },
   "assetsMapping": {
     "1a3ae26b": [
-      "3fd5e55.js"
+      "0836e6d.js"
     ],
     "085a35c4": [
       "5ea12d2.js"
