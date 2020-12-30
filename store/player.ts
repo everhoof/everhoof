@@ -94,7 +94,7 @@ export const getters = getterTree(state, {
   track: (_state, _getters) => _getters.playingDataTrack(_getters.trackType) as CurrentPlayingTrack,
 
   trackType: (_state, _getters, _rootState: RootState): 'next' | 'current' | 'previous' => {
-    if (!_getters.liveData.isLive) {
+    if (!_getters.liveData.isLive && _getters.playingData.current.duration !== 0) {
       if (_getters.playingData.current.endsAt - _rootState.now <= 0) return 'next';
       if (_getters.playingData.current.startsAt - _rootState.now > 0) return 'previous';
     }
