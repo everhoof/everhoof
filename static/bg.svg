@@ -1,6 +1,13 @@
-<svg width="2560" height="951" viewBox="0 0 2560 951" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="2560" height="951" fill="#2C2C2C"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 337L61 375C122 413 244 490 366 465C488 439 610 311 731 362C853 413 975 644 1097 746C1219 849 1341 823 1463 746C1585 669 1707 541 1829 529C1950 516 2072 618 2194 631C2316 644 2438 567 2499 529L2560 490V951H2499C2438 951 2316 951 2194 951C2072 951 1950 951 1829 951C1707 951 1585 951 1463 951C1341 951 1219 951 1097 951C975 951 853 951 731 951C610 951 488 951 366 951C244 951 122 951 61 951H0V337Z" fill="#333333"/>
-<style id="stylish-2" class="stylish" type="text/css">.emoji {
- display: none;   
-}</style></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2560 951" style="enable-background:new 0 0 2560 951;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#322E6A;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#DFE6F3;}
+</style>
+<rect class="st0" width="2560" height="951"/>
+<path class="st1" d="M0,337l61,38c61,38,183,115,305,90c122-26,244-154,365-103c122,51,244,282,366,384c122,103,244,77,366,0
+	s244-205,366-217c121-13,243,89,365,102s244-64,305-102l61-39v461h-61c-61,0-183,0-305,0s-244,0-365,0c-122,0-244,0-366,0
+	s-244,0-366,0s-244,0-366,0c-121,0-243,0-365,0s-244,0-305,0H0V337z"/>
+</svg>
