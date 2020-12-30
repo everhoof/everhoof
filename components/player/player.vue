@@ -4,6 +4,10 @@
     <audio ref="audio" hidden="hidden" src="/silence.mp3"></audio>
     <div class="player__header">
       <h1 class="player__title">{{ station.name }}</h1>
+      <span v-show="false" class="player__listeners-counter">
+        <svg-icon class="player__icon" name="people_alt" />
+        {{ listenersCount }}
+      </span>
       <a :href="station.playlists.m3u" class="player__download-playlist">
         <svg-icon class="player__icon" name="m3u" />
       </a>
