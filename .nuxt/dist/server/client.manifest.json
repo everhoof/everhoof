@@ -3,7 +3,7 @@
   "all": [
     "../server/index.spa.html",
     "../server/index.ssr.html",
-    "0bb678d.js",
+    "5882e3d.js",
     "5ea12d2.js",
     "8ab074044d4b0d840ec324bb1f677596.svg",
     "8ea889b.js",
@@ -16,7 +16,7 @@
     "faeb117.js",
     "5ea12d2.js",
     "fb0405c.js",
-    "0bb678d.js"
+    "5882e3d.js"
   ],
   "async": [
     "8ea889b.js",
@@ -1875,7 +1875,7 @@
   },
   "assetsMapping": {
     "1a3ae26b": [
-      "0bb678d.js"
+      "5882e3d.js"
     ],
     "085a35c4": [
       "5ea12d2.js"
