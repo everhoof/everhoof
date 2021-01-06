@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 2560 951" style="enable-background:new 0 0 2560 951;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#322E6A;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#DFE6F3;}
-</style>
-<rect class="st0" width="2560" height="951"/>
-<path class="st1" d="M0,337l61,38c61,38,183,115,305,90c122-26,244-154,365-103c122,51,244,282,366,384c122,103,244,77,366,0
-	s244-205,366-217c121-13,243,89,365,102s244-64,305-102l61-39v461h-61c-61,0-183,0-305,0s-244,0-365,0c-122,0-244,0-366,0
-	s-244,0-366,0s-244,0-366,0c-121,0-243,0-365,0s-244,0-305,0H0V337z"/>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="2560" height="951" viewBox="0 0 2560 951"><defs><style>.cls-1{fill:#201e2f;}.cls-2{fill:#403f54;fill-rule:evenodd;}</style></defs><title>bg</title><rect class="cls-1" width="2560" height="951"/><path class="cls-2" d="M0,337l61,38c61,38,183,115,305,90,122-26,244-154,365-103,122,51,244,282,366,384,122,103,244,77,366,0s244-205,366-217c121-13,243,89,365,102s244-64,305-102l61-39V951H0Z"/></svg>
