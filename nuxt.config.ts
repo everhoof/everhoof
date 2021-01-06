@@ -59,7 +59,7 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxt/typescript-build',
-    '@nuxtjs/dotenv',
+    ['@nuxtjs/dotenv', { filename: process.env.NODE_ENV === 'production' ? '.env.production' : '.env' }],
     '@nuxtjs/router',
     '@nuxtjs/style-resources',
     'nuxt-typed-vuex',
