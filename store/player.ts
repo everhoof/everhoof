@@ -16,6 +16,7 @@ import GetGeneralData from '~/graphql/queries/GetGeneralData.graphql';
 import GetCurrentPlaying from '~/graphql/queries/GetCurrentPlaying.graphql';
 import GetCalendarEvents from '~/graphql/queries/GetCalendarEvents.graphql';
 import { RootState } from '~/store/index';
+import { AudioStatus, AudioType } from '~/components/audio/audio.vue';
 
 export const namespaced = true;
 
@@ -27,22 +28,21 @@ export const state = () => ({
   streamId: 0 as number,
   volume: 0.9 as number,
   muted: false as boolean,
+  status: AudioStatus.stopped as AudioStatus,
+  type: AudioType.none as AudioType,
+  source: null as string | null,
 });
 
 export type PlayerState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
   SET_PLAYING_DATA: (_state, payload: CurrentPlaying) => (_state.playingDataState = payload),
-
   SET_CALENDAR_EVENTS: (_state, payload: CalendarEvent[]) => (_state.calendarEventsState = payload),
-
   SET_TRACKS_HISTORY: (_state, payload: HistoryItem[]) => (_state.tracksHistory = payload),
-
   SET_STREAM_ID: (_state, payload: number) => {
     if (process.client && _state.streamId !== payload) new Cookies().set('stream_id', payload);
     _state.streamId = payload;
   },
-
   SET_VOLUME(_state, payload: number) {
     if (payload > 1) payload = 1;
     else if (payload < 0) payload = 0;
@@ -50,10 +50,11 @@ export const mutations = mutationTree(state, {
     if (process.client && _state.volume !== payload) new Cookies().set('volume', payload);
     _state.volume = payload;
   },
-
   SET_MUTED: (_state, payload: boolean) => (_state.muted = payload),
-
   SET_STATION: (_state, payload: GetGeneralDataQuery['getStation']) => (_state.stationState = payload || []),
+  SET_STATUS: (_state, payload: AudioStatus) => (_state.status = payload),
+  SET_TYPE: (_state, payload: AudioType) => (_state.type = payload),
+  SET_SOURCE: (_state, payload: string | null) => (_state.source = payload),
 });
 
 export const getters = getterTree(state, {
@@ -198,6 +199,38 @@ export const actions = actionTree(
       if (errors || !data || !data.getCurrentPlaying) return;
 
       commit('SET_PLAYING_DATA', data.getCurrentPlaying);
+    },
+
+    play({ state, commit }, payload: { source?: string; type?: AudioType } | undefined) {
+      if (payload?.source) {
+        commit('SET_SOURCE', payload.source);
+      }
+      if (payload?.type) {
+        commit('SET_TYPE', payload.type);
+      }
+      if (state.status === AudioStatus.playing) {
+        commit('SET_STATUS', AudioStatus.stopped);
+      }
+      setTimeout(() => commit('SET_STATUS', AudioStatus.playing), 100);
+    },
+
+    pause({ commit }) {
+      commit('SET_STATUS', AudioStatus.paused);
+    },
+
+    stop({ commit }) {
+      commit('SET_TYPE', AudioType.none);
+      commit('SET_SOURCE', null);
+      commit('SET_STATUS', AudioStatus.stopped);
+    },
+
+    setVolume({ commit }, payload: number) {
+      const volume = payload > 1 ? 1 : payload < 0 ? 0 : payload;
+      commit('SET_VOLUME', volume);
+    },
+
+    setMuted({ commit }, payload: boolean) {
+      commit('SET_MUTED', payload);
     },
   },
 );

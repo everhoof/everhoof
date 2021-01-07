@@ -1,5 +1,6 @@
 <template>
   <div class="page__wrapper">
+    <b-audio ref="audio" />
     <div class="page__header" />
     <div class="page__main">
       <div class="page__content">
@@ -21,10 +22,11 @@ import '~/assets/stylus/normalize.styl';
 import '~/assets/stylus/grid.styl';
 import '~/assets/stylus/global.styl';
 import '~/assets/stylus/colors.styl';
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, ProvideReactive } from 'nuxt-property-decorator';
 import BPlayer from '~/components/player/player.vue';
 import BNotification from '~/components/notification/notification.vue';
 import { Notification } from '~/types/Notification';
+import BAudio from '~/components/audio/audio.vue';
 
 @Component({
   head() {
@@ -39,9 +41,15 @@ import { Notification } from '~/types/Notification';
       ],
     };
   },
-  components: { BNotification, BPlayer },
+  components: { BAudio, BNotification, BPlayer },
 })
 export default class Default extends Vue {
+  @ProvideReactive('audio') audio?: BAudio;
+
+  mounted() {
+    this.audio = this.$refs.audio as BAudio;
+  }
+
   get notifications(): Notification[] {
     return this.$accessor.notifications.notifications;
   }
