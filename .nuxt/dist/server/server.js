@@ -2628,7 +2628,7 @@ __webpack_require__.r(__webpack_exports__);
   redirect
 }) {
   const blockedForLoggedIn = ['login'];
-  const unblockedForLoggedOut = ['main', 'recordings.vue'];
+  const unblockedForLoggedOut = ['main', 'recordings'];
 
   if (blockedForLoggedIn.includes(route.name || '') && app.$accessor.auth.loggedIn && app.router) {
     redirect(302, '/');

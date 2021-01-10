@@ -3,7 +3,7 @@
   "all": [
     "../server/index.spa.html",
     "../server/index.ssr.html",
-    "3b1f923.js",
+    "431d2a8.js",
     "4c150c9651c1ac5f362b631da0a308ab.svg",
     "7d00b9b.js",
     "9ffd523.js",
@@ -16,7 +16,7 @@
     "7d00b9b.js",
     "b0c068e.js",
     "9ffd523.js",
-    "3b1f923.js"
+    "431d2a8.js"
   ],
   "async": [
     "c333fef.js",
@@ -1971,7 +1971,7 @@
   },
   "assetsMapping": {
     "1a3ae26b": [
-      "3b1f923.js"
+      "431d2a8.js"
     ],
     "6fca0322": [
       "7d00b9b.js"
