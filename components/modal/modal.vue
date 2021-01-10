@@ -24,11 +24,11 @@ export default class Modal extends Vue {
   @Prop({ required: true, type: String }) title!: string;
   @Prop({ required: true, type: Boolean }) value!: boolean;
 
-  @Ref() modal!: HTMLDivElement;
+  @Ref() modal?: HTMLDivElement;
 
   mounted() {
     document.addEventListener('mousedown', (event: MouseEvent) => {
-      if (!this.modal.childNodes[0].contains(event.target as Node)) this.$emit('input', false);
+      if (!this.modal?.childNodes[0].contains(event.target as Node)) this.$emit('input', false);
     });
   }
 }

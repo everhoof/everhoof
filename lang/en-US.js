@@ -4,6 +4,7 @@ export default {
     chat: 'Chat',
     records: 'Records',
     request: 'Request track',
+    listen_to_radio: 'Listen to radio',
   },
   modals: {
     tracks_history: 'Tracks history',

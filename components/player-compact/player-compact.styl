@@ -1,0 +1,68 @@
+.player-compact
+	display block
+	padding 8px 0 4px
+
+	&__main
+		display flex
+		align-items center
+
+		&:last-child
+			margin-bottom 0
+
+	&__meta
+		flex-grow 1
+		margin-left 16px
+
+	&__title
+		overflow hidden
+		max-height 50px
+		color var(--primary-text)
+		font-size 16px
+		font-weight bold
+
+	&__play-button
+		display block
+		flex-shrink 0
+		width 80px
+		max-width 80px
+		height 80px
+		max-height 80px
+		margin 0
+		padding 16px
+		color #eaeaea
+		cursor pointer
+		background #2f2e40
+		border none
+		border-radius 3px
+		outline none
+
+		&:focus
+			outline none
+
+		&:hover
+			color #ffffff
+
+		& .icon
+			display block
+			width 50px
+			height 50px
+			fill currentColor
+
+	&__volume-slider
+		display none
+
+		+above(size-s)
+			display block
+			min-width 140px
+
+	&__progress-slider
+		display flex
+		align-items flex-end
+		flex-direction column
+		margin-top -10px
+
+	&__progress-time
+		flex-shrink 1
+		color var(--primary-text)
+		font-size 13px
+		font-weight 600

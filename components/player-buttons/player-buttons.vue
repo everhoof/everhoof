@@ -7,7 +7,9 @@
       <a class="player-buttons__button" href="https://bar-radio-everypony.chatovod.ru/" target="_blank">{{
         $t('buttons.chat')
       }}</a>
-      <button class="player-buttons__button" disabled>{{ $t('buttons.records') }}</button>
+      <router-link :to="{ name: 'recordings' }" class="player-buttons__button" disabled>{{
+        $t('buttons.records')
+      }}</router-link>
     </div>
     <div class="player-buttons__links-container">
       <a

@@ -9,8 +9,9 @@ import {
   GetCalendarEventsQuery,
   GetCurrentPlayingQuery,
   GetGeneralDataQuery,
-  Live,
+  GetRecordsQuery,
   HistoryItem,
+  Live,
 } from '~/graphql/schema';
 import GetGeneralData from '~/graphql/queries/GetGeneralData.graphql';
 import GetCurrentPlaying from '~/graphql/queries/GetCurrentPlaying.graphql';
@@ -31,6 +32,11 @@ export const state = () => ({
   status: AudioStatus.stopped as AudioStatus,
   type: AudioType.none as AudioType,
   source: null as string | null,
+  recordings: [] as GetRecordsQuery['getRecordings'],
+  recordingId: 0 as number,
+  duration: 0 as number,
+  recordingProgress: 0 as number,
+  updateRecordingProgress: 0 as number,
 });
 
 export type PlayerState = ReturnType<typeof state>;
@@ -55,6 +61,11 @@ export const mutations = mutationTree(state, {
   SET_STATUS: (_state, payload: AudioStatus) => (_state.status = payload),
   SET_TYPE: (_state, payload: AudioType) => (_state.type = payload),
   SET_SOURCE: (_state, payload: string | null) => (_state.source = payload),
+  SET_RECORDINGS: (_state, payload: GetRecordsQuery['getRecordings']) => (_state.recordings = payload),
+  SET_RECORDING_ID: (_state, payload: number) => (_state.recordingId = payload),
+  SET_DURATION: (_state, payload: number) => (_state.duration = payload),
+  SET_RECORDING_PROGRESS: (_state, payload: number) => (_state.recordingProgress = payload),
+  SET_UPDATE_RECORDING_PROGRESS: (_state, payload: number) => (_state.updateRecordingProgress = payload),
 });
 
 export const getters = getterTree(state, {
@@ -131,6 +142,14 @@ export const getters = getterTree(state, {
         m3u: '',
       },
     },
+
+  recording: (_state): GetRecordsQuery['getRecordings'][0] =>
+    _state.recordings[_state.recordingId] || {
+      desc: '',
+      name: '',
+      size: 0,
+      year: 1970,
+    },
 });
 
 export const actions = actionTree(
@@ -154,9 +173,12 @@ export const actions = actionTree(
       }
     },
 
-    nuxtClientInit({ dispatch }, context) {
+    nuxtClientInit({ commit, dispatch, getters }, context) {
       setInterval(async () => await dispatch('getCurrentPlaying', context), 10 * 1000);
       setInterval(async () => await dispatch('getCalendarEvents', context), 10 * 60 * 1000);
+
+      const audio = new Audio(`//everhoof.ru/recordings/${getters.recording.name}`);
+      audio.onloadedmetadata = () => commit('SET_DURATION', audio.duration);
     },
 
     async getGeneralData({ commit }, context: Context) {
@@ -173,6 +195,7 @@ export const actions = actionTree(
       commit('SET_STATION', data.getStation);
       commit('SET_CALENDAR_EVENTS', data.getCalendarEvents);
       commit('SET_TRACKS_HISTORY', data.getTracksHistory as HistoryItem[]);
+      commit('SET_RECORDINGS', data.getRecordings);
     },
 
     async getCalendarEvents({ commit }, context: Context) {
@@ -201,17 +224,21 @@ export const actions = actionTree(
       commit('SET_PLAYING_DATA', data.getCurrentPlaying);
     },
 
-    play({ state, commit }, payload: { source?: string; type?: AudioType } | undefined) {
-      if (payload?.source) {
-        commit('SET_SOURCE', payload.source);
-      }
-      if (payload?.type) {
-        commit('SET_TYPE', payload.type);
-      }
+    play({ state, commit, getters }, payload: { source?: string; type?: AudioType } | undefined) {
       if (state.status === AudioStatus.playing) {
-        commit('SET_STATUS', AudioStatus.stopped);
+        commit('SET_STATUS', AudioStatus.paused);
       }
-      setTimeout(() => commit('SET_STATUS', AudioStatus.playing), 100);
+      setTimeout(() => {
+        if (payload?.source) {
+          commit('SET_SOURCE', payload.source);
+        } else if (payload?.type === AudioType.recording) {
+          commit('SET_SOURCE', `//everhoof.ru/recordings/${getters.recording.name}`);
+        }
+        if (payload?.type) {
+          commit('SET_TYPE', payload.type);
+        }
+        commit('SET_STATUS', AudioStatus.playing);
+      }, 100);
     },
 
     pause({ commit }) {
@@ -231,6 +258,18 @@ export const actions = actionTree(
 
     setMuted({ commit }, payload: boolean) {
       commit('SET_MUTED', payload);
+    },
+
+    setProgress({ commit }, payload: number) {
+      commit('SET_UPDATE_RECORDING_PROGRESS', payload);
+      commit('SET_RECORDING_PROGRESS', payload);
+    },
+
+    setRecordingId({ state, commit, dispatch }, payload: number) {
+      if (state.recordingId !== payload) {
+        commit('SET_RECORDING_ID', payload);
+        dispatch('setProgress', 0);
+      }
     },
   },
 );

@@ -262,6 +262,13 @@ export type GetGeneralDataQuery = { __typename?: 'Query' } & {
         { __typename?: 'Mount' } & Pick<Mount, 'id' | 'default' | 'path' | 'name' | 'url' | 'bitrate' | 'format'>
       >;
     };
+  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'name' | 'desc' | 'year' | 'size'>>;
+};
+
+export type GetRecordsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetRecordsQuery = { __typename?: 'Query' } & {
+  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'name' | 'desc' | 'year' | 'size'>>;
 };
 
 export type RequestTrackQueryVariables = Exact<{

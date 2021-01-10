@@ -31,9 +31,10 @@ import BPlayerButtons from '~/components/player-buttons/player-buttons.vue';
 import { CalendarEvent } from '~/graphql/schema';
 import { toRemainingTime } from '~/tools/filters';
 import BChat from '~/components/chat/chat.vue';
+import BPlayerCompact from '~/components/player-compact/player-compact.vue';
 
 @Component({
-  components: { BChat, BPlayerButtons, BTile, BPlayer },
+  components: { BPlayerCompact, BChat, BPlayerButtons, BTile, BPlayer },
   filters: { toRemainingTime },
 })
 export default class MainPage extends Vue {

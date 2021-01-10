@@ -4,6 +4,7 @@ export default {
     chat: 'Чат',
     records: 'Записи',
     request: 'Заказать трек',
+    listen_to_radio: 'Назад',
   },
   modals: {
     tracks_history: 'История треков',

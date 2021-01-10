@@ -65,4 +65,10 @@ query GetGeneralData {
       format
     }
   }
+  getRecordings {
+    name
+    desc
+    year
+    size
+  }
 }

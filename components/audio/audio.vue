@@ -8,15 +8,15 @@
 import { Component, Ref, Vue, Watch } from 'nuxt-property-decorator';
 
 export enum AudioStatus {
-  playing,
-  paused,
-  stopped,
+  playing = 'playing',
+  paused = 'paused',
+  stopped = 'stopped',
 }
 
 export enum AudioType {
-  none,
-  stream,
-  record,
+  none = 'none',
+  stream = 'stream',
+  recording = 'recording',
 }
 
 @Component({
@@ -52,6 +52,18 @@ export default class Audio extends Vue {
     }
   }
 
+  @Watch('updateProgress')
+  private async onProgressChange(): Promise<void> {
+    if (this.updateProgress !== -1) {
+      this.audio.load();
+      this.audio.currentTime = this.updateProgress;
+      this.$accessor.player.SET_UPDATE_RECORDING_PROGRESS(-1);
+      if (this.status === AudioStatus.playing) {
+        await this.audio.play();
+      }
+    }
+  }
+
   private get source(): string | null {
     return this.$accessor.player.source;
   }
@@ -70,6 +82,10 @@ export default class Audio extends Vue {
 
   private get volume(): number {
     return this.$accessor.player.volume;
+  }
+
+  private get updateProgress(): number {
+    return this.$accessor.player.updateRecordingProgress;
   }
 
   mounted(): void {
@@ -103,13 +119,29 @@ export default class Audio extends Vue {
         this.$accessor.player.play();
       }
     });
+    this.audio.addEventListener('durationchange', () => {
+      if (this.$accessor.player.type === AudioType.recording) {
+        this.$accessor.player.SET_DURATION(this.audio.duration);
+      }
+    });
+    this.audio.addEventListener('timeupdate', () => {
+      if (this.$accessor.player.type === AudioType.recording) {
+        this.$accessor.player.SET_RECORDING_PROGRESS(this.audio.currentTime);
+      }
+    });
   }
 
   private async play(): Promise<void> {
-    if (this.source && this.source !== this.audio.src) {
-      this.audio.src = this.source;
-      this.audio.load();
+    if (this.source) {
+      const time = this.$accessor.player.recordingProgress;
+      if (this.source !== this.audio.src) {
+        this.audio.src = this.source;
+        this.audio.load();
+      }
       await this.audio.play();
+      if (this.type === AudioType.recording) {
+        this.audio.currentTime = time;
+      }
     } else {
       this.stop();
     }

@@ -25,7 +25,7 @@ export default class Select extends Vue {
   @Prop({ type: Array, default: () => [] }) items!: string[];
   @Prop({ type: [Number, String], default: 0 }) value!: number | string;
 
-  @Ref() parent!: HTMLDivElement;
+  @Ref() parent?: HTMLDivElement;
   @Ref() options!: HTMLUListElement;
 
   focused: boolean = false;
@@ -40,7 +40,7 @@ export default class Select extends Vue {
 
   mounted() {
     document.addEventListener('click', (e: MouseEvent) => {
-      if (!this.parent.contains(e.target as Node) && this.focused) this.blur();
+      if (!this.parent?.contains(e.target as Node) && this.focused) this.blur();
     });
   }
 
