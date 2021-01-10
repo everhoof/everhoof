@@ -1,7 +1,7 @@
 exports.ids = [1];
 exports.modules = {
 
-/***/ 62:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11,7 +11,8 @@ __webpack_require__.r(__webpack_exports__);
     history: 'История',
     chat: 'Чат',
     records: 'Записи',
-    request: 'Заказать трек'
+    request: 'Заказать трек',
+    listen_to_radio: 'Назад'
   },
   modals: {
     tracks_history: 'История треков',
