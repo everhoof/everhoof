@@ -45,6 +45,11 @@ import BRequestModal from '~/components/request-modal/request-modal.vue';
 })
 export default class PlayerButtons extends Vue {
   links = [
+    {
+      title: 'DonationAlerts',
+      icon: 'donationalerts',
+      href: 'https://www.donationalerts.com/r/everhoof',
+    },
     { title: 'Discord', icon: 'discord', href: 'https://discord.gg/YV9HhHRd4M' },
     { title: 'VK', icon: 'vk', href: 'https://vk.com/everhoof' },
     {
