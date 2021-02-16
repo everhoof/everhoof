@@ -4101,7 +4101,7 @@ webpackContext.id = 145;
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "4c150c9651c1ac5f362b631da0a308ab.svg";
+module.exports = __webpack_require__.p + "4bc71b2faa8ad764dea6a8a9f3f15b09.svg";
 
 /***/ }),
 /* 147 */
@@ -5591,12 +5591,12 @@ var tile_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var tile = (tile_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/player-buttons/player-buttons.vue?vue&type=template&id=6a5cb146&
-var player_buttonsvue_type_template_id_6a5cb146_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"player-buttons"},[_vm._ssrNode("<div class=\"player-buttons__buttons-container\">","</div>",[_vm._ssrNode("<button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.history')))+"</button> <button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.request')))+"</button> <a href=\"https://bar-radio-everypony.chatovod.ru/\" target=\"_blank\" class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.chat')))+"</a> "),_c('router-link',{staticClass:"player-buttons__button",attrs:{"to":{ name: 'recordings' },"disabled":""}},[_vm._v(_vm._s(_vm.$t('buttons.records')))])],2),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"player-buttons__links-container\">","</div>",_vm._l((_vm.links),function(link,i){return _vm._ssrNode("<a"+(_vm._ssrAttr("href",link.href))+(_vm._ssrAttr("title",link.title))+" target=\"_blank\" class=\"player-buttons__link\">","</a>",[_c('svg-icon',{attrs:{"name":link.icon}})],1)}),0),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_request')},model:{value:(_vm.request),callback:function ($$v) {_vm.request=$$v},expression:"request"}},[_c('b-request-modal',{attrs:{"modal":_vm.request},on:{"update:modal":function($event){_vm.request=$event}}})],1),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_history')},model:{value:(_vm.history),callback:function ($$v) {_vm.history=$$v},expression:"history"}},[_c('b-history-modal')],1)],2)}
-var player_buttonsvue_type_template_id_6a5cb146_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/player-buttons/player-buttons.vue?vue&type=template&id=611c71aa&
+var player_buttonsvue_type_template_id_611c71aa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"player-buttons"},[_vm._ssrNode("<div class=\"player-buttons__buttons-container\">","</div>",[_vm._ssrNode("<button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.history')))+"</button> <button class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.request')))+"</button> <a href=\"https://bar-radio-everypony.chatovod.ru/\" target=\"_blank\" class=\"player-buttons__button\">"+_vm._ssrEscape(_vm._s(_vm.$t('buttons.chat')))+"</a> "),_c('router-link',{staticClass:"player-buttons__button",attrs:{"to":{ name: 'recordings' },"disabled":""}},[_vm._v(_vm._s(_vm.$t('buttons.records')))])],2),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"player-buttons__links-container\">","</div>",_vm._l((_vm.links),function(link,i){return _vm._ssrNode("<a"+(_vm._ssrAttr("href",link.href))+(_vm._ssrAttr("title",link.title))+" target=\"_blank\" class=\"player-buttons__link\">","</a>",[_c('svg-icon',{attrs:{"name":link.icon}})],1)}),0),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_request')},model:{value:(_vm.request),callback:function ($$v) {_vm.request=$$v},expression:"request"}},[_c('b-request-modal',{attrs:{"modal":_vm.request},on:{"update:modal":function($event){_vm.request=$event}}})],1),_vm._ssrNode(" "),_c('b-modal',{attrs:{"title":_vm.$t('modals.tracks_history')},model:{value:(_vm.history),callback:function ($$v) {_vm.history=$$v},expression:"history"}},[_c('b-history-modal')],1)],2)}
+var player_buttonsvue_type_template_id_611c71aa_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/player-buttons/player-buttons.vue?vue&type=template&id=6a5cb146&
+// CONCATENATED MODULE: ./components/player-buttons/player-buttons.vue?vue&type=template&id=611c71aa&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./components/modal/modal.vue?vue&type=template&id=279d9e25&
 var modalvue_type_template_id_279d9e25_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],ref:"modal",staticClass:"modal"},[_c('b-tile',{staticClass:"tile_padding_medium tile_borders_all modal__tile"},[_c('div',{staticClass:"modal__header"},[_c('h3',{staticClass:"modal__title"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),_c('svg-icon',{staticClass:"modal__close",attrs:{"name":"close"},on:{"click":function($event){return _vm.$emit('input', false)}}})],1),_vm._v(" "),_vm._t("default")],2)],1)}
@@ -5969,6 +5969,10 @@ let player_buttonsvue_type_script_lang_ts_PlayerButtons = class PlayerButtons ex
   constructor() {
     super(...arguments);
     this.links = [{
+      title: 'DonationAlerts',
+      icon: 'donationalerts',
+      href: 'https://www.donationalerts.com/r/everhoof'
+    }, {
       title: 'Discord',
       icon: 'discord',
       href: 'https://discord.gg/YV9HhHRd4M'
@@ -6012,8 +6016,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var player_buttons_component = Object(componentNormalizer["a" /* default */])(
   player_buttons_player_buttonsvue_type_script_lang_ts_,
-  player_buttonsvue_type_template_id_6a5cb146_render,
-  player_buttonsvue_type_template_id_6a5cb146_staticRenderFns,
+  player_buttonsvue_type_template_id_611c71aa_render,
+  player_buttonsvue_type_template_id_611c71aa_staticRenderFns,
   false,
   player_buttons_injectStyles,
   null,
