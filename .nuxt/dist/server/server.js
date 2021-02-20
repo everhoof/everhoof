@@ -166,12 +166,12 @@ const locales = [{
   "iso": "ru-RU",
   "file": "ru-RU.js"
 }, {
-  "code": "ru",
+  "code": "en",
   "name": "English",
   "iso": "en-US",
   "file": "en-US.js"
 }];
-const defaultLocale = 'ru';
+const defaultLocale = 'en';
 const routesNameSeparator = '___';
 const defaultLocaleRouteNameSuffix = 'default';
 const strategy = 'no_prefix';
@@ -185,7 +185,7 @@ const detectBrowserLanguage = {
   "cookieKey": "i18n_redirected",
   "cookieSecure": false,
   "alwaysRedirect": false,
-  "fallbackLocale": "ru",
+  "fallbackLocale": "en",
   "onlyOnRoot": false
 };
 const differentDomains = false;
@@ -214,7 +214,7 @@ const STRATEGIES = {
   "NO_PREFIX": "no_prefix"
 };
 const COMPONENT_OPTIONS_KEY = 'nuxtI18n';
-const localeCodes = ["ru", "ru"];
+const localeCodes = ["ru", "en"];
 const trailingSlash = undefined;
 
 /***/ }),
