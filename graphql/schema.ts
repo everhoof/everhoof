@@ -120,6 +120,8 @@ export type CalendarEvent = {
   summary: Scalars['String'];
   startsAt: Scalars['Float'];
   endsAt: Scalars['Float'];
+  preview: Scalars['String'];
+  notify: Scalars['Boolean'];
 };
 
 export type Station = {
@@ -209,7 +211,9 @@ export type SignInMutation = { __typename?: 'Mutation' } & {
 export type GetCalendarEventsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCalendarEventsQuery = { __typename?: 'Query' } & {
-  getCalendarEvents: Array<{ __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt'>>;
+  getCalendarEvents: Array<
+    { __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify'>
+  >;
 };
 
 export type GetCurrentPlayingQueryVariables = Exact<{ [key: string]: never }>;
@@ -254,7 +258,9 @@ export type GetGeneralDataQuery = { __typename?: 'Query' } & {
         >;
       }
   >;
-  getCalendarEvents: Array<{ __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt'>>;
+  getCalendarEvents: Array<
+    { __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify'>
+  >;
   getTracksHistory: Array<{ __typename?: 'HistoryItem' } & { track: { __typename?: 'Track' } & Pick<Track, 'text'> }>;
   getStation: { __typename?: 'Station' } & Pick<Station, 'id' | 'name' | 'description'> & {
       playlists: { __typename?: 'Playlists' } & Pick<Playlists, 'm3u'>;

@@ -3,5 +3,7 @@ query GetCalendarEvents {
     summary
     startsAt
     endsAt
+    preview
+    notify
   }
 }
