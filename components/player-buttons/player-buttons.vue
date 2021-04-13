@@ -3,7 +3,9 @@
   <div class="player-buttons">
     <div class="player-buttons__buttons-container">
       <button class="player-buttons__button" @click="history = true">{{ $t('buttons.history') }}</button>
-      <button class="player-buttons__button" @click="request = true">{{ $t('buttons.request') }}</button>
+      <button class="player-buttons__button" :disabled="$accessor.player.liveData.isLive" @click="request = true">
+        {{ $t('buttons.request') }}
+      </button>
       <a class="player-buttons__button" href="https://bar-radio-everypony.chatovod.ru/" target="_blank">{{
         $t('buttons.chat')
       }}</a>
