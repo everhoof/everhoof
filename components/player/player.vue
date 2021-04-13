@@ -12,7 +12,11 @@
       </a>
     </div>
     <div class="player__main">
-      <button class="player__play-button" @click="togglePlay">
+      <button
+        class="player__play-button"
+        :style="artwork ? `background-image: url(${artwork})` : undefined"
+        @click="togglePlay"
+      >
         <svg-icon v-if="playing" name="pause" />
         <svg-icon v-else name="play_arrow" />
       </button>
@@ -109,7 +113,10 @@ export default class Player extends Vue {
   }
 
   get artwork(): string {
-    return this.$accessor.player.artwork;
+    if (!this.$accessor.player.artwork.includes('generic_song')) {
+      return this.$accessor.player.artwork;
+    }
+    return '';
   }
 
   get progress(): number {
