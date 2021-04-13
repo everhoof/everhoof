@@ -226,6 +226,7 @@ export const actions = actionTree(
       if (errors || !data || !data.getCurrentPlaying) return;
 
       commit('SET_PLAYING_DATA', data.getCurrentPlaying);
+      commit('SET_TRACKS_HISTORY', data.getTracksHistory as HistoryItem[]);
     },
 
     play({ state, commit, getters }, payload: { source?: string; type?: AudioType } | undefined) {

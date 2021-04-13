@@ -38,4 +38,9 @@ query GetCurrentPlaying {
     listenersCount
     timestamp
   }
+  getTracksHistory {
+    track {
+      text
+    }
+  }
 }

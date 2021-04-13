@@ -236,6 +236,7 @@ export type GetCurrentPlayingQuery = { __typename?: 'Query' } & {
         >;
       }
   >;
+  getTracksHistory: Array<{ __typename?: 'HistoryItem' } & { track: { __typename?: 'Track' } & Pick<Track, 'text'> }>;
 };
 
 export type GetGeneralDataQueryVariables = Exact<{ [key: string]: never }>;
