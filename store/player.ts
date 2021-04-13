@@ -37,12 +37,16 @@ export const state = () => ({
   duration: 0 as number,
   recordingProgress: 0 as number,
   updateRecordingProgress: 0 as number,
+  offset: 0,
 });
 
 export type PlayerState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
-  SET_PLAYING_DATA: (_state, payload: CurrentPlaying) => (_state.playingDataState = payload),
+  SET_PLAYING_DATA: (_state, payload: CurrentPlaying) => {
+    _state.playingDataState = payload;
+    _state.offset = Date.now() - payload.timestamp;
+  },
   SET_CALENDAR_EVENTS: (_state, payload: CalendarEvent[]) => (_state.calendarEventsState = payload),
   SET_TRACKS_HISTORY: (_state, payload: HistoryItem[]) => (_state.tracksHistory = payload),
   SET_STREAM_ID: (_state, payload: number) => {
@@ -107,8 +111,8 @@ export const getters = getterTree(state, {
 
   trackType: (_state, _getters, _rootState: RootState): 'next' | 'current' | 'previous' => {
     if (!_getters.liveData.isLive && _getters.playingData.current.duration !== 0) {
-      if (_getters.playingData.current.endsAt - _rootState.now <= 0) return 'next';
-      if (_getters.playingData.current.startsAt - _rootState.now > 0) return 'previous';
+      if (_getters.playingData.current.endsAt - _rootState.now + _state.offset <= 0) return 'next';
+      if (_getters.playingData.current.startsAt - _rootState.now + _state.offset > 0) return 'previous';
     }
     return 'current';
   },
@@ -119,7 +123,7 @@ export const getters = getterTree(state, {
 
   progress: (_state, _getters, _rootState: RootState): number => {
     if (_getters.track.duration) {
-      let duration = 1 - (_getters.track.endsAt - _rootState.now) / (_getters.track.duration * 1000);
+      let duration = 1 - (_getters.track.endsAt - _rootState.now + _state.offset) / (_getters.track.duration * 1000);
       if (duration) {
         if (duration > _getters.track.duration) {
           duration = _getters.track.duration;
