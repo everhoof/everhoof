@@ -107,8 +107,8 @@ type Mount {
   id: Float!
   name: String!
   url: String!
-  bitrate: Float!
-  format: String!
+  bitrate: Float
+  format: String
   listeners: Listeners!
 }
 type Listeners {

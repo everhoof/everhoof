@@ -151,8 +151,8 @@ export type Mount = {
   id: Scalars['Float'];
   name: Scalars['String'];
   url: Scalars['String'];
-  bitrate: Scalars['Float'];
-  format: Scalars['String'];
+  bitrate?: Maybe<Scalars['Float']>;
+  format?: Maybe<Scalars['String']>;
   listeners: Listeners;
 };
 
