@@ -20,6 +20,7 @@
       "@types/node",
       "@nuxt/types",
       "@nuxtjs/apollo",
+      "@types/wicg-mediasession",
       "vue-apollo",
       "vue-cli-plugin-apollo/types",
       "cookie-universal-nuxt",
