@@ -75,6 +75,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@types/leaflet": "^1.5.16",
     "@types/luxon": "^1.25.0",
+    "@types/wicg-mediasession": "^1.1.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
