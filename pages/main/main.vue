@@ -46,10 +46,16 @@ export default class MainPage extends Vue {
     if (!this.isLive) {
       return this.events.find((e) => e.endsAt >= Date.now()) || null;
     }
-    const index = this.events.reduce<number>((acc, event, i) => {
-      if (this.events[acc].endsAt - Date.now() > event.endsAt - Date.now()) return i;
+    const index = this.events.reverse().reduce<number>((acc, event, i) => {
+      if (Date.now() - event.endsAt < 4 * 60 * 60 * 1000) {
+        if (acc === -1) {
+          return i;
+        } else if (Date.now() >= event.startsAt) {
+          return i;
+        }
+      }
       return acc;
-    }, 0);
+    }, -1);
     return this.events[index];
   }
 
