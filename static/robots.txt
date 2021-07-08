@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /320
+Disallow: /128
+Disallow: /64
+Disallow: /32
