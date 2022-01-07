@@ -6,9 +6,7 @@
       <button class="player-buttons__button" :disabled="$accessor.player.liveData.isLive" @click="request = true">
         {{ $t('buttons.request') }}
       </button>
-      <a class="player-buttons__button" href="https://bar-radio-everypony.chatovod.ru/" target="_blank">{{
-        $t('buttons.chat')
-      }}</a>
+      <a class="player-buttons__button" href="https://im.everhoof.ru" target="_blank">{{ $t('buttons.chat') }}</a>
       <router-link :to="{ name: 'recordings' }" class="player-buttons__button" disabled>{{
         $t('buttons.records')
       }}</router-link>
@@ -52,12 +50,12 @@ export default class PlayerButtons extends Vue {
       icon: 'donationalerts',
       href: 'https://www.donationalerts.com/r/everhoof',
     },
-    { title: 'Discord', icon: 'discord', href: 'https://discord.gg/YV9HhHRd4M' },
+    { title: 'Discord', icon: 'discord', href: 'https://everhoof.ru/discord' },
     { title: 'VK', icon: 'vk', href: 'https://vk.com/everhoof' },
     {
       title: 'YouTube',
       icon: 'youtube',
-      href: 'https://www.youtube.com/channel/UCiWnOZze2b_KEP-rtsWE90w',
+      href: 'https://www.youtube.com/c/everhoof',
     },
   ];
   history = false;
