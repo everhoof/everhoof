@@ -1,7 +1,7 @@
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
 
-find . -maxdepth 1 ! -name node_modules ! -name artifacts.tgz ! -name . ! -name .. -exec rm -rf {} \;
+find . -maxdepth 1 ! -name node_modules ! -name artifacts.tgz ! -name ecosystem.config.js ! -name . ! -name .. -exec rm -rf {} \;
 tar -xvf artifacts.tgz
 rm artifacts.tgz
 
