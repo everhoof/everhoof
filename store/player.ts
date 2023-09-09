@@ -177,12 +177,9 @@ export const actions = actionTree(
       }
     },
 
-    nuxtClientInit({ commit, dispatch, getters }, context) {
+    nuxtClientInit({ dispatch }, context) {
       setInterval(async () => await dispatch('getCurrentPlaying', context), 10 * 1000);
       setInterval(async () => await dispatch('getCalendarEvents', context), 10 * 60 * 1000);
-
-      const audio = new Audio(`//everhoof.ru/recordings/${getters.recording.name}`);
-      audio.onloadedmetadata = () => commit('SET_DURATION', audio.duration);
     },
 
     async getGeneralData({ commit }, context: Context) {
