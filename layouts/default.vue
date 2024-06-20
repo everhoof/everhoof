@@ -86,7 +86,7 @@ export default class Default extends Vue {
       } else {
         // eslint-disable-next-line no-undef
         navigator.mediaSession.metadata = new MediaMetadata({
-          title: this.$accessor.player.recording.desc,
+          title: this.$accessor.player.recording.description,
         });
       }
     }

@@ -15,11 +15,11 @@
             <svg-icon v-else name="play_arrow" />
           </button>
           <div class="recordings__meta">
-            <div class="recordings__title">{{ record.desc }}</div>
-            <div class="recordings__description">{{ record.name.replace('.ogg', '') }}</div>
+            <div class="recordings__title">{{ record.description }}</div>
+            <div class="recordings__description">{{ formatDate(record.beginsAt) }}</div>
           </div>
-          <div class="recordings__size">{{ record.size }} MB</div>
-          <a :href="`//everhoof.ru/recordings/${record.name}`" class="recordings__button" download="">
+          <div class="recordings__size">{{ record.fileSize }} MB</div>
+          <a :href="`/LiveEventAsset/audio?eventId=${record.id}`" class="recordings__button" download="">
             <svg-icon name="get_app" />
           </a>
         </div>
@@ -31,6 +31,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import { DateTime } from 'luxon';
 import BTile from '~/components/tile/tile.vue';
 import BPlayerCompact from '~/components/player-compact/player-compact.vue';
 import { GetRecordsQuery } from '~/graphql/schema';
@@ -51,6 +52,10 @@ export default class Recordings extends Vue {
 
   get index(): number {
     return this.$accessor.player.recordingId;
+  }
+
+  formatDate(iso: string): string {
+    return DateTime.fromISO(iso).toFormat('dd.MM.yyyy HH:mm');
   }
 
   play(id: number): void {

@@ -234,7 +234,7 @@ export const actions = actionTree(
         if (payload?.source) {
           commit('SET_SOURCE', payload.source);
         } else if (payload?.type === AudioType.recording) {
-          commit('SET_SOURCE', `//everhoof.ru/recordings/${getters.recording.name}`);
+          commit('SET_SOURCE', `/LiveEventAsset/audio?eventId=${getters.recording.id}`);
         }
         if (payload?.type) {
           commit('SET_TYPE', payload.type);

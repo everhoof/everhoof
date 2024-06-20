@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import { DateTime } from 'luxon';
 import BVolumeSlider from '~/components/volume-slider/volume-slider.vue';
 import BSlider from '~/components/slider/slider.vue';
 import { AudioStatus, AudioType } from '~/components/audio/audio.vue';
@@ -44,11 +45,11 @@ export default class PlayerCompact extends Vue {
   }
 
   get title(): string {
-    return this.$accessor.player.recording.desc;
+    return this.$accessor.player.recording.description;
   }
 
   get date(): string {
-    return this.$accessor.player.recording.name.replace('.ogg', '');
+    return DateTime.fromISO(this.$accessor.player.recording.beginsAt).toFormat('dd.MM.yyyy HH:mm');
   }
 
   get duration(): number {

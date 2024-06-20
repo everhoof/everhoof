@@ -1,8 +1,8 @@
 query GetRecords {
   getRecordings {
-    name
-    desc
-    year
-    size
+    id
+    beginsAt
+    description
+    fileSize
   }
 }

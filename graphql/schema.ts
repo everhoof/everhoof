@@ -7,20 +7,17 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-  DateTime: any;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getCurrentUser: User;
+  getCalendarEvents: Array<CalendarEvent>;
+  getRecordings: Array<Recording>;
+  getStation: Station;
   getCurrentPlaying?: Maybe<CurrentPlaying>;
   getTracksHistory: Array<HistoryItem>;
   searchTracks: TrackSearchResponse;
   requestTrack: TrackRequestResponse;
-  getCalendarEvents: Array<CalendarEvent>;
-  getStation: Station;
-  getRecordings: Array<Recording>;
   getHello: Scalars['String'];
 };
 
@@ -34,14 +31,61 @@ export type QueryRequestTrackArgs = {
   songId: Scalars['String'];
 };
 
-export type User = {
-  __typename?: 'User';
-  id: Scalars['Int'];
-  email: Scalars['String'];
-  username?: Maybe<Scalars['String']>;
-  wasOnlineAt?: Maybe<Scalars['DateTime']>;
-  createdAt: Scalars['DateTime'];
-  updatedAt: Scalars['DateTime'];
+export type CalendarEvent = {
+  __typename?: 'CalendarEvent';
+  summary: Scalars['String'];
+  startsAt: Scalars['Float'];
+  endsAt: Scalars['Float'];
+  preview: Scalars['String'];
+  notify: Scalars['Boolean'];
+  recording: Scalars['Boolean'];
+};
+
+export type Recording = {
+  __typename?: 'Recording';
+  id: Scalars['Float'];
+  beginsAt: Scalars['String'];
+  description: Scalars['String'];
+  fileSize: Scalars['Float'];
+};
+
+export type Station = {
+  __typename?: 'Station';
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  shortcode: Scalars['String'];
+  description: Scalars['String'];
+  frontend: Scalars['String'];
+  backend: Scalars['String'];
+  listenUrl: Scalars['String'];
+  public: Scalars['Boolean'];
+  playlists: Playlists;
+  mounts: Array<Mount>;
+};
+
+export type Playlists = {
+  __typename?: 'Playlists';
+  m3u: Scalars['String'];
+  pls: Scalars['String'];
+};
+
+export type Mount = {
+  __typename?: 'Mount';
+  path: Scalars['String'];
+  default: Scalars['Boolean'];
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+  bitrate?: Maybe<Scalars['Float']>;
+  format?: Maybe<Scalars['String']>;
+  listeners: Listeners;
+};
+
+export type Listeners = {
+  __typename?: 'Listeners';
+  current: Scalars['Float'];
+  unique: Scalars['Float'];
+  total: Scalars['Float'];
 };
 
 export type CurrentPlaying = {
@@ -115,104 +159,14 @@ export type TrackRequestResponse = {
   message: Scalars['String'];
 };
 
-export type CalendarEvent = {
-  __typename?: 'CalendarEvent';
-  summary: Scalars['String'];
-  startsAt: Scalars['Float'];
-  endsAt: Scalars['Float'];
-  preview: Scalars['String'];
-  notify: Scalars['Boolean'];
-};
-
-export type Station = {
-  __typename?: 'Station';
-  id: Scalars['Float'];
-  name: Scalars['String'];
-  shortcode: Scalars['String'];
-  description: Scalars['String'];
-  frontend: Scalars['String'];
-  backend: Scalars['String'];
-  listenUrl: Scalars['String'];
-  public: Scalars['Boolean'];
-  playlists: Playlists;
-  mounts: Array<Mount>;
-};
-
-export type Playlists = {
-  __typename?: 'Playlists';
-  m3u: Scalars['String'];
-  pls: Scalars['String'];
-};
-
-export type Mount = {
-  __typename?: 'Mount';
-  path: Scalars['String'];
-  default: Scalars['Boolean'];
-  id: Scalars['Float'];
-  name: Scalars['String'];
-  url: Scalars['String'];
-  bitrate?: Maybe<Scalars['Float']>;
-  format?: Maybe<Scalars['String']>;
-  listeners: Listeners;
-};
-
-export type Listeners = {
-  __typename?: 'Listeners';
-  current: Scalars['Float'];
-  unique: Scalars['Float'];
-  total: Scalars['Float'];
-};
-
-export type Recording = {
-  __typename?: 'Recording';
-  name: Scalars['String'];
-  img: Scalars['String'];
-  year: Scalars['String'];
-  desc: Scalars['String'];
-  size: Scalars['Float'];
-};
-
-export type Mutation = {
-  __typename?: 'Mutation';
-  signIn: Token;
-  signUp: User;
-};
-
-export type MutationSignInArgs = {
-  email: Scalars['String'];
-  password: Scalars['String'];
-};
-
-export type MutationSignUpArgs = {
-  email: Scalars['String'];
-  username?: Maybe<Scalars['String']>;
-  password: Scalars['String'];
-};
-
-export type Token = {
-  __typename?: 'Token';
-  id: Scalars['Int'];
-  value: Scalars['String'];
-  ownerId: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
-  expiresAt?: Maybe<Scalars['DateTime']>;
-  usedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type SignInMutationVariables = Exact<{
-  email: Scalars['String'];
-  password: Scalars['String'];
-}>;
-
-export type SignInMutation = { __typename?: 'Mutation' } & {
-  signIn: { __typename?: 'Token' } & Pick<Token, 'ownerId' | 'value'>;
-};
-
 export type GetCalendarEventsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCalendarEventsQuery = { __typename?: 'Query' } & {
   getCalendarEvents: Array<
-    { __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify'>
+    { __typename?: 'CalendarEvent' } & Pick<
+      CalendarEvent,
+      'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify' | 'recording'
+    >
   >;
 };
 
@@ -260,7 +214,10 @@ export type GetGeneralDataQuery = { __typename?: 'Query' } & {
       }
   >;
   getCalendarEvents: Array<
-    { __typename?: 'CalendarEvent' } & Pick<CalendarEvent, 'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify'>
+    { __typename?: 'CalendarEvent' } & Pick<
+      CalendarEvent,
+      'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify' | 'recording'
+    >
   >;
   getTracksHistory: Array<{ __typename?: 'HistoryItem' } & { track: { __typename?: 'Track' } & Pick<Track, 'text'> }>;
   getStation: { __typename?: 'Station' } & Pick<Station, 'id' | 'name' | 'description'> & {
@@ -269,13 +226,13 @@ export type GetGeneralDataQuery = { __typename?: 'Query' } & {
         { __typename?: 'Mount' } & Pick<Mount, 'id' | 'default' | 'path' | 'name' | 'url' | 'bitrate' | 'format'>
       >;
     };
-  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'name' | 'desc' | 'year' | 'size'>>;
+  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'id' | 'beginsAt' | 'description' | 'fileSize'>>;
 };
 
 export type GetRecordsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetRecordsQuery = { __typename?: 'Query' } & {
-  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'name' | 'desc' | 'year' | 'size'>>;
+  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'id' | 'beginsAt' | 'description' | 'fileSize'>>;
 };
 
 export type RequestTrackQueryVariables = Exact<{
