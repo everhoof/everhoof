@@ -19,7 +19,11 @@
             <div class="recordings__description">{{ formatDate(record.beginsAt) }}</div>
           </div>
           <div class="recordings__size">{{ record.fileSize }} MB</div>
-          <a :href="`/LiveEventAsset/audio?eventId=${record.id}`" class="recordings__button" download="">
+          <a
+            :href="`/LiveEventAsset/audio?eventId=${record.id}`"
+            class="recordings__button"
+            :download="`${record.description}.ogg`"
+          >
             <svg-icon name="get_app" />
           </a>
         </div>
