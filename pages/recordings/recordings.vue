@@ -59,7 +59,7 @@ export default class Recordings extends Vue {
   }
 
   formatDate(iso: string): string {
-    return DateTime.fromISO(iso).toFormat('dd.MM.yyyy HH:mm');
+    return DateTime.fromISO(iso).setZone('Europe/Moscow').toFormat('dd.MM.yyyy HH:mm');
   }
 
   play(id: number): void {

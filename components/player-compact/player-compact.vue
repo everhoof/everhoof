@@ -49,7 +49,9 @@ export default class PlayerCompact extends Vue {
   }
 
   get date(): string {
-    return DateTime.fromISO(this.$accessor.player.recording.beginsAt).toFormat('dd.MM.yyyy HH:mm');
+    return DateTime.fromISO(this.$accessor.player.recording.beginsAt)
+      .setZone('Europe/Moscow')
+      .toFormat('dd.MM.yyyy HH:mm');
   }
 
   get duration(): number {
