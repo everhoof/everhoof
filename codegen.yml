@@ -1,12 +1,7 @@
 overwrite: true
-schema: https://everhoof.ru/api/graphql
-documents: ./graphql/**/*.graphql
+schema: ./graphql/schema.graphql
+documents: ./graphql/queries/*.graphql
 generates:
-  graphql/schema.graphql:
-    plugins:
-      - schema-ast
-    config:
-      includeDirectives: true
   graphql/schema.ts:
     plugins:
       - typescript

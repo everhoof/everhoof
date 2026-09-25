@@ -1,260 +1,202 @@
+/** Internal type. DO NOT USE DIRECTLY. */
+type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+/** Internal type. DO NOT USE DIRECTLY. */
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type InputMaybe<T> = Maybe<T>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+};
+
+export type CalendarEvent = {
+  __typename?: 'CalendarEvent';
+  endsAt: Scalars['Float']['output'];
+  notify: Scalars['Boolean']['output'];
+  preview: Scalars['String']['output'];
+  recording: Scalars['Boolean']['output'];
+  startsAt: Scalars['Float']['output'];
+  summary: Scalars['String']['output'];
+};
+
+export type CurrentPlaying = {
+  __typename?: 'CurrentPlaying';
+  current: CurrentPlayingTrack;
+  listenersCount: Scalars['Float']['output'];
+  live: Live;
+  next: CurrentPlayingTrack;
+  previous: CurrentPlayingTrack;
+  timestamp: Scalars['Float']['output'];
+};
+
+export type CurrentPlayingTrack = {
+  __typename?: 'CurrentPlayingTrack';
+  art: Scalars['String']['output'];
+  artist: Scalars['String']['output'];
+  duration: Scalars['Float']['output'];
+  endsAt: Scalars['Float']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  startsAt: Scalars['Float']['output'];
+  title: Scalars['String']['output'];
+};
+
+export type HistoryItem = {
+  __typename?: 'HistoryItem';
+  duration: Scalars['Float']['output'];
+  id: Scalars['Float']['output'];
+  isRequest: Scalars['Boolean']['output'];
+  playedAt: Scalars['Float']['output'];
+  playlist: Scalars['String']['output'];
+  streamer: Scalars['String']['output'];
+  track: Track;
+};
+
+export type Listeners = {
+  __typename?: 'Listeners';
+  current: Scalars['Float']['output'];
+  total: Scalars['Float']['output'];
+  unique: Scalars['Float']['output'];
+};
+
+export type Live = {
+  __typename?: 'Live';
+  broadcastStart: Scalars['Float']['output'];
+  isLive: Scalars['Boolean']['output'];
+  streamerName: Scalars['String']['output'];
+};
+
+export type Mount = {
+  __typename?: 'Mount';
+  bitrate?: Maybe<Scalars['Float']['output']>;
+  default: Scalars['Boolean']['output'];
+  format?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Float']['output'];
+  listeners: Listeners;
+  name: Scalars['String']['output'];
+  path: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
+
+export type Playlists = {
+  __typename?: 'Playlists';
+  m3u: Scalars['String']['output'];
+  pls: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
   getCalendarEvents: Array<CalendarEvent>;
+  getCurrentPlaying?: Maybe<CurrentPlaying>;
+  getHello: Scalars['String']['output'];
   getRecordings: Array<Recording>;
   getStation: Station;
-  getCurrentPlaying?: Maybe<CurrentPlaying>;
   getTracksHistory: Array<HistoryItem>;
-  searchTracks: TrackSearchResponse;
   requestTrack: TrackRequestResponse;
-  getHello: Scalars['String'];
+  searchTracks: TrackSearchResponse;
 };
 
-export type QuerySearchTracksArgs = {
-  page?: Maybe<Scalars['Int']>;
-  count?: Maybe<Scalars['Int']>;
-  q?: Maybe<Scalars['String']>;
-};
 
 export type QueryRequestTrackArgs = {
-  songId: Scalars['String'];
+  songId: Scalars['String']['input'];
 };
 
-export type CalendarEvent = {
-  __typename?: 'CalendarEvent';
-  summary: Scalars['String'];
-  startsAt: Scalars['Float'];
-  endsAt: Scalars['Float'];
-  preview: Scalars['String'];
-  notify: Scalars['Boolean'];
-  recording: Scalars['Boolean'];
+
+export type QuerySearchTracksArgs = {
+  count?: InputMaybe<Scalars['Int']['input']>;
+  page?: InputMaybe<Scalars['Int']['input']>;
+  q?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Recording = {
   __typename?: 'Recording';
-  id: Scalars['Float'];
-  beginsAt: Scalars['String'];
-  description: Scalars['String'];
-  fileSize: Scalars['Float'];
+  beginsAt: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  fileSize: Scalars['Float']['output'];
+  id: Scalars['Float']['output'];
 };
 
 export type Station = {
   __typename?: 'Station';
-  id: Scalars['Float'];
-  name: Scalars['String'];
-  shortcode: Scalars['String'];
-  description: Scalars['String'];
-  frontend: Scalars['String'];
-  backend: Scalars['String'];
-  listenUrl: Scalars['String'];
-  public: Scalars['Boolean'];
-  playlists: Playlists;
+  backend: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  frontend: Scalars['String']['output'];
+  id: Scalars['Float']['output'];
+  listenUrl: Scalars['String']['output'];
   mounts: Array<Mount>;
-};
-
-export type Playlists = {
-  __typename?: 'Playlists';
-  m3u: Scalars['String'];
-  pls: Scalars['String'];
-};
-
-export type Mount = {
-  __typename?: 'Mount';
-  path: Scalars['String'];
-  default: Scalars['Boolean'];
-  id: Scalars['Float'];
-  name: Scalars['String'];
-  url: Scalars['String'];
-  bitrate?: Maybe<Scalars['Float']>;
-  format?: Maybe<Scalars['String']>;
-  listeners: Listeners;
-};
-
-export type Listeners = {
-  __typename?: 'Listeners';
-  current: Scalars['Float'];
-  unique: Scalars['Float'];
-  total: Scalars['Float'];
-};
-
-export type CurrentPlaying = {
-  __typename?: 'CurrentPlaying';
-  previous: CurrentPlayingTrack;
-  current: CurrentPlayingTrack;
-  next: CurrentPlayingTrack;
-  live: Live;
-  timestamp: Scalars['Float'];
-  listenersCount: Scalars['Float'];
-};
-
-export type CurrentPlayingTrack = {
-  __typename?: 'CurrentPlayingTrack';
-  id: Scalars['String'];
-  name: Scalars['String'];
-  title: Scalars['String'];
-  artist: Scalars['String'];
-  startsAt: Scalars['Float'];
-  endsAt: Scalars['Float'];
-  duration: Scalars['Float'];
-  art: Scalars['String'];
-};
-
-export type Live = {
-  __typename?: 'Live';
-  isLive: Scalars['Boolean'];
-  streamerName: Scalars['String'];
-  broadcastStart: Scalars['Float'];
-};
-
-export type HistoryItem = {
-  __typename?: 'HistoryItem';
-  id: Scalars['Float'];
-  playedAt: Scalars['Float'];
-  duration: Scalars['Float'];
-  playlist: Scalars['String'];
-  streamer: Scalars['String'];
-  isRequest: Scalars['Boolean'];
-  track: Track;
+  name: Scalars['String']['output'];
+  playlists: Playlists;
+  public: Scalars['Boolean']['output'];
+  shortcode: Scalars['String']['output'];
 };
 
 export type Track = {
   __typename?: 'Track';
-  id: Scalars['String'];
-  text: Scalars['String'];
-  artist: Scalars['String'];
-  title: Scalars['String'];
-  album: Scalars['String'];
-  lyrics: Scalars['String'];
-  art: Scalars['String'];
-};
-
-export type TrackSearchResponse = {
-  __typename?: 'TrackSearchResponse';
-  page: Scalars['Int'];
-  count: Scalars['Int'];
-  total: Scalars['Int'];
-  items: Array<TrackSearchItem>;
-};
-
-export type TrackSearchItem = {
-  __typename?: 'TrackSearchItem';
-  requestId: Scalars['String'];
-  track: Track;
+  album: Scalars['String']['output'];
+  art: Scalars['String']['output'];
+  artist: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  lyrics: Scalars['String']['output'];
+  text: Scalars['String']['output'];
+  title: Scalars['String']['output'];
 };
 
 export type TrackRequestResponse = {
   __typename?: 'TrackRequestResponse';
-  success: Scalars['Boolean'];
-  message: Scalars['String'];
+  message: Scalars['String']['output'];
+  success: Scalars['Boolean']['output'];
 };
 
-export type GetCalendarEventsQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetCalendarEventsQuery = { __typename?: 'Query' } & {
-  getCalendarEvents: Array<
-    { __typename?: 'CalendarEvent' } & Pick<
-      CalendarEvent,
-      'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify' | 'recording'
-    >
-  >;
+export type TrackSearchItem = {
+  __typename?: 'TrackSearchItem';
+  requestId: Scalars['String']['output'];
+  track: Track;
 };
 
-export type GetCurrentPlayingQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetCurrentPlayingQuery = { __typename?: 'Query' } & {
-  getCurrentPlaying?: Maybe<
-    { __typename?: 'CurrentPlaying' } & Pick<CurrentPlaying, 'listenersCount' | 'timestamp'> & {
-        live: { __typename?: 'Live' } & Pick<Live, 'isLive' | 'streamerName' | 'broadcastStart'>;
-        previous: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-        current: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-        next: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-      }
-  >;
-  getTracksHistory: Array<{ __typename?: 'HistoryItem' } & { track: { __typename?: 'Track' } & Pick<Track, 'text'> }>;
+export type TrackSearchResponse = {
+  __typename?: 'TrackSearchResponse';
+  count: Scalars['Int']['output'];
+  items: Array<TrackSearchItem>;
+  page: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
 };
 
-export type GetGeneralDataQueryVariables = Exact<{ [key: string]: never }>;
+export type GetCalendarEventsQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetGeneralDataQuery = { __typename?: 'Query' } & {
-  getCurrentPlaying?: Maybe<
-    { __typename?: 'CurrentPlaying' } & Pick<CurrentPlaying, 'listenersCount' | 'timestamp'> & {
-        live: { __typename?: 'Live' } & Pick<Live, 'isLive' | 'streamerName' | 'broadcastStart'>;
-        previous: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-        current: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-        next: { __typename?: 'CurrentPlayingTrack' } & Pick<
-          CurrentPlayingTrack,
-          'id' | 'name' | 'title' | 'artist' | 'startsAt' | 'endsAt' | 'duration' | 'art'
-        >;
-      }
-  >;
-  getCalendarEvents: Array<
-    { __typename?: 'CalendarEvent' } & Pick<
-      CalendarEvent,
-      'summary' | 'startsAt' | 'endsAt' | 'preview' | 'notify' | 'recording'
-    >
-  >;
-  getTracksHistory: Array<{ __typename?: 'HistoryItem' } & { track: { __typename?: 'Track' } & Pick<Track, 'text'> }>;
-  getStation: { __typename?: 'Station' } & Pick<Station, 'id' | 'name' | 'description'> & {
-      playlists: { __typename?: 'Playlists' } & Pick<Playlists, 'm3u'>;
-      mounts: Array<
-        { __typename?: 'Mount' } & Pick<Mount, 'id' | 'default' | 'path' | 'name' | 'url' | 'bitrate' | 'format'>
-      >;
-    };
-  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'id' | 'beginsAt' | 'description' | 'fileSize'>>;
-};
 
-export type GetRecordsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetCalendarEventsQuery = { getCalendarEvents: Array<{ summary: string, startsAt: number, endsAt: number, preview: string, notify: boolean, recording: boolean }> };
 
-export type GetRecordsQuery = { __typename?: 'Query' } & {
-  getRecordings: Array<{ __typename?: 'Recording' } & Pick<Recording, 'id' | 'beginsAt' | 'description' | 'fileSize'>>;
-};
+export type GetCurrentPlayingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCurrentPlayingQuery = { getCurrentPlaying: { listenersCount: number, timestamp: number, live: { isLive: boolean, streamerName: string, broadcastStart: number }, previous: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string }, current: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string }, next: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string } } | null, getTracksHistory: Array<{ track: { text: string } }> };
+
+export type GetGeneralDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGeneralDataQuery = { getCurrentPlaying: { listenersCount: number, timestamp: number, live: { isLive: boolean, streamerName: string, broadcastStart: number }, previous: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string }, current: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string }, next: { id: string, name: string, title: string, artist: string, startsAt: number, endsAt: number, duration: number, art: string } } | null, getCalendarEvents: Array<{ summary: string, startsAt: number, endsAt: number, preview: string, notify: boolean, recording: boolean }>, getTracksHistory: Array<{ track: { text: string } }>, getStation: { id: number, name: string, description: string, playlists: { m3u: string }, mounts: Array<{ id: number, default: boolean, path: string, name: string, url: string, bitrate: number | null, format: string | null }> }, getRecordings: Array<{ id: number, beginsAt: string, description: string, fileSize: number }> };
+
+export type GetRecordsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetRecordsQuery = { getRecordings: Array<{ id: number, beginsAt: string, description: string, fileSize: number }> };
 
 export type RequestTrackQueryVariables = Exact<{
-  id: Scalars['String'];
+  id: string;
 }>;
 
-export type RequestTrackQuery = { __typename?: 'Query' } & {
-  requestTrack: { __typename?: 'TrackRequestResponse' } & Pick<TrackRequestResponse, 'success' | 'message'>;
-};
+
+export type RequestTrackQuery = { requestTrack: { success: boolean, message: string } };
 
 export type SearchTracksQueryVariables = Exact<{
-  count?: Maybe<Scalars['Int']>;
-  page?: Maybe<Scalars['Int']>;
-  q?: Maybe<Scalars['String']>;
+  count?: number | null | undefined;
+  page?: number | null | undefined;
+  q?: string | null | undefined;
 }>;
 
-export type SearchTracksQuery = { __typename?: 'Query' } & {
-  searchTracks: { __typename?: 'TrackSearchResponse' } & Pick<TrackSearchResponse, 'page' | 'count' | 'total'> & {
-      items: Array<
-        { __typename?: 'TrackSearchItem' } & Pick<TrackSearchItem, 'requestId'> & {
-            track: { __typename?: 'Track' } & Pick<Track, 'id' | 'title' | 'artist'>;
-          }
-      >;
-    };
-};
+
+export type SearchTracksQuery = { searchTracks: { page: number, count: number, total: number, items: Array<{ requestId: string, track: { id: string, title: string, artist: string } }> } };

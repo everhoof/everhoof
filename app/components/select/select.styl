@@ -1,0 +1,49 @@
+@import '../../assets/stylus/variables.styl'
+@import '../../assets/stylus/mixins.styl'
+.select
+	position relative
+	display block
+
+	&__title
+		overflow hidden
+		padding 8px 24px
+		color var(--secondary-text)
+		font-size 14px
+		font-weight 600
+		white-space nowrap
+		text-transform uppercase
+		text-overflow ellipsis
+		cursor pointer
+		background rgba(255, 255, 255, .04)
+		border 1px solid rgba(0, 0, 0, .2)
+		border-radius 3px
+		outline none
+
+		&:hover,
+		&:focus
+			background rgba(255, 255, 255, .06)
+
+	&__list
+		position absolute
+		top 100%
+		z-index 1
+		overflow hidden
+		min-width 100%
+		margin 4px 0
+		text-transform uppercase
+		background var(--primary-background)
+		border-radius 4px
+		box-shadow 0 0 5px rgba(0, 0, 0, .6)
+
+	&__item
+		padding 8px 24px
+		white-space nowrap
+		cursor pointer
+		user-select none
+		border-bottom 1px solid rgba(0, 0, 0, .2)
+
+		&:hover
+			background rgba(0, 0, 0, .2)
+
+		&:last-child
+			border-bottom 0

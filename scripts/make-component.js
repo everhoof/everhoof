@@ -1,4 +1,3 @@
-/* eslint-disable prefer-promise-reject-errors,no-console */
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
@@ -6,7 +5,7 @@ const readline = require('readline');
 const rl = readline.createInterface(process.stdin, process.stdout);
 
 // folder with all blocks
-const BLOCKS_DIR = path.join(__dirname, '../components');
+const BLOCKS_DIR = path.join(__dirname, '../app/components');
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -18,24 +17,10 @@ const fileSources = {
     '  <div class="{blockName}" />\n' +
     '  <!-- end .{blockName}-->\n' +
     '</template>\n\n' +
-    '<script lang="ts">\n' +
-    "import { Component, Vue } from 'nuxt-property-decorator';\n\n" +
-    '@Component({\n' +
-    "  name: 'b-{blockName}',\n" +
-    '})\n' +
-    'export default class {className} extends Vue {}\n' +
-    '</script>\n\n' +
+    '<script setup lang="ts">\n</script>\n\n' +
     '<style lang="stylus" src="./{blockName}.styl" />\n',
   styl: '.{blockName}\n\tdisplay block\n',
 };
-
-function clearAndUpper(text) {
-  return text.replace(/-/, '').toUpperCase();
-}
-
-function toPascalCase(text) {
-  return text.replace(/(^\w|-\w)/g, clearAndUpper);
-}
 
 function validateBlockName(blockName) {
   return new Promise((resolve, reject) => {
@@ -77,9 +62,7 @@ function createDir(dirPath) {
 function createFiles(blocksPath, blockName) {
   const promises = [];
   Object.keys(fileSources).forEach((ext) => {
-    const fileSource = fileSources[ext]
-      .replace(/{blockName}/g, blockName)
-      .replace(/{className}/g, toPascalCase(blockName));
+    const fileSource = fileSources[ext].replace(/{blockName}/g, blockName);
     const filename = `${blockName}.${ext}`;
     const filePath = path.join(blocksPath, filename);
 
@@ -132,7 +115,7 @@ function initMakeBlock(candidateBlockName) {
       .then((files) => {
         const line = '-'.repeat(48 + blockName.length);
         console.log(line);
-        console.log(`The block has just been created in 'components/${blockName}'`);
+        console.log(`The block has just been created in 'app/components/${blockName}'`);
         console.log(line);
 
         // Displays a list of files created

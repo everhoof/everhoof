@@ -1,128 +1,27 @@
-export default {
-  server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost
+export default defineNuxtConfig({
+  compatibilityDate: '2026-09-25',
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
+  css: ['~/assets/stylus/normalize.styl', '~/assets/stylus/grid.styl', '~/assets/stylus/global.styl', '~/assets/stylus/colors.styl'],
+  app: {
+    head: {
+      title: 'Everhoof Radio',
+      htmlAttrs: { class: 'page page_theme_dark page_theme_red' },
+      bodyAttrs: { class: 'page__body grid grid_type_default' },
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap' },
+      ],
+    },
   },
-  /*
-   ** Headers of the page
-   */
-  head: {
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || '',
-      },
+  runtimeConfig: { public: { graphql: 'http://localhost:4000/graphql' } },
+  i18n: {
+    locales: [
+      { code: 'ru', name: 'Русский', language: 'ru-RU', file: 'ru-RU.js' },
+      { code: 'en', name: 'English', language: 'en-US', file: 'en-US.js' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap',
-      },
-    ],
-    script: [{ src: '/js/set.min.js' }, { src: '/js/ie11vars.min.js' }, { src: '/js/svgxuse.min.js' }],
-    htmlAttrs: {
-      class: ['page page_theme_dark page_theme_red'],
-    },
-    bodyAttrs: {
-      class: ['page__body grid grid_type_default'],
-    },
+    langDir: '../lang',
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: { useCookie: true, cookieKey: 'i18n_redirected', alwaysRedirect: false, fallbackLocale: 'en' },
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
-  css: [],
-  styleResources: {
-    stylus: ['~/assets/stylus/variables.styl', '~/assets/stylus/mixins.styl'],
-  },
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [
-    {
-      src: '~/plugins/nuxt-client-init.client.ts',
-      ssr: false,
-    },
-    {
-      src: '~/plugins/polyfills.ts',
-      ssr: false,
-    },
-  ],
-  /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxt/typescript-build',
-    '@nuxtjs/router',
-    '@nuxtjs/style-resources',
-    'nuxt-typed-vuex',
-  ],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    'cookie-universal-nuxt',
-    '@nuxtjs/svg-sprite',
-    '@nuxtjs/apollo',
-    [
-      'nuxt-i18n',
-      {
-        locales: [
-          {
-            code: 'ru',
-            name: 'Русский',
-            iso: 'ru-RU',
-            file: 'ru-RU.js',
-          },
-          {
-            code: 'en',
-            name: 'English',
-            iso: 'en-US',
-            file: 'en-US.js',
-          },
-        ],
-        lazy: true,
-        langDir: 'lang/',
-        defaultLocale: 'en',
-        strategy: 'no_prefix',
-        detectBrowserLanguage: {
-          useCookie: true,
-          cookieKey: 'i18n_redirected',
-          alwaysRedirect: false,
-          fallbackLocale: 'en',
-        },
-      },
-    ],
-  ],
-  /*
-   ** Build configuration
-   */
-  build: {
-    transpile: [/typed-vuex/],
-  },
-  svgSprite: {
-    input: '~/assets/icons/',
-  },
-  apollo: {
-    clientConfigs: {
-      default: '~/config/apollo.ts',
-    },
-  },
-  router: {
-    middleware: ['authenticated'],
-  },
-  publicRuntimeConfig: {
-    graphql: process.env.GRAPHQL || 'http://localhost:4000/graphql',
-  },
-};
+});

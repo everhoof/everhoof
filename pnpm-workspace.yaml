@@ -1,10 +1,11 @@
 allowBuilds:
-  '@apollo/protobufjs': true
-  bufferutil: true
-  core-js: true
-  ejs: true
-  nodemon: true
+  esbuild: true
+  unrs-resolver: true
   nuxt: true
+  bufferutil: true
   utf-8-validate: true
-  yarn: true
+minimumReleaseAgeExclude:
+  - '@vitest/mocker@5.0.2'
+  - '@vitest/spy@5.0.2'
+  - vitest@5.0.2
 nodeLinker: hoisted
