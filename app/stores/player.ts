@@ -33,6 +33,8 @@ export const usePlayerStore = defineStore('player', () => {
   const liveData = computed(() => playingData.value.live);
   const station = computed(() => stationState.value || emptyStation);
   const now = useNowStore();
+  const audioBase = useRuntimeConfig().public.audioBase;
+  const recordingAudioUrl = (id: number) => `${audioBase.replace(/\/$/, '')}/LiveEventAsset/audio?eventId=${id}`;
   const trackType = computed<'next' | 'current' | 'previous'>(() => {
     if (!liveData.value.isLive && playingData.value.current.duration) {
       if (playingData.value.current.endsAt - now.now + offset.value <= 0) return 'next';
@@ -73,7 +75,7 @@ export const usePlayerStore = defineStore('player', () => {
   }
   function play(payload?: { source?: string; type?: AudioType }) {
     if (payload?.source) source.value = payload.source;
-    else if (payload?.type === AudioType.recording) source.value = `/LiveEventAsset/audio?eventId=${recording.value.id}`;
+    else if (payload?.type === AudioType.recording) source.value = recordingAudioUrl(recording.value.id);
     if (payload?.type) type.value = payload.type;
     status.value = AudioStatus.playing;
   }
@@ -83,5 +85,5 @@ export const usePlayerStore = defineStore('player', () => {
     if (recordingId.value !== value) { recordingId.value = value; setProgress(0); }
   }
   function setProgress(value: number) { recordingProgress.value = value; updateRecordingProgress.value = value; }
-  return { playingDataState, calendarEventsState, tracksHistory, stationState, recordings, streamId, volume, muted, status, type, source, recordingId, duration, recordingProgress, updateRecordingProgress, offset, playingData, liveData, station, trackType, track, artwork, progress, recording, initializeCookies, setPlayingData, setGeneralData, setStreamId, setVolume, play, pause, stop, setRecordingId, setProgress };
+  return { playingDataState, calendarEventsState, tracksHistory, stationState, recordings, streamId, volume, muted, status, type, source, recordingId, duration, recordingProgress, updateRecordingProgress, offset, playingData, liveData, station, trackType, track, artwork, progress, recording, recordingAudioUrl, initializeCookies, setPlayingData, setGeneralData, setStreamId, setVolume, play, pause, stop, setRecordingId, setProgress };
 });

@@ -20,7 +20,7 @@
           </div>
           <div class="recordings__size">{{ record.fileSize }} MB</div>
           <a
-            :href="`/LiveEventAsset/audio?eventId=${record.id}`"
+            :href="player.recordingAudioUrl(record.id)"
             class="recordings__button"
             :download="`${record.description}.ogg`"
           >

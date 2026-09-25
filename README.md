@@ -6,6 +6,8 @@ Nuxt 4 / Vue 3 site for Everhoof Radio.
 
 Use Node 24.21.0 and pnpm 12.6.0. The GraphQL API URL is read at server startup from `NUXT_PUBLIC_GRAPHQL` (default: `http://localhost:4000/graphql`). The browser also needs access to this URL for track search and live updates.
 
+For recordings hosted on another origin, set `NUXT_PUBLIC_AUDIO_BASE` to that origin (for example, `https://everhoof.ru`). By default, recording URLs use the site's own origin.
+
 ```bash
 pnpm install --frozen-lockfile
 pnpm test:mock-api # optional local GraphQL fixture, in a second terminal

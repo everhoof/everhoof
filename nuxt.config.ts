@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  runtimeConfig: { public: { graphql: 'http://localhost:4000/graphql' } },
+  runtimeConfig: { public: { graphql: 'http://localhost:4000/graphql', audioBase: '' } },
   i18n: {
     locales: [
       { code: 'ru', name: 'Русский', language: 'ru-RU', file: 'ru-RU.js' },
