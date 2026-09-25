@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
+        node: [14.18.1]
 
     steps:
       - name: Set NODE_ENV
@@ -21,37 +21,43 @@ jobs:
           APP_NODE_ENV: ${{ secrets.STAGING_NODE_ENV }}
 
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
 
       - name: Setup node env
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Install pnpm
+        run: |
+          export PNPM_HOME="$RUNNER_TEMP/pnpm"
+          export PATH="$PNPM_HOME:$PATH"
+          curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=12.6.0 sh -
+          echo "$PNPM_HOME" >> "$GITHUB_PATH"
 
-      - name: Cache node_modules
-        uses: actions/cache@v2.1.4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      - name: Get pnpm store path
+        id: pnpm-store
+        run: echo "path=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run linter
-        run: yarn lint
+        run: pnpm lint
 
       - name: Build project
-        run: yarn build
+        run: pnpm build
 
       - name: Configure SSH
         run: |
@@ -83,7 +89,8 @@ jobs:
           nuxt.config.ts
           package.json
           tsconfig.json
-          yarn.lock
+          pnpm-lock.yaml
+          pnpm-workspace.yaml
           || [[ $? -eq 1 ]]
 
       - name: Copy dist files

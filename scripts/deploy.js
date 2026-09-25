@@ -4,7 +4,7 @@ const ghPages = require('gh-pages');
 ghPages.publish(
   './',
   {
-    src: ['.nuxt/**/*', 'static/**/*', 'package.json', 'yarn.lock', 'tsconfig.json'],
+    src: ['.nuxt/**/*', 'static/**/*', 'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', 'tsconfig.json'],
     branch: 'dist',
   },
   (e) => {

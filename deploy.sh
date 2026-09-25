@@ -6,7 +6,10 @@ tar -xvf artifacts.tgz
 rm artifacts.tgz
 
 NODE_ENV=$NODE_ENV pm2 stop ecosystem.config.js
-nvm exec 14.18.1 npm i -g yarn
-nvm exec 14.18.1 yarn --frozen-lockfile --production
+nvm use 14.18.1
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=12.6.0 sh -
+pnpm install --frozen-lockfile --prod
 NODE_ENV=$NODE_ENV pm2 start ecosystem.config.js
 pm2 save
