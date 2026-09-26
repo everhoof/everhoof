@@ -82,4 +82,8 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="stylus" src="./audio.styl" />
+<style lang="scss" scoped>
+.audio {
+  display: block;
+}
+</style>

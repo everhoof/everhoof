@@ -65,4 +65,55 @@ onMounted(() => {
 });
 onUnmounted(destroyMediaSession);
 </script>
-<style lang="stylus" src="./default.styl" />
+<style lang="scss" scoped>
+.page {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+  }
+  &__main {
+    overflow: hidden;
+    flex-grow: 1;
+    height: calc(100vh - (72px + 16px));
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  &__content {
+    overflow: hidden auto;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: 16px 8px 0;
+    transition: all 0.1s ease;
+  }
+  &__notifications {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__notification {
+    max-width: 600px;
+    margin: 0 0 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+</style>

@@ -4,6 +4,7 @@ allowBuilds:
   nuxt: true
   bufferutil: true
   utf-8-validate: true
+  '@parcel/watcher': false
 minimumReleaseAgeExclude:
   - '@vitest/mocker@5.0.2'
   - '@vitest/spy@5.0.2'

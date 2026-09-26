@@ -10,3 +10,10 @@ const source = computed(() => icons[`../assets/icons/${props.name}.svg`] || '');
 const viewBox = computed(() => source.value.match(/viewBox="([^"]+)"/)?.[1] || '0 0 24 24');
 const content = computed(() => source.value.match(/<svg\b[^>]*>([\s\S]*?)<\/svg>/i)?.[1] || '');
 </script>
+
+<style lang="scss" scoped>
+.icon {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>

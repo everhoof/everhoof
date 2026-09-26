@@ -82,4 +82,114 @@ async function request(id: string) {
 onUnmounted(() => { clearTimeout(debounceId); requestId++; });
 </script>
 
-<style lang="stylus" src="./request-modal.styl" />
+<style lang="scss" scoped>
+.request-modal {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  width: 800px;
+  max-width: 100%;
+  &__input {
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 12px;
+    color: var(--primary-text);
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid transparent;
+    outline: none;
+    &:focus {
+      border: 2px solid rgba(0, 0, 0, 0.5);
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__scrollable {
+    overflow-y: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0 0 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__tracks {
+    display: table;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 16px;
+    border-collapse: collapse;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__track {
+    display: table-row;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    color: var(--primary-text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    border-bottom: 6px solid var(--primary-background);
+    @media screen and (min-width: 768px) {
+      font-weight: 600;
+      text-align: center;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  &__track-part {
+    display: none;
+    vertical-align: middle;
+    padding: 4px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border-right: 6px solid var(--primary-background);
+    @media screen and (min-width: 768px) {
+      display: table-cell;
+    }
+    &_type {
+      &_full {
+        display: table-cell;
+        @media screen and (min-width: 768px) {
+          display: none;
+        }
+      }
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+  &__track-control {
+    display: table-cell;
+    vertical-align: middle;
+    width: 44px;
+    padding: 0 8px;
+    color: var(--primary-text);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.1s ease;
+    &:hover {
+      color: var(--primary-light);
+    }
+    & > .icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  }
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+  &__message {
+    padding: 24px 0;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+</style>

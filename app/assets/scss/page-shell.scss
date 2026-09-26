@@ -1,0 +1,43 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+#__nuxt,
+#__layout {
+  height: 100%;
+}
+
+.page {
+  overflow: hidden auto;
+  height: 100%;
+  min-height: 100%;
+  &__body {
+    position: relative;
+    overflow: hidden auto;
+    height: 100%;
+    min-height: 100%;
+    color: var(--primary-text);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background: #0f1014 url('/bg.svg') no-repeat fixed 50% / cover;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+      display: block;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    &_overflow {
+      &_hidden {
+        overflow: hidden;
+      }
+    }
+  }
+}

@@ -13,4 +13,33 @@
 const link = '#';
 </script>
 
-<style lang="stylus" src="./chat.styl" />
+<style lang="scss" scoped>
+.chat {
+  position: relative;
+  display: block;
+  &__iframe {
+    display: block;
+    width: 100%;
+    height: 220px;
+    border: none;
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    outline: none;
+    & .icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--primary);
+      background: var(--primary-background);
+      border-radius: 0 0 0 4px;
+      transition: all 0.1s ease;
+      &:hover {
+        fill: var(--primary-light);
+      }
+    }
+  }
+}
+</style>

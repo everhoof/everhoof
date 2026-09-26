@@ -18,8 +18,11 @@ const fileSources = {
     '  <!-- end .{blockName}-->\n' +
     '</template>\n\n' +
     '<script setup lang="ts">\n</script>\n\n' +
-    '<style lang="stylus" src="./{blockName}.styl" />\n',
-  styl: '.{blockName}\n\tdisplay block\n',
+    '<style lang="scss" scoped>\n' +
+    '.{blockName} {\n' +
+    '  display: block;\n' +
+    '}\n' +
+    '</style>\n',
 };
 
 function validateBlockName(blockName) {

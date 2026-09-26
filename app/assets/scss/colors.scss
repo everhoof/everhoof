@@ -1,0 +1,22 @@
+.page {
+  &_theme {
+    &_dark {
+      --primary-text: #e0e0e0;
+      --secondary-text: #cccccc;
+      --accent-text: #ffffff;
+      --contrast-text: #ffffff;
+      --primary-background: #201e2f;
+      --secondary-background: #1d1d1d;
+      --accent-background: #333333;
+      --shadow: rgba(0, 0, 0, 0.14);
+      --error: #c0392b;
+      --important: #ff5d5d;
+    }
+    &_red {
+      --primary: #645fac;
+      --primary-dark: #4d498d;
+      --primary-light: #837fbd;
+      --secondary: #747474;
+    }
+  }
+}

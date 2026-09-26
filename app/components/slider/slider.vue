@@ -43,4 +43,76 @@ onMounted(() => { document.addEventListener('mouseup', onMouseUp); document.addE
 onUnmounted(() => { document.removeEventListener('mouseup', onMouseUp); document.removeEventListener('touchend', onMouseUp); document.removeEventListener('mousemove', onMouseMove); document.removeEventListener('touchmove', onMouseMove); slider.value?.removeEventListener('wheel', onWheel); });
 </script>
 
-<style lang="stylus" src="./slider.styl" />
+<style lang="scss" scoped>
+.slider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 16px;
+  &:hover {
+    & .slider__seeker {
+      top: -5px;
+      right: -7px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  &__time {
+    display: none;
+    flex-shrink: 1;
+    color: var(--primary-text);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  &__box {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 4px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-out;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: 100%;
+    background: var(--primary);
+  }
+  &__seeker {
+    position: absolute;
+    top: -3px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    transition: all 0.1s ease;
+  }
+  &_type {
+    &_interactive {
+      cursor: pointer;
+    }
+  }
+  &_with {
+    &_time {
+      & .slider {
+        &__time {
+          display: block;
+        }
+        &__box {
+          margin: 0 12px;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,162 @@
+@use 'sass:math';
+@use './variables' as *;
+
+@mixin cols-size($cols, $gutter, $breakpoints) {
+  min-height: 1px;
+  padding: 0 $gutter;
+  // Modifiers
+  &_align-self {
+    &_start {
+      align-items: flex-start;
+    }
+    &_center {
+      align-items: center;
+    }
+    &_end {
+      align-items: flex-end;
+    }
+    @each $name, $breakpoint in $grid-breakpoints {
+      &_#{$name} {
+        &-start {
+          @media screen and (min-width: $breakpoint) {
+            align-items: flex-start;
+          }
+        }
+        &-center {
+          @media screen and (min-width: $breakpoint) {
+            align-items: center;
+          }
+        }
+        &-end {
+          @media screen and (min-width: $breakpoint) {
+            align-items: flex-end;
+          }
+        }
+      }
+    }
+  }
+  &_size {
+    &_auto {
+      flex-grow: 1;
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        &-auto {
+          @media screen and (min-width: $breakpoint) {
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+    @for $num from 1 through $cols {
+      &_#{$num} {
+        flex: 0 0 math.percentage(math.div($num, $cols));
+        max-width: math.percentage(math.div($num, $cols));
+      }
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        @for $num from 1 through $cols {
+          &-#{$num} {
+            @media screen and (min-width: $breakpoint) {
+              flex: 0 0 math.percentage(math.div($num, $cols));
+              max-width: math.percentage(math.div($num, $cols));
+            }
+          }
+        }
+      }
+    }
+  }
+  &_order {
+    @for $num from 1 through $cols {
+      &_#{$num} {
+        order: $num;
+      }
+    }
+    &_first {
+      order: -1;
+    }
+    &_last {
+      order: ($cols + 1);
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        @for $num from 1 through $cols {
+          &-#{$num} {
+            @media screen and (min-width: $breakpoint) {
+              order: $num;
+            }
+          }
+        }
+        &-first {
+          @media screen and (min-width: $breakpoint) {
+            order: -1;
+          }
+        }
+        &-last {
+          @media screen and (min-width: $breakpoint) {
+            order: ($cols + 1);
+          }
+        }
+      }
+    }
+  }
+  &_push {
+    @for $num from 1 through $cols {
+      &_#{$num} {
+        position: relative;
+        left: math.percentage(math.div($num, $cols));
+      }
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        @for $num from 1 through $cols {
+          &-#{$num} {
+            @media screen and (min-width: $breakpoint) {
+              position: relative;
+              left: math.percentage(math.div($num, $cols));
+            }
+          }
+        }
+      }
+    }
+  }
+  &_pull {
+    @for $num from 1 through $cols {
+      &_#{$num} {
+        position: relative;
+        right: math.percentage(math.div($num, $cols));
+      }
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        @for $num from 1 through $cols {
+          &-#{$num} {
+            @media screen and (min-width: $breakpoint) {
+              position: relative;
+              right: math.percentage(math.div($num, $cols));
+            }
+          }
+        }
+      }
+    }
+  }
+  &_offset {
+    @for $num from 1 through $cols {
+      &_#{$num} {
+        margin-left: math.percentage(math.div($num, $cols));
+      }
+    }
+    @each $name, $breakpoint in $breakpoints {
+      &_#{$name} {
+        @for $num from 1 through $cols {
+          &-#{$num} {
+            @media screen and (min-width: $breakpoint) {
+              margin-left: math.percentage(math.div($num, $cols));
+            }
+          }
+        }
+      }
+    }
+  }
+}

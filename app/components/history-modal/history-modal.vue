@@ -16,4 +16,21 @@ const player = usePlayerStore();
 const tracks = computed(() => player.tracksHistory);
 </script>
 
-<style lang="stylus" src="./history-modal.styl" />
+<style lang="scss" scoped>
+.history-modal {
+  display: block;
+  max-width: 400px;
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    overflow: hidden;
+    padding: 4px;
+    color: var(--secondary-text);
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+</style>

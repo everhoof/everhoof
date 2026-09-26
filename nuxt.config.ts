@@ -1,7 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-25',
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
-  css: ['~/assets/stylus/normalize.styl', '~/assets/stylus/grid.styl', '~/assets/stylus/global.styl', '~/assets/stylus/colors.styl'],
+  css: [
+    '~/assets/scss/normalize.scss',
+    '~/assets/scss/grid.scss',
+    '~/assets/scss/global.scss',
+    '~/assets/scss/colors.scss',
+    '~/assets/scss/page-shell.scss',
+  ],
   app: {
     head: {
       title: 'Everhoof Radio',

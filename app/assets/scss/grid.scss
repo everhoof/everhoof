@@ -1,0 +1,231 @@
+@use 'sass:math';
+@use './variables' as *;
+@use './mixins' as *;
+
+.grid {
+  display: block;
+  box-sizing: border-box;
+  min-width: 320px;
+  &__container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 ($grid-gutter);
+    &_width {
+      &_full {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin: 0 (-($grid-gutter));
+    // Modifiers
+    &_no {
+      &_gutters {
+        .grid {
+          &__col {
+            padding: 0;
+          }
+        }
+      }
+    }
+    &_align-items {
+      &_start {
+        align-items: flex-start;
+      }
+      &_center {
+        align-items: center;
+      }
+      &_end {
+        align-items: flex-end;
+      }
+      @each $name, $breakpoint in $grid-breakpoints {
+        &_#{$name} {
+          &-start {
+            @media screen and (min-width: $breakpoint) {
+              align-items: flex-start;
+            }
+          }
+          &-center {
+            @media screen and (min-width: $breakpoint) {
+              align-items: center;
+            }
+          }
+          &-end {
+            @media screen and (min-width: $breakpoint) {
+              align-items: flex-end;
+            }
+          }
+        }
+      }
+    }
+    &_justify-content {
+      &_start {
+        justify-content: flex-start;
+      }
+      &_center {
+        justify-content: center;
+      }
+      &_end {
+        justify-content: flex-end;
+      }
+      &_around {
+        justify-content: space-around;
+      }
+      &_between {
+        justify-content: space-between;
+      }
+      @each $name, $breakpoint in $grid-breakpoints {
+        &_#{$name} {
+          &-start {
+            @media screen and (min-width: $breakpoint) {
+              justify-content: flex-start;
+            }
+          }
+          &-center {
+            @media screen and (min-width: $breakpoint) {
+              justify-content: center;
+            }
+          }
+          &-end {
+            @media screen and (min-width: $breakpoint) {
+              justify-content: flex-end;
+            }
+          }
+          &-around {
+            @media screen and (min-width: $breakpoint) {
+              justify-content: space-around;
+            }
+          }
+          &-between {
+            @media screen and (min-width: $breakpoint) {
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__col {
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 0%;
+    box-sizing: border-box;
+  }
+  .grid {
+    &__group {
+      & > .grid__col {
+        @include cols-size($grid-cols, $grid-gutter, $grid-breakpoints);
+      }
+    }
+  }
+  &__holder {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  &__panel {
+    display: block;
+    box-sizing: border-box;
+    padding: $grid-gutter;
+  }
+  &__breaker {
+    display: block;
+    box-sizing: border-box;
+    width: 100% !important;
+    // Modifiers
+    @each $name, $breakpoint in $grid-breakpoints {
+      &_#{$name} {
+        display: block;
+        @media screen and (min-width: $breakpoint) {
+          display: none;
+        }
+      }
+    }
+  }
+  &__view-panel {
+    box-sizing: border-box;
+    padding: 30px 0;
+    // Modifiers
+  }
+  @each $grid-name in (default) {
+    &_name {
+      &_type {
+        .grid {
+          &__container {
+            max-width: $container-max-width;
+            &_width {
+              &_full {
+                width: 100%;
+                max-width: 100%;
+              }
+              &_fixed {
+                @each $name, $breakpoint in $grid-breakpoints {
+                  @media screen and (min-width: $breakpoint) {
+                    @if $breakpoint > 420px {
+                      width: 100%;
+                      max-width: ($breakpoint - 100px);
+                    } @else {
+                      width: 320px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &__group {
+            & > .grid__col {
+              @include cols-size($grid-cols, $grid-gutter, $grid-breakpoints);
+            }
+          }
+          &__group {
+            &_no {
+              &_gutters {
+                .grid {
+                  &__col {
+                    padding: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &_style {
+      &_debug {
+        .grid {
+          /* &__container 					outline 1px solid orange */
+          &__col {
+            outline: 1px solid red;
+          }
+          &__panel {
+            background: #f4f4f4;
+          }
+          &__holder {
+            outline: 1px solid green;
+          }
+        }
+      }
+      &_demo {
+        .grid {
+          &__col {
+            padding-top: math.div($grid-gutter, 2);
+            padding-bottom: math.div($grid-gutter, 2);
+          }
+          &__panel {
+            color: #7d7d7d;
+            font-size: 14px;
+            line-height: 1.2;
+            background: #f4f4f4;
+            border: 1px solid #c7c7c7;
+          }
+        }
+      }
+    }
+  }
+}

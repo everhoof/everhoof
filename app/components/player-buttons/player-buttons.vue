@@ -49,4 +49,72 @@ const history = ref(false);
 const request = ref(false);
 </script>
 
-<style lang="stylus" src="./player-buttons.styl" />
+<style lang="scss" scoped>
+.player-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -8px 0;
+  &__buttons-container {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 8px 0;
+  }
+  &__links-container {
+    display: flex;
+    flex-shrink: 1;
+    margin: 8px 0;
+  }
+  &__button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    margin: 0 4px;
+    padding: 6px 8px;
+    color: var(--primary-text);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    &:not(:disabled) {
+      &:hover {
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      &:active {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+    &:disabled {
+      color: rgba(255, 255, 255, 0.2);
+      cursor: not-allowed;
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+  &__link {
+    display: block;
+    flex-shrink: 0;
+    max-width: 32px;
+    height: 20px;
+    max-height: 20px;
+    filter: grayscale(0.5);
+    &:hover {
+      filter: grayscale(0);
+    }
+    & .icon {
+      display: block;
+      width: 32px;
+      height: 20px;
+    }
+  }
+}
+</style>
