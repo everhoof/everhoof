@@ -2,7 +2,7 @@
   <!-- begin .chat-->
   <div class="chat">
     <a :href="link" class="chat__link" :aria-label="$t('buttons.chat')">
-      <svg-icon name="open_in_new" />
+      <b-svg-icon name="open_in_new" />
     </a>
     <iframe
       :title="$t('buttons.chat')"

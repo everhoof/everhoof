@@ -8,15 +8,15 @@
         :aria-label="$t(playing ? 'controls.pause' : 'controls.play')"
         @click="togglePlay"
       >
-        <svg-icon v-if="playing" name="pause" />
-        <svg-icon v-else name="play_arrow" />
+        <b-svg-icon v-if="playing" name="pause" />
+        <b-svg-icon v-else name="play_arrow" />
       </button>
       <div class="player-compact__meta">
         <div class="player-compact__title">{{ title }}</div>
         <div class="player-compact__description">{{ date }}</div>
       </div>
       <div class="player-compact__volume-slider">
-        <b-volume-slider
+        <VolumeSlider
           :volume="volume"
           :muted="muted"
           @update:volume="setVolume"
@@ -30,7 +30,7 @@
         /
         <span>{{ toHHMMSS(duration) }}</span>
       </div>
-      <b-slider
+      <Slider
         :value="progress"
         :duration="duration"
         interactive
@@ -43,13 +43,6 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon';
-import BVolumeSlider from '~/components/volume-slider/volume-slider.vue';
-import BSlider from '~/components/slider/slider.vue';
-import {
-  AudioStatus,
-  AudioType,
-  usePlayerStore,
-} from '~/stores/player';
 import { toHHMMSS } from '~~/tools/filters';
 
 const player = usePlayerStore();

@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia';
-
 export const useNowStore = defineStore('now', () => {
   const now = ref(0);
   let timer: ReturnType<typeof setInterval> | undefined;

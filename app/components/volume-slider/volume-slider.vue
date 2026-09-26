@@ -7,7 +7,7 @@
       :aria-label="$t(syncedMuted ? 'controls.unmute' : 'controls.mute')"
       @click="mute"
     >
-      <svg-icon
+      <b-svg-icon
         :class="['volume-slider__icon', { 'volume-slider__icon_type_muted': syncedMuted }]"
         :name="`volume_${syncedMuted ? 'off' : 'up'}`"
       />
@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import BSlider from '~/components/slider/slider.vue';
 
 interface Props {
   volume: number;

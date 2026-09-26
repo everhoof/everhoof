@@ -7,7 +7,7 @@
       :disabled="page === 1"
       @click="$emit('change', 1)"
     >
-      <svg-icon name="first_page" />
+      <b-svg-icon name="first_page" />
     </button>
     <button
       type="button"
@@ -15,7 +15,7 @@
       :disabled="page - 1 < 1"
       @click="$emit('change', page - 1)"
     >
-      <svg-icon name="chevron_left" />
+      <b-svg-icon name="chevron_left" />
     </button>
     <button
       type="button"
@@ -33,7 +33,7 @@
       :disabled="page + 1 > pages"
       @click="$emit('change', page + 1)"
     >
-      <svg-icon name="chevron_right" />
+      <b-svg-icon name="chevron_right" />
     </button>
     <button
       type="button"
@@ -41,7 +41,7 @@
       :disabled="page === pages"
       @click="$emit('change', pages)"
     >
-      <svg-icon name="last_page" />
+      <b-svg-icon name="last_page" />
     </button>
   </div>
   <!-- end .pagination-->

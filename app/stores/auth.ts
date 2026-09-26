@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia';
-
 export const useAuthStore = defineStore('auth', () => {
   const userId = ref<number | null>(null);
   const loggedIn = ref(false);

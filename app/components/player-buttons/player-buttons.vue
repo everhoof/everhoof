@@ -34,7 +34,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <svg-icon :name="link.icon" />
+        <b-svg-icon :name="link.icon" />
       </a>
     </div>
     <b-modal v-model="request" :title="$t('modals.tracks_request')">
@@ -48,10 +48,6 @@
 </template>
 
 <script setup lang="ts">
-import BModal from '~/components/modal/modal.vue';
-import BHistoryModal from '~/components/history-modal/history-modal.vue';
-import BRequestModal from '~/components/request-modal/request-modal.vue';
-import { usePlayerStore } from '~/stores/player';
 
 const player = usePlayerStore();
 const links = [

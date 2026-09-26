@@ -3,7 +3,7 @@
   <div class="recordings">
     <div class="recordings__player">
       <router-link :to="{ name: 'main' }" class="recordings__back">
-        <svg-icon name="chevron_left" />
+        <b-svg-icon name="chevron_left" />
       </router-link>
       <b-tile class="tile_padding_medium tile_borders_all recordings__row">
         <b-player-compact />
@@ -11,8 +11,8 @@
       <div class="recordings__list">
         <div v-for="(record, i) in recordings" :key="i" class="recordings__item">
           <button type="button" class="recordings__button" @click="play(i)">
-            <svg-icon v-if="playing && index === i" name="pause" />
-            <svg-icon v-else name="play_arrow" />
+            <b-svg-icon v-if="playing && index === i" name="pause" />
+            <b-svg-icon v-else name="play_arrow" />
           </button>
           <div class="recordings__meta">
             <div class="recordings__title">{{ record.description }}</div>
@@ -25,7 +25,7 @@
             :aria-label="$t('controls.download_recording')"
             :download="`${record.description}.ogg`"
           >
-            <svg-icon name="get_app" />
+            <b-svg-icon name="get_app" />
           </a>
         </div>
       </div>
@@ -36,13 +36,6 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon';
-import BTile from '~/components/tile/tile.vue';
-import BPlayerCompact from '~/components/player-compact/player-compact.vue';
-import {
-  AudioStatus,
-  AudioType,
-  usePlayerStore,
-} from '~/stores/player';
 
 defineOptions({
   name: 'RecordingsPage',

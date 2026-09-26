@@ -31,11 +31,6 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon';
-import BPlayer from '~/components/player/player.vue';
-import BTile from '~/components/tile/tile.vue';
-import BPlayerButtons from '~/components/player-buttons/player-buttons.vue';
-import { usePlayerStore } from '~/stores/player';
-import { useNowStore } from '~/stores/now';
 import { toRemainingTime } from '~~/tools/filters';
 
 defineOptions({

@@ -23,7 +23,7 @@
       @keyup="$emit('keyup', $event)"
       @keypress="$emit('keypress', $event)"
     >
-    <svg-icon v-if="icon" class="text-field__icon" :name="icon" />
+    <b-svg-icon v-if="icon" class="text-field__icon" :name="icon" />
   </label>
   <!-- end .text-field-->
 </template>

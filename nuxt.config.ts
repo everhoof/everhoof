@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-25',
   modules: ['@pinia/nuxt', '@nuxtjs/i18n'],
+  components: [{ path: '~/components', prefix: 'B' }],
   css: [
     '~/assets/scss/normalize.scss',
     '~/assets/scss/grid.scss',

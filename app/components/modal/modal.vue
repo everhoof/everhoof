@@ -4,7 +4,7 @@
     <b-tile class="tile_padding_medium tile_borders_all modal__tile">
       <div class="modal__header">
         <h3 class="modal__title">{{ title }}</h3>
-        <svg-icon class="modal__close" name="close" @click="$emit('update:modelValue', false)" />
+        <b-svg-icon class="modal__close" name="close" @click="$emit('update:modelValue', false)" />
       </div>
       <slot />
     </b-tile>
@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import BTile from '~/components/tile/tile.vue';
 
 interface Props {
   title: string;

@@ -4,7 +4,7 @@
     <h3 v-if="title" class="form__title">{{ title }}</h3>
     <div class="form__content">
       <div v-if="errors.length > 0" class="form__row">
-        <ElFormError :errors="errors" width-full />
+        <b-form-error :errors="errors" width-full />
       </div>
       <slot />
     </div>
@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import ElFormError from '~/components/form-error/form-error.vue';
 
 interface Props {
   errors?: string[];

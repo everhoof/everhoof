@@ -1,4 +1,3 @@
-import { defineStore } from 'pinia';
 import type {
 
   CalendarEvent,
@@ -7,7 +6,6 @@ import type {
   GetGeneralDataQuery,
   GetRecordsQuery,
 } from '~~/graphql/schema';
-import { useNowStore } from './now';
 
 export enum AudioStatus {
   playing = 'playing',

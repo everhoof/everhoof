@@ -4,11 +4,11 @@
     <div class="player__header">
       <h1 class="player__title">{{ station.name }}</h1>
       <span hidden class="player__listeners-counter" style="display: none;">
-        <svg-icon class="player__icon" name="people_alt" />
+        <b-svg-icon class="player__icon" name="people_alt" />
         {{ listenersCount }}
       </span>
       <a :href="station.playlists.m3u" class="player__download-playlist" :aria-label="$t('controls.download_playlist')">
-        <svg-icon class="player__icon" name="m3u" />
+        <b-svg-icon class="player__icon" name="m3u" />
       </a>
     </div>
     <div class="player__main">
@@ -19,8 +19,8 @@
         :style="artwork ? `background-image: url(${artwork})` : undefined"
         @click="togglePlay"
       >
-        <svg-icon v-if="playing" name="pause" />
-        <svg-icon v-else name="play_arrow" />
+        <b-svg-icon v-if="playing" name="pause" />
+        <b-svg-icon v-else name="play_arrow" />
       </button>
       <div class="player__meta">
         <div class="player__meta-text">
@@ -57,14 +57,6 @@
 </template>
 
 <script setup lang="ts">
-import BSlider from '~/components/slider/slider.vue';
-import BVolumeSlider from '~/components/volume-slider/volume-slider.vue';
-import BSelect from '~/components/select/select.vue';
-import {
-  AudioStatus,
-  AudioType,
-  usePlayerStore,
-} from '~/stores/player';
 
 const player = usePlayerStore();
 const station = computed(() => player.station);

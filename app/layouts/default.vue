@@ -1,6 +1,6 @@
 <template>
   <div class="page__wrapper">
-    <BAudio />
+    <b-audio />
     <div class="page__header" />
     <div class="page__main">
       <div class="page__content">
@@ -18,14 +18,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import BAudio from '~/components/audio/audio.vue';
-import BNotification from '~/components/notification/notification.vue';
-import {
-  AudioStatus,
-  AudioType,
-  usePlayerStore,
-} from '~/stores/player';
-import { useNotificationsStore } from '~/stores/notifications';
 
 const player = usePlayerStore();
 const notificationsStore = useNotificationsStore();

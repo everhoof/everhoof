@@ -28,7 +28,7 @@
             @keydown.enter="request(entry.requestId)"
             @keydown.space.prevent="request(entry.requestId)"
           >
-            <svg-icon name="req" />
+            <b-svg-icon name="req" />
           </div>
         </div>
       </div>
@@ -59,8 +59,6 @@ import type {
   RequestTrackQuery,
   SearchTracksQuery,
 } from '~~/graphql/schema';
-import BPagination from '~/components/pagination/pagination.vue';
-import { useNotificationsStore } from '~/stores/notifications';
 import { getRandomInt } from '~/utils/math';
 
 interface Props {

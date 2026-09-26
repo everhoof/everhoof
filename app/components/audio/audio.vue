@@ -7,11 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  AudioStatus,
-  AudioType,
-  usePlayerStore,
-} from '~/stores/player';
 
 const player = usePlayerStore();
 const audio = ref<HTMLAudioElement | null>(null);

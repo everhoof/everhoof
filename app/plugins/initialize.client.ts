@@ -6,9 +6,6 @@ import type {
   GetCurrentPlayingQuery,
   GetCalendarEventsQuery,
 } from '~~/graphql/schema';
-import { useAuthStore } from '~/stores/auth';
-import { usePlayerStore } from '~/stores/player';
-import { useNowStore } from '~/stores/now';
 
 export default defineNuxtPlugin(() => {
   useAuthStore().initialize();

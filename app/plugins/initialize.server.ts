@@ -1,8 +1,5 @@
 import GetGeneralData from '~~/graphql/queries/GetGeneralData.graphql?raw';
 import type { GetGeneralDataQuery } from '~~/graphql/schema';
-import { useAuthStore } from '~/stores/auth';
-import { usePlayerStore } from '~/stores/player';
-import { useNowStore } from '~/stores/now';
 
 export default defineNuxtPlugin(async () => {
   useAuthStore().initialize();
