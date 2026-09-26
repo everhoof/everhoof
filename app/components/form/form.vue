@@ -23,6 +23,7 @@ withDefaults(defineProps<{ errors?: string[]; title?: string }>(), { errors: () 
   padding: 20px 10px 10px;
   background: var(--primary-background);
   border-radius: 5px;
+
   &__title {
     padding: 0 20px;
     color: var(--primary-text);
@@ -31,12 +32,15 @@ withDefaults(defineProps<{ errors?: string[]; title?: string }>(), { errors: () 
     text-align: center;
     user-select: none;
   }
+
   &__content {
     width: 100%;
     padding: 20px;
   }
+
   &__row {
     margin-bottom: 20px;
+
     &_align {
       &_center {
         text-align: center;

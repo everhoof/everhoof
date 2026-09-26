@@ -38,6 +38,7 @@ const displayPages = computed(() => {
 <style lang="scss" scoped>
 .pagination {
   display: flex;
+
   &__item {
     width: 40px;
     height: 40px;
@@ -50,25 +51,31 @@ const displayPages = computed(() => {
     background: transparent;
     border: none;
     border-radius: 3px;
-    @media screen and (min-width: 768px) {
+
+    @media screen and (width >= 768px) {
       width: 48px;
       height: 48px;
       line-height: 48px;
     }
+
     &:disabled {
-      opacity: 0.3;
+      opacity: .3;
     }
+
     &:last-child {
       margin-right: 0;
     }
+
     &:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgb(255, 255, 255, .03);
     }
+
     &_state {
       &_active {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgb(255, 255, 255, .05);
       }
     }
+
     & .icon {
       width: 100%;
       height: 100%;

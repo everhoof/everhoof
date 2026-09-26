@@ -78,6 +78,7 @@ function toggleMuted() { player.muted = !player.muted; }
 .player {
   display: block;
   width: 100%;
+
   &__icon.icon {
     display: block;
     width: 24px;
@@ -85,13 +86,15 @@ function toggleMuted() { player.muted = !player.muted; }
     height: 24px;
     max-height: 24px;
   }
+
   &__header {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 0 0 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgb(255, 255, 255, .07);
   }
+
   &__title {
     overflow: hidden;
     flex-grow: 1;
@@ -102,27 +105,32 @@ function toggleMuted() { player.muted = !player.muted; }
     font-weight: 600;
     white-space: nowrap;
     text-overflow: ellipsis;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__listeners-counter {
     display: flex;
-    align-items: center;
     flex-grow: 0;
     flex-shrink: 0;
+    align-items: center;
     margin-right: 12px;
     color: var(--primary-light);
     font-size: 16px;
     font-weight: 600;
+
     &:last-child {
       margin-right: 0;
     }
+
     & .icon {
       margin-right: 6px;
       fill: currentColor;
     }
   }
+
   &__download-playlist {
     display: block;
     flex-grow: 0;
@@ -131,29 +139,36 @@ function toggleMuted() { player.muted = !player.muted; }
     color: var(--secondary-text);
     font-size: 16px;
     font-weight: 600;
+
     &:hover {
       color: var(--primary);
     }
+
     &:last-child {
       margin-right: 0;
     }
+
     & .icon {
       fill: currentColor;
     }
   }
+
   &__main {
     display: flex;
     width: 100%;
     margin-top: 8px;
+
     &_artwork_disabled {
       & .player__meta-artwork {
         display: none;
       }
+
       & .player__progress {
         margin-left: 0;
       }
     }
   }
+
   &__meta-artwork {
     flex-shrink: 0;
     width: 44px;
@@ -161,39 +176,46 @@ function toggleMuted() { player.muted = !player.muted; }
     margin-right: 12px;
     background-image: url('/img/player/disc.svg');
     background-size: cover;
-    border-radius: 3px;
     object-fit: cover;
-    @media screen and (min-width: 400px) {
+    border-radius: 3px;
+
+    @media screen and (width >= 400px) {
       width: 81px;
       height: 81px;
     }
   }
+
   &__meta {
     display: flex;
     overflow: hidden;
     flex-grow: 1;
     flex-direction: column;
     margin-left: 16px;
+
     &:hover {
       & .player__meta-title,
       & .player__meta-artist {
         white-space: inherit;
       }
     }
-    @media screen and (max-width: 550px) {
+
+    @media screen and (width <= 550px) {
       & .player__meta-title,
       & .player__meta-artist {
         white-space: inherit;
       }
     }
   }
+
   &__meta-text {
     flex-grow: 1;
     margin: 0 0 12px;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__meta-title {
     overflow: hidden;
     color: var(--primary-text);
@@ -202,6 +224,7 @@ function toggleMuted() { player.muted = !player.muted; }
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
   &__meta-artist {
     overflow: hidden;
     margin: 0 0 12px;
@@ -209,30 +232,37 @@ function toggleMuted() { player.muted = !player.muted; }
     font-size: 14px;
     white-space: nowrap;
     text-overflow: ellipsis;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     &_live {
       color: #ef5350;
     }
   }
+
   &__progress {
     margin: 0;
     padding: 0 0 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgb(255, 255, 255, .07);
   }
+
   &__controls {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 12px 0 0;
   }
+
   &__control {
     margin-right: 8px;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__play-button {
     position: relative;
     display: block;
@@ -250,24 +280,25 @@ function toggleMuted() { player.muted = !player.muted; }
     border: none;
     border-radius: 3px;
     outline: none;
+
     &:focus {
       outline: none;
     }
+
     &:hover {
       color: #ffffff;
     }
-    &:before {
+
+    &::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
+      inset: 0;
       z-index: 1;
       display: block;
       background: #2f2e40;
-      opacity: 0.7;
+      opacity: .7;
     }
+
     & .icon {
       position: relative;
       z-index: 2;
@@ -277,10 +308,12 @@ function toggleMuted() { player.muted = !player.muted; }
       fill: currentColor;
     }
   }
+
   &__volume-slider {
     display: none;
     flex-grow: 1;
-    @media screen and (min-width: 400px) {
+
+    @media screen and (width >= 400px) {
       display: block;
     }
   }

@@ -53,16 +53,17 @@ function play(id: number) {
 <style lang="scss" scoped>
 .recordings {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
+
   &__back {
     position: fixed;
     top: 8px;
     left: 8px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
     margin: 0 0 4px;
@@ -72,13 +73,16 @@ function play(id: number) {
     background: #2f2e40;
     border-radius: 4px;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgb(0, 0, 0, .3);
+
     &:hover {
       color: var(--primary-light);
     }
+
     &:last-child {
       margin-bottom: 0;
     }
+
     .icon {
       display: inline-block;
       width: 24px;
@@ -86,17 +90,21 @@ function play(id: number) {
       fill: currentColor;
     }
   }
+
   &__row {
     margin: 0 0 4px;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__player {
     overflow: hidden;
     width: 650px;
     max-width: 650px;
   }
+
   &__button {
     display: inline-block;
     flex-shrink: 0;
@@ -112,32 +120,39 @@ function play(id: number) {
     background: var(--primary-background);
     border: none;
     outline: none;
+
     &:hover {
       & .icon {
         fill: var(--primary);
       }
     }
+
     & .icon {
       fill: currentColor;
     }
   }
+
   &__list {
     overflow-y: auto;
     max-height: calc(90vh - 150px);
-    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.1);
+    scrollbar-color: rgb(255, 255, 255, .2) rgb(255, 255, 255, .1);
     scrollbar-width: thin;
-    @media screen and (min-width: 768px) {
+
+    @media screen and (width >= 768px) {
       max-height: calc(80vh - 150px);
     }
+
     &::-webkit-scrollbar {
       width: 6px;
       height: 6px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgb(255, 255, 255, .1);
     }
+
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgb(255, 255, 255, .2);
     }
   }
+
   &__item {
     display: flex;
     overflow: hidden;
@@ -145,22 +160,28 @@ function play(id: number) {
     height: 52px;
     max-height: 52px;
     margin: 0 0 4px;
+
     & > * {
       margin: 0 0 0 4px;
+
       &:first-child {
         margin-left: 0;
       }
+
       &:last-child {
         margin-right: 4px;
+
         @media (hover: none) and (pointer: coarse) {
           margin-right: 0;
         }
       }
     }
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__meta {
     overflow: hidden;
     flex-grow: 1;
@@ -168,6 +189,7 @@ function play(id: number) {
     padding: 4px 12px;
     background: var(--primary-background);
   }
+
   &__title {
     overflow: hidden;
     font-size: 15px;
@@ -175,10 +197,12 @@ function play(id: number) {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
   &__description {
     color: var(--secondary-text);
     font-size: 14px;
   }
+
   &__size {
     flex-shrink: 0;
     width: 80px;

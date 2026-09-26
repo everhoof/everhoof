@@ -25,8 +25,9 @@ function mute() { syncedMuted.value = !syncedMuted.value; }
 <style lang="scss" scoped>
 .volume-slider {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+
   &__button {
     display: inline-block;
     flex-shrink: 0;
@@ -37,10 +38,12 @@ function mute() { syncedMuted.value = !syncedMuted.value; }
     background: transparent;
     border: none;
     outline: none;
+
     &:hover {
       color: var(--primary-light);
     }
   }
+
   &__icon {
     display: block;
     flex-shrink: 0;
@@ -49,12 +52,14 @@ function mute() { syncedMuted.value = !syncedMuted.value; }
     height: 36px;
     max-height: 36px;
     fill: currentColor;
+
     &_type {
       &_muted {
         fill: #ef5350;
       }
     }
   }
+
   &__slider {
     flex-basis: 100px;
     max-width: 80px;

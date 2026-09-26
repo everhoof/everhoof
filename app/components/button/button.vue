@@ -34,8 +34,9 @@ $button-text-color: var(--primary-text);
 $button-active-text-color: var(--primary-text);
 $button-padding: 1.4em;
 $button-border-width: 1px;
-$button-border-radius: 0.25em;
+$button-border-radius: .25em;
 $button-margin: 10px 0;
+
 .button {
   position: relative;
   z-index: 1;
@@ -43,7 +44,7 @@ $button-margin: 10px 0;
   vertical-align: middle;
   overflow: hidden;
   max-width: 100%;
-  padding: 9.5px $button-padding;
+  padding: 9.5px #{$button-padding};
   color: $button-text-color;
   font-size: 14px;
   font-weight: 700;
@@ -56,69 +57,81 @@ $button-margin: 10px 0;
   border: $button-border-width solid var(--secondary-background);
   border-radius: $button-border-radius;
   outline: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: width 0.1s ease;
   box-shadow: var(--shadow) 0 1px 3px;
+  -webkit-tap-highlight-color: transparent;
+
   &_display {
     &_block {
       display: block;
     }
   }
+
   &_width {
     &_full {
       width: 100%;
     }
   }
+
   &_no {
     &_wrap {
       white-space: nowrap;
       text-overflow: ellipsis;
     }
   }
+
   &_with {
     &_margin {
       margin: $button-margin;
     }
   }
+
   &_size {
     &_small {
-      padding: 5px $button-padding;
+      padding: 5px #{$button-padding};
       font-size: 12px;
     }
+
     &_medium {
-      padding: 9.5px $button-padding;
+      padding: 9.5px #{$button-padding};
       font-size: 14px;
     }
+
     &_large {
-      padding: 14px $button-padding;
+      padding: 14px #{$button-padding};
       font-size: 16px;
     }
   }
-  &:before {
+
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
-    left: auto;
+    left: 0;
     z-index: -1;
-    width: 0;
+    width: 100%;
     height: 100%;
     background: var(--primary-dark);
-    transition: all 300ms ease;
-    transition: all 0.1s ease;
+    transition: transform .1s ease;
+    transform: scaleX(0);
+    transform-origin: right;
   }
+
   &_type_active,
   &:hover:not(:disabled) {
     color: $button-active-text-color;
-    &:before {
-      left: 0;
-      width: 100%;
+
+    &::before {
+      transform: scaleX(1);
+      transform-origin: left;
     }
   }
+
   &:disabled {
     border-color: $button-disabled-color;
     opacity: var(--disabled-alpha);
-    &:before {
+
+    &::before {
       background: $button-disabled-color;
     }
   }

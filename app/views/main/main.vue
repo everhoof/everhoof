@@ -56,29 +56,35 @@ function toFormattedTime(timestamp: number) { return DateTime.fromMillis(timesta
 <style lang="scss" scoped>
 .main {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
+
   &__row {
     margin: 0 0 4px;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__announcement {
     display: block;
     color: var(--primary-text);
     font-size: 16px;
     text-align: center;
     text-decoration: none;
+
     & > span {
       color: var(--important);
       font-weight: 600;
     }
+
     & > i {
       font-size: 14px;
     }
   }
+
   &__player {
     width: 550px;
     max-width: 550px;

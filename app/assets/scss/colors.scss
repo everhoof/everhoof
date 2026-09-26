@@ -8,10 +8,11 @@
       --primary-background: #201e2f;
       --secondary-background: #1d1d1d;
       --accent-background: #333333;
-      --shadow: rgba(0, 0, 0, 0.14);
+      --shadow: rgb(0, 0, 0, .14);
       --error: #c0392b;
       --important: #ff5d5d;
     }
+
     &_red {
       --primary: #645fac;
       --primary-dark: #4d498d;

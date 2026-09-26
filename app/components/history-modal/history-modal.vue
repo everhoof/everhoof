@@ -20,10 +20,12 @@ const tracks = computed(() => player.tracksHistory);
 .history-modal {
   display: block;
   max-width: 400px;
+
   &__list {
     margin: 0;
     padding: 0;
   }
+
   &__item {
     overflow: hidden;
     padding: 4px;

@@ -46,29 +46,32 @@ $text-field-border-color: var(--secondary-background);
 $text-field-placeholder-color: var(--secondary-text);
 $text-field-active-color: var(--primary-dark);
 $text-field-margin: 10px 0;
+
 .text-field {
   position: relative;
   display: block;
   width: 200px;
   margin: 10px 0;
   font-size: $text-field-font-size;
+
   &_width {
     &_full {
       width: 100%;
     }
   }
+
   &_with {
     &_icon {
       & .text-field__input {
         padding: 0 20px 0 30px;
       }
     }
-  }
-  &_with {
+
     &_margin {
       margin: $text-field-margin;
     }
   }
+
   &__input {
     width: 100%;
     height: $text-field-size;
@@ -76,37 +79,45 @@ $text-field-margin: 10px 0;
     color: $text-field-text-color;
     line-height: $text-field-size;
     background: transparent;
-    border: 2px solid $text-field-border-color;
+    border: 2px solid #{$text-field-border-color};
     border-radius: 4px;
     outline: none;
+
     &::-webkit-input-placeholder {
       color: $text-field-placeholder-color;
       font-size: 14px;
     }
+
     &:-moz-placeholder {
       color: $text-field-placeholder-color;
       font-size: 14px;
     }
+
     &:-ms-input-placeholder {
       color: $text-field-placeholder-color;
       font-size: 14px;
     }
+
     &::placeholder {
       color: $text-field-placeholder-color;
       font-size: 14px;
       opacity: 1;
     }
+
     .text-field_type_active &:not(:disabled),
     &:focus:not(:disabled) {
       border-color: $text-field-active-color;
+
       & + {
         & .text-field__icon {
           fill: $text-field-active-color;
         }
       }
     }
+
     &:disabled {
       opacity: var(--disabled-alpha);
+
       & + {
         & .text-field__icon {
           opacity: var(--disabled-alpha);
@@ -114,13 +125,14 @@ $text-field-margin: 10px 0;
       }
     }
   }
+
   &__icon {
     position: absolute;
     top: 50%;
     left: 10px;
     width: $text-field-icon-size;
     height: $text-field-icon-size;
-    margin-top: (-$text-field-icon-size * 0.5);
+    margin-top: #{-$text-field-icon-size * .5};
     fill: $text-field-icon-color;
   }
 }

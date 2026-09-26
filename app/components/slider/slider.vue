@@ -49,14 +49,13 @@ onUnmounted(() => { document.removeEventListener('mouseup', onMouseUp); document
   align-items: center;
   width: 100%;
   height: 16px;
+
   &:hover {
     & .slider__seeker {
-      top: -5px;
-      right: -7px;
-      width: 14px;
-      height: 14px;
+      transform: scale(1.4);
     }
   }
+
   &__time {
     display: none;
     flex-shrink: 1;
@@ -64,15 +63,16 @@ onUnmounted(() => { document.removeEventListener('mouseup', onMouseUp); document
     font-size: 13px;
     font-weight: 600;
   }
+
   &__box {
     position: relative;
     flex-grow: 1;
     flex-shrink: 1;
     height: 4px;
     margin: 0;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.1s ease-out;
+    background: rgb(255, 255, 255, .1);
   }
+
   &__bg {
     position: absolute;
     top: 0;
@@ -81,6 +81,7 @@ onUnmounted(() => { document.removeEventListener('mouseup', onMouseUp); document
     height: 100%;
     background: var(--primary);
   }
+
   &__seeker {
     position: absolute;
     top: -3px;
@@ -89,24 +90,29 @@ onUnmounted(() => { document.removeEventListener('mouseup', onMouseUp); document
     height: 10px;
     background-color: var(--primary-light);
     border-radius: 50%;
-    transition: all 0.1s ease;
+    transition: transform .1s ease;
   }
+
   &_type {
     &_interactive {
       cursor: pointer;
     }
   }
+
   &_with {
     &_time {
       & .slider {
         &__time {
           display: block;
         }
+
         &__box {
           margin: 0 12px;
+
           &:first-child {
             margin-left: 0;
           }
+
           &:last-child {
             margin-right: 0;
           }

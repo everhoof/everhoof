@@ -20,16 +20,19 @@ function close() { notifications.remove(props.notification.id); }
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 32px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgb(0, 0, 0, .4);
   border-radius: 3px;
+
   &__message {
     margin: 0 16px 0 0;
     font-size: 16px;
     text-align: center;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__close {
     flex-grow: 0;
     flex-shrink: 0;
@@ -43,9 +46,11 @@ function close() { notifications.remove(props.notification.id); }
     font-weight: 600;
     cursor: pointer;
     border-radius: 50%;
+
     &:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgb(255, 255, 255, .07);
     }
+
     &:last-child {
       margin-right: 0;
     }

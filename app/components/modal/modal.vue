@@ -27,37 +27,39 @@ onUnmounted(() => document.removeEventListener('mousedown', onDocumentMouseDown)
 <style lang="scss" scoped>
 .modal {
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 900;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-width: 320px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, .5);
+
   &__tile {
     display: flex;
     flex-direction: column;
     max-width: 95%;
     max-height: 85%;
   }
+
   &__icon {
     max-width: 100%;
     max-height: 100%;
   }
+
   &__header {
     display: flex;
     align-items: center;
     width: 100%;
     margin: 0 0 16px;
     padding: 0 0 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgb(255, 255, 255, .07);
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__title {
     overflow: hidden;
     flex-grow: 1;
@@ -68,10 +70,12 @@ onUnmounted(() => document.removeEventListener('mousedown', onDocumentMouseDown)
     font-weight: 600;
     white-space: nowrap;
     text-overflow: ellipsis;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__close {
     flex-grow: 0;
     flex-shrink: 0;
@@ -85,9 +89,11 @@ onUnmounted(() => document.removeEventListener('mousedown', onDocumentMouseDown)
     font-weight: 600;
     cursor: pointer;
     border-radius: 50%;
+
     &:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgb(255, 255, 255, .07);
     }
+
     &:last-child {
       margin-right: 0;
     }

@@ -25,6 +25,7 @@ $form-error-icon-size: 24px;
 $form-error-icon-padding: 2px;
 $form-error-icon-bg: var(--secondary-background);
 $form-error-margin: 10px 0;
+
 .form-error {
   position: relative;
   display: block;
@@ -33,18 +34,21 @@ $form-error-margin: 10px 0;
   padding: 16px;
   font-size: $form-error-font-size;
   line-height: $form-error-font-size;
-  border: 2px solid $form-error-color;
+  border: 2px solid #{$form-error-color};
   border-radius: $form-error-border-radius;
+
   &_width {
     &_full {
       width: 100%;
     }
   }
+
   &_with {
     &_margin {
       margin: $form-error-margin;
     }
   }
+
   &__text:not(:last-child) {
     margin-bottom: 8px;
   }

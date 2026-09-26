@@ -51,17 +51,21 @@ function setProgress(value: number) { player.setProgress(duration.value * value)
 .player-compact {
   display: block;
   padding: 8px 0 4px;
+
   &__main {
     display: flex;
     align-items: center;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__meta {
     flex-grow: 1;
     margin-left: 16px;
   }
+
   &__title {
     overflow: hidden;
     max-height: 50px;
@@ -69,6 +73,7 @@ function setProgress(value: number) { player.setProgress(duration.value * value)
     font-size: 16px;
     font-weight: bold;
   }
+
   &__play-button {
     display: block;
     flex-shrink: 0;
@@ -84,12 +89,15 @@ function setProgress(value: number) { player.setProgress(duration.value * value)
     border: none;
     border-radius: 3px;
     outline: none;
+
     &:focus {
       outline: none;
     }
+
     &:hover {
       color: #ffffff;
     }
+
     & .icon {
       display: block;
       width: 50px;
@@ -97,19 +105,23 @@ function setProgress(value: number) { player.setProgress(duration.value * value)
       fill: currentColor;
     }
   }
+
   &__volume-slider {
     display: none;
-    @media screen and (min-width: 480px) {
+
+    @media screen and (width >= 480px) {
       display: block;
       min-width: 140px;
     }
   }
+
   &__progress-slider {
     display: flex;
-    align-items: flex-end;
     flex-direction: column;
+    align-items: flex-end;
     margin-top: -10px;
   }
+
   &__progress-time {
     flex-shrink: 1;
     color: var(--primary-text);

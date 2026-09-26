@@ -32,18 +32,20 @@ function select(i: number) { emit('input', i); focused.value = false; }
 <style lang="scss" scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.2s;
+  transition: opacity .2s, transform .2s;
 }
+
 .v-enter-from,
 .v-leave-to {
-  margin: 8px 0;
   opacity: 0;
+  transform: translateY(4px);
 }
 </style>
 <style lang="scss" scoped>
 .select {
   position: relative;
   display: block;
+
   &__title {
     overflow: hidden;
     padding: 8px 24px;
@@ -54,15 +56,17 @@ function select(i: number) { emit('input', i); focused.value = false; }
     text-transform: uppercase;
     text-overflow: ellipsis;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: rgb(255, 255, 255, .04);
+    border: 1px solid rgb(0, 0, 0, .2);
     border-radius: 3px;
     outline: none;
+
     &:hover,
     &:focus {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgb(255, 255, 255, .06);
     }
   }
+
   &__list {
     position: absolute;
     top: 100%;
@@ -73,17 +77,20 @@ function select(i: number) { emit('input', i); focused.value = false; }
     text-transform: uppercase;
     background: var(--primary-background);
     border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgb(0, 0, 0, .6);
   }
+
   &__item {
     padding: 8px 24px;
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgb(0, 0, 0, .2);
+
     &:hover {
-      background: rgba(0, 0, 0, 0.2);
+      background: rgb(0, 0, 0, .2);
     }
+
     &:last-child {
       border-bottom: 0;
     }

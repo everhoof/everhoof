@@ -52,21 +52,24 @@ const request = ref(false);
 <style lang="scss" scoped>
 .player-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: -8px 0;
+
   &__buttons-container {
     display: flex;
     flex-grow: 1;
     flex-shrink: 0;
     margin: 8px 0;
   }
+
   &__links-container {
     display: flex;
     flex-shrink: 1;
     margin: 8px 0;
   }
+
   &__button {
     flex-grow: 1;
     flex-shrink: 1;
@@ -81,35 +84,41 @@ const request = ref(false);
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgb(255, 255, 255, .04);
     border: none;
     border-radius: 3px;
     outline: none;
+
     &:not(:disabled) {
       &:hover {
         text-decoration: none;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgb(255, 255, 255, .06);
       }
+
       &:active {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgb(255, 255, 255, .08);
       }
     }
+
     &:disabled {
-      color: rgba(255, 255, 255, 0.2);
+      color: rgb(255, 255, 255, .2);
       cursor: not-allowed;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgb(255, 255, 255, .08);
     }
   }
+
   &__link {
     display: block;
     flex-shrink: 0;
     max-width: 32px;
     height: 20px;
     max-height: 20px;
-    filter: grayscale(0.5);
+    filter: grayscale(.5);
+
     &:hover {
       filter: grayscale(0);
     }
+
     & .icon {
       display: block;
       width: 32px;

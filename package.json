@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@12.6.0",
-  "engines": { "node": ">=24.11.0 <25" },
+  "engines": {
+    "node": ">=24.11.0 <25"
+  },
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -11,32 +13,36 @@
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
     "lint": "eslint app scripts test nuxt.config.ts",
+    "lint:styles": "stylelint \"app/**/*.{vue,scss}\"",
     "typecheck": "nuxt typecheck",
     "test": "vitest run",
     "test:mock-api": "node test/mock-graphql.mjs",
     "format": "prettier --write .",
+    "format:styles": "stylelint \"app/**/*.{vue,scss}\" --fix",
     "typegen": "graphql-codegen",
     "mc": "node ./scripts/make-component.js"
   },
   "dependencies": {
-    "nuxt": "4.5.2",
-    "pinia": "4.0.3",
-    "@pinia/nuxt": "1.0.2",
     "@nuxtjs/i18n": "10.6.0",
-    "luxon": "3.7.2"
+    "@pinia/nuxt": "1.0.2",
+    "luxon": "3.7.2",
+    "nuxt": "4.5.2",
+    "pinia": "4.0.3"
   },
   "devDependencies": {
-    "@nuxt/eslint": "1.17.0",
-    "@nuxt/test-utils": "4.3.2",
-    "@vue/test-utils": "2.5.1",
     "@graphql-codegen/cli": "7.4.3",
     "@graphql-codegen/typescript": "6.1.0",
     "@graphql-codegen/typescript-operations": "6.1.7",
+    "@nuxt/eslint": "1.17.0",
+    "@nuxt/test-utils": "4.3.2",
+    "@rhapsodic/stylelint-config": "2.0.0",
     "@types/luxon": "3.7.5",
+    "@vue/test-utils": "2.5.1",
     "eslint": "10.11.0",
     "graphql": "16.11.0",
     "prettier": "3.9.9",
     "sass-embedded": "1.105.0",
+    "stylelint": "17.15.0",
     "typescript": "5.9.3",
     "vitest": "5.0.2",
     "vue-tsc": "3.3.11"
