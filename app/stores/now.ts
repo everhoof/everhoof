@@ -6,8 +6,15 @@ export const useNowStore = defineStore('now', () => {
   function start() {
     if (timer) return;
     now.value = Date.now();
-    timer = setInterval(() => { now.value = Date.now(); }, 1000);
+    timer = setInterval(() => {
+      now.value = Date.now();
+    }, 1000);
   }
-  function stop() { if (timer) clearInterval(timer); timer = undefined; }
-  return { now, start, stop };
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = undefined;
+  }
+  return {
+    now, start, stop,
+  };
 });

@@ -1,17 +1,51 @@
 import { defineStore } from 'pinia';
-import type { CalendarEvent, CurrentPlaying, CurrentPlayingTrack, GetGeneralDataQuery, GetRecordsQuery } from '~~/graphql/schema';
+import type {
+
+  CalendarEvent,
+  CurrentPlaying,
+  CurrentPlayingTrack,
+  GetGeneralDataQuery,
+  GetRecordsQuery,
+} from '~~/graphql/schema';
 import { useNowStore } from './now';
 
-export enum AudioStatus { playing = 'playing', paused = 'paused', stopped = 'stopped' }
-export enum AudioType { none = 'none', stream = 'stream', recording = 'recording' }
-
-const emptyTrack: CurrentPlayingTrack = { id: '', title: 'Unknown', artist: 'Unknown', name: 'Unknown - Unknown', startsAt: 0, endsAt: 0, duration: 0, art: '' };
-const emptyPlaying: CurrentPlaying = { live: { isLive: false, streamerName: '', broadcastStart: 0 }, previous: emptyTrack, current: emptyTrack, next: emptyTrack, timestamp: 0, listenersCount: 0 };
+export enum AudioStatus {
+  playing = 'playing',
+  paused = 'paused',
+  stopped = 'stopped',
+}
+export enum AudioType {
+  none = 'none',
+  stream = 'stream',
+  recording = 'recording',
+}
+const emptyTrack: CurrentPlayingTrack = {
+  id: '', title: 'Unknown', artist: 'Unknown', name: 'Unknown - Unknown', startsAt: 0, endsAt: 0, duration: 0, art: '',
+};
+const emptyPlaying: CurrentPlaying = {
+  live: {
+    isLive: false, streamerName: '', broadcastStart: 0,
+  },
+  previous: emptyTrack,
+  current: emptyTrack,
+  next: emptyTrack,
+  timestamp: 0,
+  listenersCount: 0,
+};
 type Station = GetGeneralDataQuery['getStation'];
-const emptyStation: Station = { id: 0, name: '', description: '', mounts: [], playlists: { m3u: '' } };
+const emptyStation: Station = {
+  id: 0,
+  name: '',
+  description: '',
+  mounts: [],
+  playlists: {
+    m3u: '',
+  },
+};
 type Recording = GetRecordsQuery['getRecordings'][number];
-const emptyRecording: Recording = { id: 0, beginsAt: '', description: '', fileSize: 0 };
-
+const emptyRecording: Recording = {
+  id: 0, beginsAt: '', description: '', fileSize: 0,
+};
 export const usePlayerStore = defineStore('player', () => {
   const playingDataState = ref<CurrentPlaying | null>(null);
   const calendarEventsState = ref<CalendarEvent[]>([]);
@@ -29,9 +63,9 @@ export const usePlayerStore = defineStore('player', () => {
   const recordingProgress = ref(0);
   const updateRecordingProgress = ref(-1);
   const offset = ref(0);
-  const playingData = computed(() => playingDataState.value || emptyPlaying);
+  const playingData = computed(() => playingDataState.value ?? emptyPlaying);
   const liveData = computed(() => playingData.value.live);
-  const station = computed(() => stationState.value || emptyStation);
+  const station = computed(() => stationState.value ?? emptyStation);
   const now = useNowStore();
   const audioBase = useRuntimeConfig().public.audioBase;
   const recordingAudioUrl = (id: number) => `${audioBase.replace(/\/$/, '')}/LiveEventAsset/audio?eventId=${id}`;
@@ -44,9 +78,12 @@ export const usePlayerStore = defineStore('player', () => {
   });
   const track = computed(() => playingData.value[trackType.value] || emptyTrack);
   const artwork = computed(() => track.value.art || '/img/player/disc.svg');
-  const progress = computed(() => track.value.duration ? Math.min(1, Math.max(0, 1 - (track.value.endsAt - now.now + offset.value) / (track.value.duration * 1000))) : 0);
-  const recording = computed(() => recordings.value[recordingId.value] || emptyRecording);
-
+  const progress = computed(() => {
+    if (!track.value.duration) return 0;
+    const remaining = (track.value.endsAt - now.now + offset.value) / (track.value.duration * 1000);
+    return Math.min(1, Math.max(0, 1 - remaining));
+  });
+  const recording = computed(() => recordings.value[recordingId.value] ?? emptyRecording);
   function initializeCookies() {
     const stream = useCookie<string | null>('stream_id');
     const savedVolume = useCookie<string | null>('volume');
@@ -73,17 +110,69 @@ export const usePlayerStore = defineStore('player', () => {
     volume.value = Math.min(1, Math.max(0, value));
     if (import.meta.client) useCookie('volume').value = String(volume.value);
   }
-  function play(payload?: { source?: string; type?: AudioType }) {
+  function play(payload?: {
+    source?: string;
+    type?: AudioType;
+  }) {
     if (payload?.source) source.value = payload.source;
     else if (payload?.type === AudioType.recording) source.value = recordingAudioUrl(recording.value.id);
     if (payload?.type) type.value = payload.type;
     status.value = AudioStatus.playing;
   }
-  function pause() { status.value = AudioStatus.paused; }
-  function stop() { status.value = AudioStatus.stopped; type.value = AudioType.none; source.value = null; }
-  function setRecordingId(value: number) {
-    if (recordingId.value !== value) { recordingId.value = value; setProgress(0); }
+  function pause() {
+    status.value = AudioStatus.paused;
   }
-  function setProgress(value: number) { recordingProgress.value = value; updateRecordingProgress.value = value; }
-  return { playingDataState, calendarEventsState, tracksHistory, stationState, recordings, streamId, volume, muted, status, type, source, recordingId, duration, recordingProgress, updateRecordingProgress, offset, playingData, liveData, station, trackType, track, artwork, progress, recording, recordingAudioUrl, initializeCookies, setPlayingData, setGeneralData, setStreamId, setVolume, play, pause, stop, setRecordingId, setProgress };
+  function stop() {
+    status.value = AudioStatus.stopped;
+    type.value = AudioType.none;
+    source.value = null;
+  }
+  function setRecordingId(value: number) {
+    if (recordingId.value === value) {
+      return;
+    }
+    recordingId.value = value;
+    setProgress(0);
+  }
+  function setProgress(value: number) {
+    recordingProgress.value = value;
+    updateRecordingProgress.value = value;
+  }
+  return {
+    playingDataState,
+    calendarEventsState,
+    tracksHistory,
+    stationState,
+    recordings,
+    streamId,
+    volume,
+    muted,
+    status,
+    type,
+    source,
+    recordingId,
+    duration,
+    recordingProgress,
+    updateRecordingProgress,
+    offset,
+    playingData,
+    liveData,
+    station,
+    trackType,
+    track,
+    artwork,
+    progress,
+    recording,
+    recordingAudioUrl,
+    initializeCookies,
+    setPlayingData,
+    setGeneralData,
+    setStreamId,
+    setVolume,
+    play,
+    pause,
+    stop,
+    setRecordingId,
+    setProgress,
+  };
 });

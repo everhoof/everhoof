@@ -2,7 +2,12 @@
   <!-- begin .player-compact-->
   <div class="player-compact">
     <div class="player-compact__main">
-      <button class="player-compact__play-button" @click="togglePlay">
+      <button
+        type="button"
+        class="player-compact__play-button"
+        :aria-label="$t(playing ? 'controls.pause' : 'controls.play')"
+        @click="togglePlay"
+      >
         <svg-icon v-if="playing" name="pause" />
         <svg-icon v-else name="play_arrow" />
       </button>
@@ -11,7 +16,12 @@
         <div class="player-compact__description">{{ date }}</div>
       </div>
       <div class="player-compact__volume-slider">
-        <b-volume-slider :volume="volume" :muted="muted" @update:volume="setVolume" @update:muted="toggleMuted" />
+        <b-volume-slider
+          :volume="volume"
+          :muted="muted"
+          @update:volume="setVolume"
+          @update:muted="toggleMuted"
+        />
       </div>
     </div>
     <div class="player-compact__progress-slider">
@@ -20,7 +30,12 @@
         /
         <span>{{ toHHMMSS(duration) }}</span>
       </div>
-      <b-slider :value="progress" :duration="duration" interactive @update:value="setProgress" />
+      <b-slider
+        :value="progress"
+        :duration="duration"
+        interactive
+        @update:value="setProgress"
+      />
     </div>
   </div>
   <!-- end .player-compact-->
@@ -30,21 +45,40 @@
 import { DateTime } from 'luxon';
 import BVolumeSlider from '~/components/volume-slider/volume-slider.vue';
 import BSlider from '~/components/slider/slider.vue';
-import { AudioStatus, AudioType, usePlayerStore } from '~/stores/player';
+import {
+  AudioStatus,
+  AudioType,
+  usePlayerStore,
+} from '~/stores/player';
 import { toHHMMSS } from '~~/tools/filters';
+
 const player = usePlayerStore();
 const playing = computed(() => player.type === AudioType.recording && player.status === AudioStatus.playing);
 const title = computed(() => player.recording.description);
-const date = computed(() => player.recording.beginsAt ? DateTime.fromISO(player.recording.beginsAt).setZone('Europe/Moscow').toFormat('dd.MM.yyyy HH:mm') : '');
+const date = computed(() => (player.recording.beginsAt
+  ? DateTime.fromISO(player.recording.beginsAt).setZone('Europe/Moscow')
+      .toFormat('dd.MM.yyyy HH:mm')
+  : ''));
 const duration = computed(() => player.duration);
 const progressInSeconds = computed(() => player.recordingProgress);
-const progress = computed(() => duration.value ? progressInSeconds.value / duration.value : 0);
+const progress = computed(() => (duration.value ? progressInSeconds.value / duration.value : 0));
 const volume = computed(() => player.volume);
 const muted = computed(() => player.muted);
-function togglePlay() { if (playing.value) player.pause(); else player.play({ type: AudioType.recording }); }
-function setVolume(value: number) { player.setVolume(value); }
-function toggleMuted() { player.muted = !player.muted; }
-function setProgress(value: number) { player.setProgress(duration.value * value); }
+function togglePlay() {
+  if (playing.value) player.pause();
+  else player.play({
+    type: AudioType.recording,
+  });
+}
+function setVolume(value: number) {
+  player.setVolume(value);
+}
+function toggleMuted() {
+  player.muted = !player.muted;
+}
+function setProgress(value: number) {
+  player.setProgress(duration.value * value);
+}
 </script>
 
 <style lang="scss" scoped>

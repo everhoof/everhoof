@@ -10,9 +10,14 @@
 <script setup lang="ts">
 import type { Notification } from '~~/types/Notification';
 import { useNotificationsStore } from '~/stores/notifications';
-const props = defineProps<{ notification: Notification }>();
+
+const props = defineProps<{
+  notification: Notification;
+}>();
 const notifications = useNotificationsStore();
-function close() { notifications.remove(props.notification.id); }
+function close() {
+  notifications.remove(props.notification.id);
+}
 </script>
 
 <style lang="scss" scoped>

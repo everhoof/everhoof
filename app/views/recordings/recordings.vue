@@ -10,7 +10,7 @@
       </b-tile>
       <div class="recordings__list">
         <div v-for="(record, i) in recordings" :key="i" class="recordings__item">
-          <button class="recordings__button" @click="play(i)">
+          <button type="button" class="recordings__button" @click="play(i)">
             <svg-icon v-if="playing && index === i" name="pause" />
             <svg-icon v-else name="play_arrow" />
           </button>
@@ -22,6 +22,7 @@
           <a
             :href="player.recordingAudioUrl(record.id)"
             class="recordings__button"
+            :aria-label="$t('controls.download_recording')"
             :download="`${record.description}.ogg`"
           >
             <svg-icon name="get_app" />
@@ -37,16 +38,31 @@
 import { DateTime } from 'luxon';
 import BTile from '~/components/tile/tile.vue';
 import BPlayerCompact from '~/components/player-compact/player-compact.vue';
-import { AudioStatus, AudioType, usePlayerStore } from '~/stores/player';
-defineOptions({ name: 'RecordingsPage' });
+import {
+  AudioStatus,
+  AudioType,
+  usePlayerStore,
+} from '~/stores/player';
+
+defineOptions({
+  name: 'RecordingsPage',
+});
 const player = usePlayerStore();
 const recordings = computed(() => player.recordings);
 const playing = computed(() => player.status === AudioStatus.playing && player.type === AudioType.recording);
 const index = computed(() => player.recordingId);
-function formatDate(iso: string) { return DateTime.fromISO(iso).setZone('Europe/Moscow').toFormat('dd.MM.yyyy HH:mm'); }
+function formatDate(iso: string) {
+  return DateTime.fromISO(iso).setZone('Europe/Moscow')
+    .toFormat('dd.MM.yyyy HH:mm');
+}
 function play(id: number) {
   if (playing.value && id === index.value) player.pause();
-  else { player.setRecordingId(id); player.play({ type: AudioType.recording }); }
+  else {
+    player.setRecordingId(id);
+    player.play({
+      type: AudioType.recording,
+    });
+  }
 }
 </script>
 

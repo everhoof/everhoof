@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const readline = require('readline');
+const fs = require('node:fs');
+const path = require('node:path');
+const readline = require('node:readline');
 
 const rl = readline.createInterface(process.stdin, process.stdout);
 
@@ -12,17 +12,17 @@ const BLOCKS_DIR = path.join(__dirname, '../app/components');
 // default content for files in new block
 const fileSources = {
   vue:
-    '<template>\n' +
-    '  <!-- begin .{blockName}-->\n' +
-    '  <div class="{blockName}" />\n' +
-    '  <!-- end .{blockName}-->\n' +
-    '</template>\n\n' +
-    '<script setup lang="ts">\n</script>\n\n' +
-    '<style lang="scss" scoped>\n' +
-    '.{blockName} {\n' +
-    '  display: block;\n' +
-    '}\n' +
-    '</style>\n',
+    '<template>\n'
+    + '  <!-- begin .{blockName}-->\n'
+    + '  <div class="{blockName}" />\n'
+    + '  <!-- end .{blockName}-->\n'
+    + '</template>\n\n'
+    + '<script setup lang="ts">\n</script>\n\n'
+    + '<style lang="scss" scoped>\n'
+    + '.{blockName} {\n'
+    + '  display: block;\n'
+    + '}\n'
+    + '</style>\n',
 };
 
 function validateBlockName(blockName) {
@@ -65,21 +65,19 @@ function createDir(dirPath) {
 function createFiles(blocksPath, blockName) {
   const promises = [];
   Object.keys(fileSources).forEach((ext) => {
-    const fileSource = fileSources[ext].replace(/{blockName}/g, blockName);
+    const fileSource = fileSources[ext].replaceAll('{blockName}', () => blockName);
     const filename = `${blockName}.${ext}`;
     const filePath = path.join(blocksPath, filename);
 
-    promises.push(
-      new Promise((resolve, reject) => {
-        fs.writeFile(filePath, fileSource, 'utf8', (err) => {
-          if (err) {
-            reject(`ERR>>> Failed to create a file '${filePath}'`);
-          } else {
-            resolve();
-          }
-        });
-      }),
-    );
+    promises.push(new Promise((resolve, reject) => {
+      fs.writeFile(filePath, fileSource, 'utf8', (err) => {
+        if (err) {
+          reject(`ERR>>> Failed to create a file '${filePath}'`);
+        } else {
+          resolve();
+        }
+      });
+    }));
   });
 
   return Promise.all(promises);
@@ -107,23 +105,21 @@ function printErrorMessage(errText) {
 function initMakeBlock(candidateBlockName) {
   const blockNames = candidateBlockName.trim().split(/\s+/);
 
-  const makeBlock = (blockName) => {
+  const makeBlock = async (blockName) => {
     const blockPath = path.join(BLOCKS_DIR, blockName);
 
-    return validateBlockName(blockName)
-      .then(() => directoryExist(blockPath, blockName))
-      .then(() => createDir(blockPath))
-      .then(() => createFiles(blockPath, blockName))
-      .then(() => getFiles(blockPath))
-      .then((files) => {
-        const line = '-'.repeat(48 + blockName.length);
-        console.log(line);
-        console.log(`The block has just been created in 'app/components/${blockName}'`);
-        console.log(line);
+    await validateBlockName(blockName);
+    await directoryExist(blockPath, blockName);
+    await createDir(blockPath);
+    await createFiles(blockPath, blockName);
+    const files = await getFiles(blockPath);
+    const line = '-'.repeat(48 + blockName.length);
+    console.log(line);
+    console.log(`The block has just been created in 'app/components/${blockName}'`);
+    console.log(line);
 
-        // Displays a list of files created
-        files.forEach((file) => console.log(file));
-      });
+    // Displays a list of files created
+    files.forEach((file) => console.log(file));
   };
 
   if (blockNames.length === 1) {
@@ -147,16 +143,19 @@ const blockNameFromCli = process.argv
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
-if (blockNameFromCli !== '') {
-  initMakeBlock(blockNameFromCli)
-    .then(() => rl.close())
-    .catch(printErrorMessage);
-} else {
+if (blockNameFromCli === '') {
   rl.setPrompt('Block(s) name: ');
   rl.prompt();
-  rl.on('line', (line) => {
-    initMakeBlock(line)
-      .then(() => rl.close())
-      .catch(printErrorMessage);
-  });
+  rl.on('line', makeBlocks);
+} else {
+  void makeBlocks(blockNameFromCli);
+}
+
+async function makeBlocks(line) {
+  try {
+    await initMakeBlock(line);
+    rl.close();
+  } catch (error) {
+    printErrorMessage(error);
+  }
 }

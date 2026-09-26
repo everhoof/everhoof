@@ -1,10 +1,15 @@
 <template>
   <!-- begin .chat-->
   <div class="chat">
-    <a :href="link" class="chat__link">
+    <a :href="link" class="chat__link" :aria-label="$t('buttons.chat')">
       <svg-icon name="open_in_new" />
     </a>
-    <iframe class="chat__iframe" :src="link" frameborder="0" />
+    <iframe
+      :title="$t('buttons.chat')"
+      class="chat__iframe"
+      :src="link"
+      frameborder="0"
+    />
   </div>
   <!-- end .chat-->
 </template>

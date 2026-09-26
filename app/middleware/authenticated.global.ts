@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to) => {
-  const loggedIn = Boolean(useCookie('apollo-token').value);
-  if (to.name === 'login' && loggedIn) return navigateTo('/');
-  if (!['main', 'recordings'].includes(String(to.name)) && !loggedIn && to.path !== '/') return navigateTo('/');
+  const isLoggedIn = Boolean(useCookie('apollo-token').value);
+  if (isLoggedIn && to.name === 'login') return navigateTo('/');
+  if (!isLoggedIn && to.path !== '/' && !['main', 'recordings'].includes(String(to.name))) return navigateTo('/');
 });

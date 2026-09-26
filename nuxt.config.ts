@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-25',
-  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n'],
   css: [
     '~/assets/scss/normalize.scss',
     '~/assets/scss/grid.scss',
@@ -22,12 +22,18 @@ export default defineNuxtConfig({
   runtimeConfig: { public: { graphql: 'http://localhost:4000/graphql', audioBase: '' } },
   i18n: {
     locales: [
-      { code: 'ru', name: 'Русский', language: 'ru-RU', file: 'ru-RU.js' },
-      { code: 'en', name: 'English', language: 'en-US', file: 'en-US.js' },
+      {
+        code: 'ru', name: 'Русский', language: 'ru-RU', file: 'ru-RU.js',
+      },
+      {
+        code: 'en', name: 'English', language: 'en-US', file: 'en-US.js',
+      },
     ],
     langDir: '../lang',
     defaultLocale: 'en',
     strategy: 'no_prefix',
-    detectBrowserLanguage: { useCookie: true, cookieKey: 'i18n_redirected', alwaysRedirect: false, fallbackLocale: 'en' },
+    detectBrowserLanguage: {
+      useCookie: true, cookieKey: 'i18n_redirected', alwaysRedirect: false, fallbackLocale: 'en',
+    },
   },
 });

@@ -29,11 +29,40 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ id: string; type?: string; placeholder?: string; value?: string; active?: boolean; disabled?: boolean; widthFull?: boolean; icon?: string; margin?: boolean }>(), { type: 'text', placeholder: '', value: '', icon: '' });
-const emit = defineEmits<{ input: [value: string]; keydown: [event: KeyboardEvent]; keyup: [event: KeyboardEvent]; keypress: [event: KeyboardEvent] }>();
+withDefaults(defineProps<{
+  id: string;
+  type?: string;
+  placeholder?: string;
+  value?: string;
+  active?: boolean;
+  disabled?: boolean;
+  widthFull?: boolean;
+  icon?: string;
+  margin?: boolean;
+}>(), {
+  type: 'text', placeholder: '', value: '', icon: '',
+});
+const emit = defineEmits<{
+  input: [
+        value: string,
+  ];
+  keydown: [
+        event: KeyboardEvent,
+  ];
+  keyup: [
+        event: KeyboardEvent,
+  ];
+  keypress: [
+        event: KeyboardEvent,
+  ];
+}>();
 const input = ref<HTMLInputElement | null>(null);
-function onInput(event: Event) { emit('input', (event.target as HTMLInputElement).value); }
-defineExpose({ focus: () => input.value?.focus() });
+function onInput(event: Event) {
+  emit('input', (event.target as HTMLInputElement).value);
+}
+defineExpose({
+  focus: () => input.value?.focus(),
+});
 </script>
 
 <style lang="scss" scoped>

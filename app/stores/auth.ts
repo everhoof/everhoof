@@ -6,7 +6,7 @@ export const useAuthStore = defineStore('auth', () => {
   function initialize() {
     const id = useCookie<string | null>('user_id');
     const token = useCookie<string | null>('apollo-token');
-    userId.value = id.value ? Number.parseInt(id.value, 10) || null : null;
+    userId.value = id.value ? Math.trunc(Number(id.value)) || null : null;
     loggedIn.value = Boolean(token.value);
   }
   return { userId, loggedIn, initialize };

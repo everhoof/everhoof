@@ -6,7 +6,6 @@
   <!-- end .tile-->
 </template>
 
-
 <style lang="scss" scoped>
 .tile {
   display: block;

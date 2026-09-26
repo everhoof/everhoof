@@ -1,4 +1,14 @@
 export default {
+  controls: {
+    play: 'Play',
+    pause: 'Pause',
+    stop: 'Stop',
+    mute: 'Mute',
+    unmute: 'Unmute',
+    slider: 'Adjust playback or volume',
+    download_playlist: 'Download playlist',
+    download_recording: 'Download recording',
+  },
   buttons: {
     history: 'History',
     chat: 'Chat',

@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import ElFormError from '~/components/form-error/form-error.vue';
+
 withDefaults(defineProps<{ errors?: string[]; title?: string }>(), { errors: () => [], title: '' });
 </script>
 

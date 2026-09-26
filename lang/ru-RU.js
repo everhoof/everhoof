@@ -1,4 +1,14 @@
 export default {
+  controls: {
+    play: 'Воспроизвести',
+    pause: 'Пауза',
+    stop: 'Остановить',
+    mute: 'Выключить звук',
+    unmute: 'Включить звук',
+    slider: 'Изменить позицию воспроизведения или громкость',
+    download_playlist: 'Скачать плейлист',
+    download_recording: 'Скачать запись',
+  },
   buttons: {
     history: 'История',
     chat: 'Чат',

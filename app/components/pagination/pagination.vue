@@ -1,13 +1,24 @@
 <template>
   <!-- begin .pagination-->
   <div v-if="pages > 0" class="pagination">
-    <button class="pagination__item" :disabled="page === 1" @click="$emit('change', 1)">
+    <button
+      type="button"
+      class="pagination__item"
+      :disabled="page === 1"
+      @click="$emit('change', 1)"
+    >
       <svg-icon name="first_page" />
     </button>
-    <button class="pagination__item" :disabled="page - 1 < 1" @click="$emit('change', page - 1)">
+    <button
+      type="button"
+      class="pagination__item"
+      :disabled="page - 1 < 1"
+      @click="$emit('change', page - 1)"
+    >
       <svg-icon name="chevron_left" />
     </button>
     <button
+      type="button"
       v-for="i in displayPages"
       :key="i"
       class="pagination__item"
@@ -16,10 +27,20 @@
     >
       {{ i }}
     </button>
-    <button class="pagination__item" :disabled="page + 1 > pages" @click="$emit('change', page + 1)">
+    <button
+      type="button"
+      class="pagination__item"
+      :disabled="page + 1 > pages"
+      @click="$emit('change', page + 1)"
+    >
       <svg-icon name="chevron_right" />
     </button>
-    <button class="pagination__item" :disabled="page === pages" @click="$emit('change', pages)">
+    <button
+      type="button"
+      class="pagination__item"
+      :disabled="page === pages"
+      @click="$emit('change', pages)"
+    >
       <svg-icon name="last_page" />
     </button>
   </div>

@@ -9,6 +9,9 @@ export default defineNuxtPlugin(async () => {
   useNowStore().now = Date.now();
   const player = usePlayerStore();
   player.initializeCookies();
-  try { player.setGeneralData(await useGraphql()<GetGeneralDataQuery>(GetGeneralData)); }
-  catch (error) { console.error('General data request failed:', error); }
+  try {
+    player.setGeneralData(await useGraphql()<GetGeneralDataQuery>(GetGeneralData));
+  } catch (error) {
+    console.error('General data request failed:', error);
+  }
 });

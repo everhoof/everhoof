@@ -1,12 +1,22 @@
 <template>
   <!-- begin .select-->
   <div ref="parent" class="select">
-    <button class="select__title" @click="mousedown">
+    <button type="button" class="select__title" @click="mousedown">
       {{ title }}
     </button>
     <transition>
       <ul v-show="focused" ref="options" class="select__list">
-        <li v-for="(item, i) in items" v-show="item !== title" :key="i" class="select__item" @click="select(i)">
+        <li
+          v-for="(item, i) in items"
+          v-show="item !== title"
+          :key="i"
+          class="select__item"
+          role="button"
+          tabindex="0"
+          @keydown.enter="select(i)"
+          @keydown.space.prevent="select(i)"
+          @click="select(i)"
+        >
           {{ item }}
         </li>
       </ul>
@@ -16,17 +26,33 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ items?: string[]; value?: number | string }>(), { items: () => [], value: 0 });
-const emit = defineEmits<{ input: [index: number] }>();
+const props = withDefaults(defineProps<{
+  items?: string[];
+  value?: number | string;
+}>(), {
+  items: () => [], value: 0,
+});
+const emit = defineEmits<{
+  input: [
+        index: number,
+  ];
+}>();
 const parent = ref<HTMLDivElement | null>(null);
 const focused = ref(false);
 const index = computed(() => Number(props.value) || 0);
-const title = computed(() => props.items[index.value] || 'EMPTY');
-function onDocumentClick(event: MouseEvent) { if (!parent.value?.contains(event.target as Node)) focused.value = false; }
+const title = computed(() => props.items[index.value] ?? 'EMPTY');
+function onDocumentClick(event: MouseEvent) {
+  if (!parent.value?.contains(event.target as Node)) focused.value = false;
+}
 onMounted(() => document.addEventListener('click', onDocumentClick));
 onUnmounted(() => document.removeEventListener('click', onDocumentClick));
-function mousedown() { focused.value = !focused.value; }
-function select(i: number) { emit('input', i); focused.value = false; }
+function mousedown() {
+  focused.value = !focused.value;
+}
+function select(i: number) {
+  emit('input', i);
+  focused.value = false;
+}
 </script>
 
 <style lang="scss" scoped>

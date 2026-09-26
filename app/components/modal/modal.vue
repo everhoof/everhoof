@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import BTile from '~/components/tile/tile.vue';
+
 const props = defineProps<{ title: string; modelValue: boolean }>();
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
 const modal = ref<HTMLDivElement | null>(null);

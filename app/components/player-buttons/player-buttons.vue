@@ -2,14 +2,26 @@
   <!-- begin .player-buttons-->
   <div class="player-buttons">
     <div class="player-buttons__buttons-container">
-      <button class="player-buttons__button" @click="history = true">{{ $t('buttons.history') }}</button>
-      <button class="player-buttons__button" :disabled="player.liveData.isLive" @click="request = true">
+      <button type="button" class="player-buttons__button" @click="history = true">{{ $t('buttons.history') }}</button>
+      <button
+        type="button"
+        class="player-buttons__button"
+        :disabled="player.liveData.isLive"
+        @click="request = true"
+      >
         {{ $t('buttons.request') }}
       </button>
-      <a class="player-buttons__button" href="https://im.everhoof.ru" target="_blank">{{ $t('buttons.chat') }}</a>
-      <router-link :to="{ name: 'recordings' }" class="player-buttons__button" disabled>{{
-        $t('buttons.records')
-      }}</router-link>
+      <a
+        class="player-buttons__button"
+        href="https://im.everhoof.ru"
+        target="_blank"
+        rel="noopener noreferrer"
+      >{{ $t('buttons.chat') }}</a>
+      <router-link :to="{ name: 'recordings' }" class="player-buttons__button" disabled>
+        {{
+          $t('buttons.records')
+        }}
+      </router-link>
     </div>
     <div class="player-buttons__links-container">
       <a
@@ -18,7 +30,9 @@
         :href="link.href"
         class="player-buttons__link"
         :title="link.title"
+        :aria-label="link.title"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <svg-icon :name="link.icon" />
       </a>
@@ -38,6 +52,7 @@ import BModal from '~/components/modal/modal.vue';
 import BHistoryModal from '~/components/history-modal/history-modal.vue';
 import BRequestModal from '~/components/request-modal/request-modal.vue';
 import { usePlayerStore } from '~/stores/player';
+
 const player = usePlayerStore();
 const links = [
   { title: 'DonationAlerts', icon: 'donationalerts', href: 'https://www.donationalerts.com/r/everhoof' },

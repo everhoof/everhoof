@@ -19,5 +19,7 @@ export const useNotificationsStore = defineStore('notifications', () => {
     timers.forEach(clearTimeout);
     timers.clear();
   }
-  return { notifications, add, remove, dispose };
+  return {
+    notifications, add, remove, dispose,
+  };
 });
