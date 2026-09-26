@@ -26,17 +26,21 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+
+interface Props {
   items?: string[];
   value?: number | string;
-}>(), {
-  items: () => [], value: 0,
+}
+
+interface Emits {
+  input: [index: number];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  items: () => [],
+  value: 0,
 });
-const emit = defineEmits<{
-  input: [
-        index: number,
-  ];
-}>();
+const emit = defineEmits<Emits>();
 const parent = ref<HTMLDivElement | null>(null);
 const focused = ref(false);
 const index = computed(() => Number(props.value) || 0);

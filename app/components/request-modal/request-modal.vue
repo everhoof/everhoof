@@ -63,14 +63,16 @@ import BPagination from '~/components/pagination/pagination.vue';
 import { useNotificationsStore } from '~/stores/notifications';
 import { getRandomInt } from '~/utils/math';
 
-defineProps<{
+interface Props {
   modal: boolean;
-}>();
-const emit = defineEmits<{
-  'update:modal': [
-        value: boolean,
-  ];
-}>();
+}
+
+interface Emits {
+  'update:modal': [value: boolean];
+}
+
+defineProps<Props>();
+const emit = defineEmits<Emits>();
 const graphql = useGraphql();
 const notifications = useNotificationsStore();
 const debouncing = ref(false);

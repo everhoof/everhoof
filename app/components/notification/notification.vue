@@ -11,9 +11,11 @@
 import type { Notification } from '~~/types/Notification';
 import { useNotificationsStore } from '~/stores/notifications';
 
-const props = defineProps<{
+interface Props {
   notification: Notification;
-}>();
+}
+
+const props = defineProps<Props>();
 const notifications = useNotificationsStore();
 function close() {
   notifications.remove(props.notification.id);

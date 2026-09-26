@@ -29,7 +29,8 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+
+interface Props {
   id: string;
   type?: string;
   placeholder?: string;
@@ -39,23 +40,22 @@ withDefaults(defineProps<{
   widthFull?: boolean;
   icon?: string;
   margin?: boolean;
-}>(), {
-  type: 'text', placeholder: '', value: '', icon: '',
+}
+
+interface Emits {
+  input: [value: string];
+  keydown: [event: KeyboardEvent];
+  keyup: [event: KeyboardEvent];
+  keypress: [event: KeyboardEvent];
+}
+
+withDefaults(defineProps<Props>(), {
+  type: 'text',
+  placeholder: '',
+  value: '',
+  icon: '',
 });
-const emit = defineEmits<{
-  input: [
-        value: string,
-  ];
-  keydown: [
-        event: KeyboardEvent,
-  ];
-  keyup: [
-        event: KeyboardEvent,
-  ];
-  keypress: [
-        event: KeyboardEvent,
-  ];
-}>();
+const emit = defineEmits<Emits>();
 const input = ref<HTMLInputElement | null>(null);
 function onInput(event: Event) {
   emit('input', (event.target as HTMLInputElement).value);

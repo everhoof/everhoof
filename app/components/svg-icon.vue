@@ -9,8 +9,14 @@
     v-html="content"
   />
 </template>
+
 <script setup lang="ts">
-const props = defineProps<{ name: string }>();
+
+interface Props {
+  name: string;
+}
+
+const props = defineProps<Props>();
 const icons = import.meta.glob('../assets/icons/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const source = computed(() => icons[`../assets/icons/${props.name}.svg`] ?? '');
 const viewBox = computed(() => (/viewBox="([^"]+)"/.exec(source.value))?.[1] ?? '0 0 24 24');

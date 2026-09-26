@@ -13,7 +13,16 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ errors?: string[]; widthFull?: boolean; margin?: boolean }>(), { errors: () => [] });
+
+interface Props {
+  errors?: string[];
+  widthFull?: boolean;
+  margin?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
+  errors: () => [],
+});
 </script>
 
 <style lang="scss" scoped>

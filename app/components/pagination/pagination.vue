@@ -48,8 +48,18 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ pages: number; page: number }>();
-defineEmits<{ change: [page: number] }>();
+
+interface Props {
+  pages: number;
+  page: number;
+}
+
+interface Emits {
+  change: [page: number];
+}
+
+const props = defineProps<Props>();
+defineEmits<Emits>();
 const displayPages = computed(() => {
   const first = props.page === props.pages && props.pages > 2 ? props.page - 2 : Math.max(props.page - 1, 1);
   return Array.from({ length: Math.min(first + 2, props.pages) - first + 1 }, (_, index) => first + index);

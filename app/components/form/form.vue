@@ -15,7 +15,15 @@
 <script setup lang="ts">
 import ElFormError from '~/components/form-error/form-error.vue';
 
-withDefaults(defineProps<{ errors?: string[]; title?: string }>(), { errors: () => [], title: '' });
+interface Props {
+  errors?: string[];
+  title?: string;
+}
+
+withDefaults(defineProps<Props>(), {
+  errors: () => [],
+  title: '',
+});
 </script>
 
 <style lang="scss" scoped>

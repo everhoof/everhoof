@@ -28,20 +28,23 @@
 <script setup lang="ts">
 import { toHHMMSS } from '~~/tools/filters';
 
-const props = withDefaults(defineProps<{
+interface Props {
   value?: number;
   duration?: number;
   interactive?: boolean;
   withTime?: boolean;
   emptyTime?: boolean;
-}>(), {
-  value: 0, duration: 0,
+}
+
+interface Emits {
+  'update:value': [value: number];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  value: 0,
+  duration: 0,
 });
-const emit = defineEmits<{
-  'update:value': [
-        value: number,
-  ];
-}>();
+const emit = defineEmits<Emits>();
 const bg = ref<HTMLElement | null>(null);
 const slider = ref<HTMLElement | null>(null);
 const valueSynced = computed({

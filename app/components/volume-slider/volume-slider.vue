@@ -21,18 +21,18 @@
 <script setup lang="ts">
 import BSlider from '~/components/slider/slider.vue';
 
-const props = defineProps<{
+interface Props {
   volume: number;
   muted?: boolean;
-}>();
-const emit = defineEmits<{
-  'update:volume': [
-        value: number,
-  ];
-  'update:muted': [
-        value: boolean,
-  ];
-}>();
+}
+
+interface Emits {
+  'update:volume': [value: number];
+  'update:muted': [value: boolean];
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 const syncedVolume = computed({
   get: () => props.volume, set: (value) => emit('update:volume', value),
 });

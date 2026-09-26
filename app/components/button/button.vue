@@ -23,8 +23,30 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ tag?: string; small?: boolean; medium?: boolean; large?: boolean; block?: boolean; widthFull?: boolean; active?: boolean; disabled?: boolean; noWrap?: boolean; margin?: boolean; to?: string }>(), { tag: 'button', to: undefined });
-defineEmits<{ click: [event: MouseEvent] }>();
+
+interface Props {
+  tag?: string;
+  small?: boolean;
+  medium?: boolean;
+  large?: boolean;
+  block?: boolean;
+  widthFull?: boolean;
+  active?: boolean;
+  disabled?: boolean;
+  noWrap?: boolean;
+  margin?: boolean;
+  to?: string;
+}
+
+interface Emits {
+  click: [event: MouseEvent];
+}
+
+withDefaults(defineProps<Props>(), {
+  tag: 'button',
+  to: undefined,
+});
+defineEmits<Emits>();
 </script>
 
 <style lang="scss" scoped>

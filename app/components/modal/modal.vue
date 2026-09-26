@@ -15,8 +15,17 @@
 <script setup lang="ts">
 import BTile from '~/components/tile/tile.vue';
 
-const props = defineProps<{ title: string; modelValue: boolean }>();
-const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
+interface Props {
+  title: string;
+  modelValue: boolean;
+}
+
+interface Emits {
+  'update:modelValue': [value: boolean];
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 const modal = ref<HTMLDivElement | null>(null);
 function onDocumentMouseDown(event: MouseEvent) {
   if (props.modelValue && modal.value && !modal.value.firstElementChild?.contains(event.target as Node)) emit('update:modelValue', false);
